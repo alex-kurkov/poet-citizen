@@ -5,3 +5,5 @@ build
 .editorconfig
 
 .gitignore
+
+.vscode
