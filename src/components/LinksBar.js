@@ -62,7 +62,6 @@ const NavBarLink = styled(Link)`
 
 const LinksBar = () => {
   const { navBarLinks } = React.useContext(AppContext);
-
   return (
     <StyledLinksBar>
       <LinksContainer>

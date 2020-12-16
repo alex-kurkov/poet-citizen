@@ -9,12 +9,12 @@ import Info from './Info';
 import Lead from './Lead';
 import config from '../config';
 
-
 const Page = styled.div`
   min-width: 1440px;
   margin: 0 auto;
-  color: #fff;
+  color: #E5E5E5;
   padding: 0;
+
 `;
 
 const App = () => {

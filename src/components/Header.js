@@ -6,9 +6,10 @@ import LinksBar from './LinksBar';
 
 const AppHeader = styled.header`
   box-sizing: border-box;
-  width: 100%;
+  width: 1440px;
   height: 64px;
-  padding: 20px 152px;
+  padding: 20px 0;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   gap: 16px;
