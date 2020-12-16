@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import { PoemText } from './Texts';
 
 const PoemBlock = styled.div`
   width: 264px;
@@ -20,14 +21,6 @@ const IcQuotes = styled.div`
   background-color: #DEDEDE;
   color: #000;
 `
-const PoemText = styled.p`
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
-  white-space: pre;
-  margin: 0;
-`
-
 const Poem = ({ poem }) => {
   return (
     <PoemBlock>

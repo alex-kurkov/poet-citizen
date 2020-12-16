@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import Poem from './Poem';
+import LeadInfo from './LeadInfo';
 /* import PropTypes from 'prop-types'; */
 
-const LeadBlock = styled.section`
+const LeadSection = styled.section`
   width: 1440px;
   height: 636px;
   box-sizing: border-box;
@@ -12,20 +13,20 @@ const LeadBlock = styled.section`
   padding: 105px 252px 75px 252px;
 `;
 
-const LeadInfo = styled.div`
-  width: 936;
-  background-color: lightGray;
+const LeadBlock = styled.div`
+  width: 936px;
   color: #000;
   height: 100%;
   font-size: 40px;
   font-weight: 900;
   display: flex;
   flex-direction: row;
+  gap: 120px;
 `
 
 const Lead = ({ children }) => (
-  <LeadBlock>
-    <LeadInfo>
+  <LeadSection>
+    <LeadBlock>
       <Poem poem={`“Граждане,
 у меня
 огромная радость.
@@ -38,9 +39,13 @@ const Lead = ({ children }) => (
 хотя бы
 поделиться...”
 `}/>
+    <LeadInfo
+      leadMainText="Предложи свою инициативу вигилантам словами классиков"
+      leadText="P.S. 'Вигиланты' (люди, которые самовольно охраняют общественный порядок)"
+    />
       {children}
-    </LeadInfo>
-  </LeadBlock>
+    </LeadBlock>
+  </LeadSection>
 )
 
 Lead.propTypes = {

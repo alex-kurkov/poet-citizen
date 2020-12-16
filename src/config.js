@@ -22,5 +22,8 @@ export default {
       name: 'Вступить в ряды',
       link: '/join',
     },
-  ]
+  ],
+  tipography: {
+    fontFamily: 'Inter, Arial, sans-serif',
+  }
 }

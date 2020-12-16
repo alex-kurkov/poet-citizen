@@ -24,7 +24,6 @@ const App = () => {
       <Page>
         <Header/>
         <Lead>
-          ЗДЕСЬ БУДЕТ КАРУСЕЛЬ
         </Lead>
         <Info>
           <Switch>
