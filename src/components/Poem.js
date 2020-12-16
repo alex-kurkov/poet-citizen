@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import { PoemText } from './Texts';
+import IcQuote from './IcQuote';
 
 const PoemBlock = styled.div`
   width: 264px;
@@ -11,7 +12,7 @@ const PoemBlock = styled.div`
   padding: 52px 32px;
   box-sizing: border-box;
 `
-const IcQuotes = styled.div`
+const IcQuotesDiv = styled.div`
   width: 100px;
   height: 100px;
   position: absolute;
@@ -21,10 +22,20 @@ const IcQuotes = styled.div`
   background-color: #DEDEDE;
   color: #000;
 `
+const IcQuotesWrap = styled.div`
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  padding: 25px;
+`;
 const Poem = ({ poem }) => {
   return (
     <PoemBlock>
-      <IcQuotes/>
+      <IcQuotesDiv>
+        <IcQuotesWrap>
+          <IcQuote fill="#000"/>
+        </IcQuotesWrap>
+      </IcQuotesDiv>
         <PoemText>
           {poem}
         </PoemText>
