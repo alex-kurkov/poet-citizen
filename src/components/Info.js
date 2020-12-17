@@ -3,12 +3,12 @@ import styled from 'styled-components/macro';
 /* import PropTypes from 'prop-types'; */
 
 const InfoBlock = styled.section`
-  max-width: 1200px;
+  width: 1440px;
   height: calc(100vh - 700px);
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: black;
-  color: white;
+  background-color: #fff;
+  color: #000;
   padding: 100px 100px;
 `;
 
