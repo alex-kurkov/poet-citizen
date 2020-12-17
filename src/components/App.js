@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Switch, Redirect, Route,
+  Switch, Redirect, Route
 } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import AppContext from '../contexts/AppContext';
@@ -19,38 +19,21 @@ const Page = styled.div`
 `;
 
 const App = () => {
-  console.log(config);
-  // eslint-disable-next-line 
-  const [leadTexts, setLeadTexts] = useState({
-    title: 'Выберите организацию в которую хотите обратиться',
-    helper: 'Тут будет отображаться Ваше обращение',
-    info: 'Создавая обращение в организацию, Вы делаете мир лучше! Сообщите нам о наболевшем, чтобы мы решили эту проблему. Помните, обращение формируется словами классиков.',
-    nav: 'гражданин-поэт/',
-  })
-  // eslint-disable-next-line 
-  const [poem, setPoem] = useState(`“Граждане,
-  у меня
-  огромная радость.
-  Разулыбьте
-  сочувственные лица.
-  Мне
-  обязательно
-  поделиться надо,
-  стихами
-  хотя бы
-  поделиться...”
-  у меня
-  огромная радость.
-  Разулыбьте
-  сочувственные лица.
-  Мне
-  обязательно
-  поделиться надо,
-  стихами
-  хотя бы
-  поделиться...”
-  `)
+/*   const { path, url } = useRouteMatch(); */
+  const [poem, setPoem] = useState('')
+  const [callTexts, setCallTexts] = useState({}); 
+  const [joinTexts, setJoinTexts] = useState({}); 
+  const [complainTexts, setComplainTexts] = useState({}); 
+  const [exploreTexts, setExploreTexts] = useState({}); 
 
+  useEffect(() => {
+    setCallTexts(config.leadTexts.routeCall);
+    setComplainTexts(config.leadTexts.routeComplain);
+    setJoinTexts(config.leadTexts.routeJoin);
+    setExploreTexts(config.leadTexts.routeExplore);
+  }, [])
+
+  useEffect(() => {setPoem(`${config.templatePoem}\n${config.templatePoem}`)} ,[])
   return (
     <AppContext.Provider value={config}>
       <Page>
@@ -63,16 +46,19 @@ const App = () => {
               </Info>
             </Route>
             <Route path="/call">
-              <InitLead leadTexts={leadTexts} poem={poem} />
+              <InitLead leadTexts={callTexts} poem={poem} />
               контент подачи инициативы
             </Route>
             <Route path="/explore">
+              <InitLead leadTexts={exploreTexts} poem="" />
               контент оценки других заявок
             </Route>
             <Route path="/complain">
+              <InitLead leadTexts={complainTexts} poem={poem} />
               контент жалобы
             </Route>
             <Route path="/join">
+              <InitLead leadTexts={joinTexts} poem={poem} />
               контент присоединения
             </Route>
             <Route path="/">

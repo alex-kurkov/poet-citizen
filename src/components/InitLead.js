@@ -19,7 +19,7 @@ const LeadBlock = styled.div`
   color: #000;
   display: grid;
   gap: 8px;
-  grid-template-columns: 1fr 48px 360px;
+  grid-template-columns: 1fr 48px 400px;
   grid-template-rows: 24px 160px 1fr;
   grid-template-areas: 
       'nav . helper'
@@ -56,17 +56,17 @@ const InitLead = ( { leadTexts, poem } ) => {
   return (
     <InitLeadSection>
       <LeadBlock>
-          <LeadNavigation>{nav}</LeadNavigation>
-          <LeadMainText>{title}</LeadMainText>
-          <LeadText>{info}</LeadText>
-          <LeadHelper>{helper}</LeadHelper>
-          <InitPoemWrapper>
-            <InitPoem>
-              <PoemText>
-                {poem}
-              </PoemText>
-            </InitPoem>
-          </InitPoemWrapper>
+        <LeadNavigation>{nav}</LeadNavigation>
+        <LeadMainText>{title}</LeadMainText>
+        <LeadText>{info}</LeadText>
+        <LeadHelper>{helper}</LeadHelper>
+        <InitPoemWrapper>
+          <InitPoem>
+            <PoemText>
+              {poem}
+            </PoemText>
+          </InitPoem>
+        </InitPoemWrapper>
       </LeadBlock>
     </InitLeadSection>
   )

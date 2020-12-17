@@ -16,6 +16,7 @@ const Paragraph = styled.p`
 const LeadMainText = styled(Paragraph)`
   grid-area: title;
   align-self: end;
+  line-height: 1.2;
   font-size: 36px;
   color: ${(props=>props.color)};
 `;
@@ -31,7 +32,7 @@ const LeadText = styled(Paragraph)`
 `;
 const LeadHelper = styled(Paragraph)`
   grid-area: helper;
-  font-size: 16px;
+  font-size: 18px;
   color: #000;
 `
 const LeadNavigation = styled(Paragraph)`
