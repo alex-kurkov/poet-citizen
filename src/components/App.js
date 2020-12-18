@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Switch, Redirect, Route
+  Switch, Redirect, Route, /* useRouteMatch */
 } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import AppContext from '../contexts/AppContext';
@@ -9,6 +9,7 @@ import Info from './Info';
 import Lead from './Lead';
 import config from '../config';
 import InitLead from './InitLead';
+import Call from './Call';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -20,7 +21,11 @@ const Page = styled.div`
 
 const App = () => {
 /*   const { path, url } = useRouteMatch(); */
+
   const [poem, setPoem] = useState('')
+  const [userPoemZero, setUserPoemZero] = useState('');
+  const [userPoemOne, setUserPoemOne] = useState('')
+  const [userPoemTwo, setUserPoemTwo] = useState('')
   const [callTexts, setCallTexts] = useState({}); 
   const [joinTexts, setJoinTexts] = useState({}); 
   const [complainTexts, setComplainTexts] = useState({}); 
@@ -33,7 +38,11 @@ const App = () => {
     setExploreTexts(config.leadTexts.routeExplore);
   }, [])
 
-  useEffect(() => {setPoem(`${config.templatePoem}\n${config.templatePoem}`)} ,[])
+  useEffect(() => {
+    setPoem(`${userPoemZero}\n${userPoemOne}\n${userPoemTwo}`);
+
+  }, [userPoemZero, userPoemOne, userPoemTwo])
+
   return (
     <AppContext.Provider value={config}>
       <Page>
@@ -47,7 +56,9 @@ const App = () => {
             </Route>
             <Route path="/call">
               <InitLead leadTexts={callTexts} poem={poem} />
-              контент подачи инициативы
+              <Call poem={poem} setUserPoemZero={setUserPoemZero} setUserPoemOne={setUserPoemOne} setUserPoemTwo={setUserPoemTwo}>
+
+              </Call>
             </Route>
             <Route path="/explore">
               <InitLead leadTexts={exploreTexts} poem="" />
