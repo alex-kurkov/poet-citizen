@@ -32,6 +32,17 @@ const PoemBlock = styled.div`
   white-space: pre;
   font-size: 24px;
   font-weight: 500;
+  overflow-y: scroll;
+  white-space: pre;
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: rgba(255, 129, 0, .5);
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 35px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 1px;
+  }
 `
 const SubmitBtn = styled.button`
   grid-area: submit;
