@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
 const OrganizationContainer = styled.ul`
   display: grid;
-  margin: 0 auto;
-  grid-template-columns: 264px 264px 264px 264px;
+  margin: 36px auto 0;
+  grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   column-gap: 24px;
   grid-template-rows: 204px 204px;
   row-gap: 36px;
@@ -39,20 +39,16 @@ const OrganizationItem = styled.p`
 
 const OrganizationList = ({ array }) => (
   <OrganizationContainer>
-    { array.map((item, i) => {
+    {array.map((item, i) => {
       return (
         <li key={i + item.id}>
           <OrganizationBox>
-            <OrganizationItem>
-              {item.name}
-            </OrganizationItem>
+            <OrganizationItem>{item.name}</OrganizationItem>
           </OrganizationBox>
         </li>
-      )
-    })
-    }
+      );
+    })}
   </OrganizationContainer>
 );
-
 
 export default OrganizationList;
