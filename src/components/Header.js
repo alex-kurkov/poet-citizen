@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 /* import PropTypes from 'prop-types'; */
 import Logo from './Logo';
 import LinksBar from './LinksBar';
+import { ProfileBtn } from './Buttons/index'
 
 const AppHeader = styled.header`
   box-sizing: border-box;
@@ -29,7 +30,7 @@ const Header = () => {
     <AppHeader>
       <Logo />
       <LinksBar />
-{/*       <ProfileBtn /> */}
+      <ProfileBtn />
     </AppHeader>
   );
 };

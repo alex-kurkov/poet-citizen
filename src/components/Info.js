@@ -82,9 +82,9 @@ const Info = ({ children }) => {
   ];
 
   const actionArray = [
-    { title: 'Предложите свою инициативу', id: 'ownInitativ'},
-    { title: 'Станьте частью движения', id: 'partOfMotion'},
-    { title: 'Оцените инициативы других', id: 'evaluateOtherInitiative'},
+    { title: 'Предложите свою инициативу', id: 'callOwn', link: '/call'},
+    { title: 'Станьте частью движения', id: 'joinMovement', link: '/join'},
+    { title: 'Оцените инициативы других', id: 'exploreOther', link: '/explore'},
   ];
 
   return (

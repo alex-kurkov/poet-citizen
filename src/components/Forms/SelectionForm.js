@@ -59,6 +59,10 @@ const RadioInputLabel = styled.label`
 
   &:after {
     content: '${({labelText}) => labelText}';
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
     font-size: 18px;
     display: inline-block;
     position: absolute;

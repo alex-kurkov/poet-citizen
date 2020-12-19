@@ -16,7 +16,6 @@ const Page = styled.div`
   margin: 0 auto;
   color: #E5E5E5;
   padding: 0;
-
 `;
 
 const App = () => {
@@ -26,17 +25,11 @@ const App = () => {
   const [userPoemZero, setUserPoemZero] = useState('');
   const [userPoemOne, setUserPoemOne] = useState('')
   const [userPoemTwo, setUserPoemTwo] = useState('')
-  const [callTexts, setCallTexts] = useState({}); 
-  const [joinTexts, setJoinTexts] = useState({}); 
-  const [complainTexts, setComplainTexts] = useState({}); 
-  const [exploreTexts, setExploreTexts] = useState({}); 
-
-  useEffect(() => {
-    setCallTexts(config.leadTexts.routeCall);
-    setComplainTexts(config.leadTexts.routeComplain);
-    setJoinTexts(config.leadTexts.routeJoin);
-    setExploreTexts(config.leadTexts.routeExplore);
-  }, [])
+  const [leadPoemBlockVisibility, setLeadPoemBlockVisibility] = useState(true);
+  const [leadTitle, setLeadTitle] = useState('')
+  const [leadHelperText, setLeadHelperText] = useState('')
+  const [leadInfoText, setLeadInfoText] = useState('')
+  const [leadNav, setLeadNav] = useState('')
 
   useEffect(() => {
     setPoem(`${userPoemZero}\n${userPoemOne}\n${userPoemTwo}`);
@@ -49,32 +42,78 @@ const App = () => {
         <Header/>
           <Switch>
             <Route path="/main">
-              <Lead />
-              <Info>
-              основной контент
-              </Info>
+              <Lead texts={config.leadTexts.routeMain}/>
+              <Info />
             </Route>
             <Route path="/call">
-              <InitLead leadTexts={callTexts} poem={poem} />
-              <Call poem={poem} setUserPoemZero={setUserPoemZero} setUserPoemOne={setUserPoemOne} setUserPoemTwo={setUserPoemTwo}>
-
-              </Call>
+              <InitLead 
+                poem={poem}
+                leadPoemBlockVisibility={leadPoemBlockVisibility}
+                leadTexts={
+                  {
+                    leadTitle, 
+                    leadHelperText, 
+                    leadInfoText, 
+                    leadNav
+                  }
+                }
+                />
+              <Call
+                poem={poem}
+                setUserPoemZero={setUserPoemZero} 
+                setUserPoemOne={setUserPoemOne} 
+                setUserPoemTwo={setUserPoemTwo} 
+                setLeadTitle={setLeadTitle}
+                setLeadHelperText={setLeadHelperText}
+                setLeadInfoText={setLeadInfoText}
+                setLeadNav={setLeadNav}
+                setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+                />
             </Route>
+
             <Route path="/explore">
-              <InitLead leadTexts={exploreTexts} poem="" />
+              <InitLead 
+                poem=""
+                leadTexts={
+                  {
+                    leadTitle, 
+                    leadHelperText, 
+                    leadInfoText, 
+                    leadNav
+                  }
+                } />
               контент оценки других заявок
             </Route>
+
             <Route path="/complain">
-              <InitLead leadTexts={complainTexts} poem={poem} />
-              контент жалобы
+              <InitLead 
+                poem={poem}
+                leadTexts={
+                  {
+                    leadTitle, 
+                    leadHelperText, 
+                    leadInfoText, 
+                    leadNav
+                  }
+                } />
             </Route>
+
             <Route path="/join">
-              <InitLead leadTexts={joinTexts} poem={poem} />
-              контент присоединения
+              <InitLead poem={poem}
+                leadTexts={
+                  {
+                    leadTitle, 
+                    leadHelperText, 
+                    leadInfoText, 
+                    leadNav
+                  }
+                } />
             </Route>
+
             <Route path="/">
               <Redirect to="/main" />
             </Route>
+
           </Switch>
       </Page>
     </AppContext.Provider>

@@ -51,22 +51,28 @@ const InitPoem = styled.div`
   }
 `;
 
-const InitLead = ( { leadTexts, poem } ) => {
-  const {title, helper, info, nav} = leadTexts;
+const InitLead = ( { leadTexts, poem, leadPoemBlockVisibility } ) => {
+  const { 
+    leadTitle,
+    leadHelperText, 
+    leadInfoText, 
+    leadNav
+  } = leadTexts;
+
   return (
     <InitLeadSection>
       <LeadBlock>
-        <LeadNavigation>{nav}</LeadNavigation>
-        <LeadMainText>{title}</LeadMainText>
-        <LeadText>{info}</LeadText>
-        <LeadHelper>{helper}</LeadHelper>
-        <InitPoemWrapper>
+        <LeadNavigation>{leadNav}</LeadNavigation>
+        <LeadMainText>{leadTitle}</LeadMainText>
+        <LeadText>{leadInfoText}</LeadText>
+        <LeadHelper>{leadHelperText}</LeadHelper>
+        {leadPoemBlockVisibility && <InitPoemWrapper>
           <InitPoem>
             <PoemText>
               {poem}
             </PoemText>
           </InitPoem>
-        </InitPoemWrapper>
+        </InitPoemWrapper>}
       </LeadBlock>
     </InitLeadSection>
   )

@@ -70,29 +70,21 @@ const LeadButton = styled.button`
   }
 `;
 
-const Lead = ({ children }) => (
-  <LeadSection>
-    <LeadBlock>
-      <Poem poem={`“Граждане,
-у меня
-огромная радость.
-Разулыбьте
-сочувственные лица.
-Мне
-обязательно
-поделиться надо,
-стихами
-хотя бы
-поделиться...”
-`}/>
-      <LeadInfoDiv>
-        <LeadMainText>Предложи свою инициативу вигилантам словами классиков</LeadMainText>
-        <LeadText>P.S. 'Вигиланты' (люди, которые самовольно охраняют общественный порядок)</LeadText>
-        <LeadButton as={Link} to="/call">Предложить</LeadButton>
-      </LeadInfoDiv>
-    </LeadBlock>
-  </LeadSection>
-)
+const Lead = ({ texts }) => {
+  const { rhyme, info, title } = texts;
+  return (
+    <LeadSection>
+      <LeadBlock>
+        <Poem poem={rhyme}/>
+        <LeadInfoDiv>
+          <LeadMainText>{title}</LeadMainText>
+            <LeadText>{info}</LeadText>
+          <LeadButton as={Link} to="/call">Предложить</LeadButton>
+        </LeadInfoDiv>
+      </LeadBlock>
+    </LeadSection>
+  )
+}
 
 Lead.propTypes = {
 };

@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 const OrganizationContainer = styled.ul`
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 260px 260px 260px 260px;
+  grid-template-columns: 264px 264px 264px 264px;
   column-gap: 24px;
   grid-template-rows: 204px 204px;
   row-gap: 36px;
@@ -28,13 +28,13 @@ const OrganizationBox = styled.div`
 `;
 
 const OrganizationItem = styled.p`
-font-family: Open Sans;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 33px;
-margin-top: 0;
-margin-bottom: 20px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+  margin-top: 0;
+  margin-bottom: 20px;
 `;
 
 const OrganizationList = ({ array }) => (

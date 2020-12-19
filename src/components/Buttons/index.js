@@ -6,6 +6,7 @@ import TrashButton from './TrashButton';
 import LikeButton from './LikeButton';
 import SuccessIcon from './SuccessIcon';
 import FailureIcon from './FailureIcon';
+import ProfileBtn from './ProfileBtn';
 
 export {
   SuccessIcon,
@@ -16,4 +17,5 @@ export {
   EditButton,
   AvatarEditButton,
   TrashButton,
+  ProfileBtn
 };
