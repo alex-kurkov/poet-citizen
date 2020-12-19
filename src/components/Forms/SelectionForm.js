@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import cardBg from '../../img/organization_bg.png';
 /* import PropTypes from 'prop-types'; */
 
 const FormContainer = styled.ul`
@@ -43,20 +44,46 @@ const RadioInput = styled.input`
     }
   }
 `
+
 const RadioInputLabel = styled.label`
   display: inline-block;
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
-  padding-left: 25px;
+  padding: 44px 28px;
   margin-right: 0;
   line-height: 18px;
   user-select: none;
   width: 100%;
   height: 100%;
-  background: #eee;
+  background: url(${cardBg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 0;
 
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-out;
+  }
+
+  &:before {
+    content: '';
+    width: 90%;
+    height: 90%;
+    display: inline-block;
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    z-index: 5;
+    background: #F2F2F2;
+    opacity: 1;
+  }
+  &:hover:before {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
   &:after {
     content: '${({labelText}) => labelText}';
     font-family: Open Sans;
@@ -68,19 +95,81 @@ const RadioInputLabel = styled.label`
     position: absolute;
     left: 24px;
     bottom: 20px;
+    z-index: 10;
+    opacity: 1;
   }
   &:hover:after {
-    bottom: 40px;
-    transition: bottom 0.2s ease-out;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
   }
 `;
+
+const StyledLi = styled.li`
+  position: relative;
+  &:hover:nth-child(1) {
+    ${RadioInputLabel} {
+      transform-origin: bottom right;
+    }
+  }
+  &:hover:nth-child(2, 3) {
+    ${RadioInputLabel} {
+      transform-origin: bottom center;
+    }
+  }
+  &:hover:nth-child(4) {
+    ${RadioInputLabel} {
+      transform-origin: bottom left;
+    }
+  }
+  &:hover:nth-child(5) {
+    ${RadioInputLabel} {
+      transform-origin: 100% 0%;
+    }
+  }
+  &:hover:nth-child(6, 7) {
+    ${RadioInputLabel} {
+      transform-origin: 50% 100%;
+    }
+  }
+  &:hover:nth-child(8) {
+    ${RadioInputLabel} {
+      transform-origin: 0% 0%;
+    }
+  }
+`;
+const LabelTitle = styled.h3`
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: block;
+  color: orange;
+  font-family: Open Sans;
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 600;
+`;
+const LabelInfo = styled.span`
+  position: absolute;
+  top: 100px;
+  left: 24px;
+  display: block;
+  color: #fff;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+
+
 
 const SelectionForm = ({ handleSelection, array, areaName }) => (
   <FormContainer>
     { array.map((item, i) => {
         return (
-          <li key={i + item.id}>
+          <StyledLi key={i + item.id}>
             <RadioInputLabel htmlFor={item.id} labelText={item.name}>
+              <LabelTitle>{item.name}</LabelTitle>
+              <LabelInfo>{item.info}</LabelInfo>
               <RadioInput
                 onChange={handleSelection}
                 type="radio"
@@ -89,7 +178,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
                 value={item.rhyme} />
               <ChozenLayer />
           </RadioInputLabel>
-          </li>
+          </StyledLi>
         )
       })
     }
