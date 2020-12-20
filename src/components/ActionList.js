@@ -4,10 +4,9 @@ import styled from 'styled-components/macro';
 
 const ActionContainer = styled.ul`
   display: grid;
-  margin: 0 auto;
-  grid-template-columns: 360px 360px 360px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-template-rows: 340px;
-  margin: 0 auto;
+  margin-top: 36px;
   column-gap: 24px;
   list-style-type: none;
   margin-block-start: 0;
