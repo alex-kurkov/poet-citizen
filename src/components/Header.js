@@ -25,11 +25,11 @@ const AppHeader = styled.header`
   }
 `;
 
-const Header = () => (
+const Header = ({onProfileBtnClick}) => (
     <AppHeader>
       <Logo />
       <LinksBar />
-      <ProfileBtn />
+      <ProfileBtn onClick={onProfileBtnClick}/>
     </AppHeader>
 );
 

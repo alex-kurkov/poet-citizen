@@ -97,7 +97,7 @@ const CardElementLikeSum = styled.p`
 
 const Card = (props) => {
   // const currentUser = React.useContext(CurrentUserContext);
-  console.log('Card.props', props);
+  /* console.log('Card.props', props); */
   const { card } = props;
 
   function handleLikeClick() {

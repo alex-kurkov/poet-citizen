@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
 import Card from './Card';
+import FormArrowBtn from './Buttons/FormArrowBtn';
 
 const OtherInitiativeSection = styled.section`
   width: 1440px;
@@ -27,7 +28,10 @@ const OtherInitiative = (props) => {
     <OtherInitiativeSection>
       <Carousel
         showArrows={true}
+        pagination={true}
         itemsToShow={3}
+        enableSwipe={true}
+        renderArrow={FormArrowBtn}
       >
         {props.cards.map((card) => <
           Card key={card._id}

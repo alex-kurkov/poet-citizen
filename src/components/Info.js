@@ -22,6 +22,7 @@ const InfoBlock = styled.section`
   padding: 100px 100px;
 `;
 
+
 const IntroDiv = styled.div`
   display: flex;
   flex-direction: column;
