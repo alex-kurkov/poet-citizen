@@ -10,6 +10,8 @@ import Lead from './Lead';
 import config from '../config';
 import InitLead from './InitLead';
 import Call from './Call';
+import Complain from './Complain';
+import Join from './Join';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -60,6 +62,7 @@ const App = () => {
                 />
               <Call
                 poem={poem}
+                route="/call"
                 setUserPoemZero={setUserPoemZero} 
                 setUserPoemOne={setUserPoemOne} 
                 setUserPoemTwo={setUserPoemTwo} 
@@ -72,42 +75,73 @@ const App = () => {
             </Route>
 
             <Route path="/explore">
-              <InitLead 
-                poem=""
+            <InitLead 
+                poem={poem}
+                leadPoemBlockVisibility={leadPoemBlockVisibility}
                 leadTexts={
                   {
-                    leadTitle, 
-                    leadHelperText, 
-                    leadInfoText, 
-                    leadNav
+                    leadTitle: config.leadTexts.routeExplore.title, 
+                    leadHelperText: config.leadTexts.routeExplore.helper,
+                    leadInfoText: config.leadTexts.routeExplore.info,
+                    leadNav: config.leadTexts.routeExplore.nav,
                   }
-                } />
-              контент оценки других заявок
+                }
+                />
+
             </Route>
 
             <Route path="/complain">
               <InitLead 
-                poem={poem}
-                leadTexts={
-                  {
-                    leadTitle, 
-                    leadHelperText, 
-                    leadInfoText, 
-                    leadNav
+                  poem={poem}
+                  leadPoemBlockVisibility={leadPoemBlockVisibility}
+                  leadTexts={
+                    {
+                      leadTitle, 
+                      leadHelperText, 
+                      leadInfoText, 
+                      leadNav
+                    }
                   }
-                } />
+                  />
+                <Complain
+                  poem={poem}
+                  route="/complain"
+                  setUserPoemZero={setUserPoemZero} 
+                  setUserPoemOne={setUserPoemOne} 
+                  setUserPoemTwo={setUserPoemTwo} 
+                  setLeadTitle={setLeadTitle}
+                  setLeadHelperText={setLeadHelperText}
+                  setLeadInfoText={setLeadInfoText}
+                  setLeadNav={setLeadNav}
+                  setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+                  />
             </Route>
 
             <Route path="/join">
-              <InitLead poem={poem}
-                leadTexts={
-                  {
-                    leadTitle, 
-                    leadHelperText, 
-                    leadInfoText, 
-                    leadNav
+            <InitLead 
+                  poem={poem}
+                  leadPoemBlockVisibility={leadPoemBlockVisibility}
+                  leadTexts={
+                    {
+                      leadTitle, 
+                      leadHelperText, 
+                      leadInfoText, 
+                      leadNav
+                    }
                   }
-                } />
+                  />
+                <Join
+                  poem={poem}
+                  route="/join"
+                  setUserPoemZero={setUserPoemZero} 
+                  setUserPoemOne={setUserPoemOne} 
+                  setUserPoemTwo={setUserPoemTwo} 
+                  setLeadTitle={setLeadTitle}
+                  setLeadHelperText={setLeadHelperText}
+                  setLeadInfoText={setLeadInfoText}
+                  setLeadNav={setLeadNav}
+                  setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+                  />
             </Route>
 
             <Route path="/">

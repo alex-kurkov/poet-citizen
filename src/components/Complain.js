@@ -35,9 +35,26 @@ const Call = ({
   const { rhymes } = config;
   const carousel = useRef();
 
-  const texts = config.leadTexts.routeCall;
+  let texts;
+  switch (route) {
+    case '/call':
+      texts = config.leadTexts.routeCall;
+      break;
+    case '/join':
+      texts = config.leadTexts.routeJoin;
+      break;
+    case '/explore':
+      texts = config.leadTexts.routeExplore;
+      break;
+    case '/complain':
+      texts = config.leadTexts.routeComplain;
+      break;
+    default: 
+      console.log('no correct route passed to component Call')
+  }
 
   const [currentStep, setCurrentStep] = useState(1);
+
 
   useEffect(() => {
     setUserPoemZero(texts.rhyme);

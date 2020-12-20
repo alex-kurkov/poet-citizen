@@ -34,9 +34,8 @@ const Call = ({
   const history = useHistory();
   const { rhymes } = config;
   const carousel = useRef();
-
-  const texts = config.leadTexts.routeCall;
-
+  const texts = config.leadTexts.routeJoin;
+ 
   const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
