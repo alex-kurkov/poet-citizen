@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const OrganizationContainer = styled.ul`
   display: grid;
@@ -39,15 +39,13 @@ const OrganizationItem = styled.p`
 
 const OrganizationList = ({ array }) => (
   <OrganizationContainer>
-    {array.map((item, i) => {
-      return (
+    {array.map((item, i) => (
         <li key={i + item.id}>
           <OrganizationBox>
             <OrganizationItem>{item.name}</OrganizationItem>
           </OrganizationBox>
         </li>
-      );
-    })}
+    ))}
   </OrganizationContainer>
 );
 

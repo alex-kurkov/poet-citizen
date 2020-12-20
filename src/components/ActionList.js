@@ -49,25 +49,22 @@ const ActionList = ({ array }) => {
 
   return (
   <ActionContainer>
-    
-    { array.map((item, i) => {
-      return (
+
+    { array.map((item, i) => (
         <li key={i + item.id}>
-          <ActionBox  
+          <ActionBox
             onClick={() => {
-              history.push(item.link)
+              history.push(item.link);
             }}
             type='button'>
-          
+
             <ActionInput>{item.title}</ActionInput>
           </ActionBox>
         </li>
-      )
-    })
+    ))
     }
   </ActionContainer>
-  )
+  );
 };
-
 
 export default ActionList;

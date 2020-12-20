@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const ActionButton = styled.button`
   position: absolute;
@@ -37,7 +37,7 @@ const ActionButtonTextSpan = styled.span`
 
 const ActionBtn = ({ handleRedirect, text, textSpan }) => (
   <ActionButton type="button" onClick={handleRedirect}>
-    <ActionButtonText>{text}{" "}
+    <ActionButtonText>{text}{' '}
       <ActionButtonTextSpan> {textSpan}</ActionButtonTextSpan>
     </ActionButtonText>
   </ActionButton>

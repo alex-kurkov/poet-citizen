@@ -7,7 +7,7 @@ class Api {
   _getResponseData(res) {
     return new Promise((resolve, reject) => {
       const func = res.status < 400 ? resolve : reject;
-      res.json().then(func)
+      res.json().then(func);
     });
   }
 

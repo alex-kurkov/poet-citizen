@@ -4,8 +4,6 @@ env:
 extends:
   - 'plugin:react/recommended'
   - 'airbnb-base'
-  - 'plugin:import/errors'
-  - 'plugin:import/warnings'
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -15,7 +13,5 @@ plugins:
 rules:   
   no-underscore-dangle: 0
   no-console: 0
-  import/named: 2
-  import/namespace: 2
-  import/default: 2
-  import/export: 2
+  react/prop-types: 0
+  

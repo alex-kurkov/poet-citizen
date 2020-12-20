@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { LeadMainText, LeadText, LeadHelper,LeadNavigation, PoemText } from './Texts';
+import {
+  LeadMainText, LeadText, LeadHelper, LeadNavigation, PoemText,
+} from './Texts';
 /* import PropTypes from 'prop-types'; */
 
 const InitLeadSection = styled.section`
@@ -25,7 +27,7 @@ const LeadBlock = styled.div`
       'nav . helper'
       'title . poem'
       'info . poem'
-`
+`;
 const InitPoemWrapper = styled.div`
   grid-area: poem;
   width: 100%;
@@ -52,12 +54,12 @@ const InitPoem = styled.div`
   }
 `;
 
-const InitLead = ( { leadTexts, poem, leadPoemBlockVisibility } ) => {
-  const { 
+const InitLead = ({ leadTexts, poem, leadPoemBlockVisibility }) => {
+  const {
     leadTitle,
-    leadHelperText, 
-    leadInfoText, 
-    leadNav
+    leadHelperText,
+    leadInfoText,
+    leadNav,
   } = leadTexts;
 
   return (
@@ -76,7 +78,7 @@ const InitLead = ( { leadTexts, poem, leadPoemBlockVisibility } ) => {
         </InitPoemWrapper>}
       </LeadBlock>
     </InitLeadSection>
-  )
+  );
 };
 
 InitLead.propTypes = {

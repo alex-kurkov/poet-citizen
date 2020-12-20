@@ -11,7 +11,7 @@ const PoemBlock = styled.div`
   background-color: white;
   padding: 52px 32px;
   box-sizing: border-box;
-`
+`;
 const IcQuotesDiv = styled.div`
   width: 100px;
   height: 100px;
@@ -21,15 +21,14 @@ const IcQuotesDiv = styled.div`
   border-radius: 50%;
   background-color: #DEDEDE;
   color: #000;
-`
+`;
 const IcQuotesWrap = styled.div`
   width: 50%;
   height: 50%;
   margin: 0 auto;
   padding: 25px;
 `;
-const Poem = ({ poem }) => {
-  return (
+const Poem = ({ poem }) => (
     <PoemBlock>
       <IcQuotesDiv>
         <IcQuotesWrap>
@@ -40,8 +39,7 @@ const Poem = ({ poem }) => {
           {poem}
         </PoemText>
     </PoemBlock>
-  )
-}
+);
 Poem.propTypes = {
   poem: PropTypes.string,
 };

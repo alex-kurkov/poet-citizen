@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
+import Carousel from 'react-elastic-carousel';
+import { useHistory } from 'react-router-dom';
 import config from '../config';
 import SelectionForm from './Forms/SelectionForm';
-import Carousel from 'react-elastic-carousel';
 import FormArrowBtn from './Buttons/FormArrowBtn';
 import Success from './Success';
-import { useHistory } from 'react-router-dom';
 /* import PropTypes from 'prop-types'; */
-
 
 const CallSection = styled.section`
   width: 1440px;
@@ -39,19 +38,25 @@ const Call = ({
 
   const [currentStep, setCurrentStep] = useState(1);
 
+  const clearPoem = () => {
+    setUserPoemZero('');
+    setUserPoemOne('');
+    setUserPoemTwo('');
+  };
+
   useEffect(() => {
     setUserPoemZero(texts.rhyme);
     setLeadTitle(texts.title);
     setLeadHelperText(texts.helper);
     setLeadInfoText(texts.info);
-    setLeadNav(texts.nav)
+    setLeadNav(texts.nav);
     return () => {
-      setUserPoemZero('')
+      clearPoem();
       setLeadPoemBlockVisibility(true);
     };
-  } ,[])
+  }, []);
   useEffect(() => {
-    switch(currentStep) {
+    switch (currentStep) {
       case 1:
         setLeadTitle(texts.title);
         setLeadHelperText(texts.helper);
@@ -73,35 +78,28 @@ const Call = ({
         setLeadNav(texts.nav_step3);
         setLeadPoemBlockVisibility(false);
         break;
-      default: 
+      default:
         setLeadTitle(texts.title);
     }
-  } ,[ currentStep ])
+  }, [currentStep]);
 
-  const ClearPoem = () => {
-    setUserPoemZero('');
-    setUserPoemOne('');
-    setUserPoemTwo('');
-  }
-
-/*   carousel.current.slideNext()
+  /*   carousel.current.slideNext()
  */
   const handleOrganizationSelection = (e) => {
     setUserPoemOne(e.currentTarget.value);
-  }
+  };
 
   const handleEmotionSelection = (e) => {
     setUserPoemTwo(e.currentTarget.value);
-  }
-
+  };
 
   return (
     <CallSection>
         <form
           onSubmit={(e) => {
-            e.preventDefault()
+            e.preventDefault();
             console.log(poem);
-            ClearPoem();
+            clearPoem();
             history.push('/main');
           }}>
           <Carousel
@@ -114,28 +112,25 @@ const Call = ({
             renderArrow={FormArrowBtn}
             >
 
-              <SelectionForm 
+              <SelectionForm
                 handleSelection={handleOrganizationSelection}
                 array={rhymes.organization}
                 areaName="organization"/>
 
-
-              <SelectionForm 
+              <SelectionForm
                 handleSelection={handleEmotionSelection}
                 array={rhymes.emotion}
                 areaName="emotion"/>
 
-              <Success 
+              <Success
                 poem={poem}
                 actionBtnRoute="/explore"
-                actionBtnText="А другие инициативы ты уже оценил?">
-
-              </Success>
+                actionBtnText="А другие инициативы ты уже оценил?" />
 
           </Carousel>
         </form>
     </CallSection>
-  )
+  );
 };
 
 Call.propTypes = {

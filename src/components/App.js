@@ -12,7 +12,7 @@ import InitLead from './InitLead';
 import Call from './Call';
 import Complain from './Complain';
 import Join from './Join';
-import ExploreLead from './ExploreLead'
+import ExploreLead from './ExploreLead';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -24,20 +24,19 @@ const Page = styled.div`
 const App = () => {
 /*   const { path, url } = useRouteMatch(); */
 
-  const [poem, setPoem] = useState('')
+  const [poem, setPoem] = useState('');
   const [userPoemZero, setUserPoemZero] = useState('');
-  const [userPoemOne, setUserPoemOne] = useState('')
-  const [userPoemTwo, setUserPoemTwo] = useState('')
+  const [userPoemOne, setUserPoemOne] = useState('');
+  const [userPoemTwo, setUserPoemTwo] = useState('');
   const [leadPoemBlockVisibility, setLeadPoemBlockVisibility] = useState(true);
-  const [leadTitle, setLeadTitle] = useState('')
-  const [leadHelperText, setLeadHelperText] = useState('')
-  const [leadInfoText, setLeadInfoText] = useState('')
-  const [leadNav, setLeadNav] = useState('')
+  const [leadTitle, setLeadTitle] = useState('');
+  const [leadHelperText, setLeadHelperText] = useState('');
+  const [leadInfoText, setLeadInfoText] = useState('');
+  const [leadNav, setLeadNav] = useState('');
 
   useEffect(() => {
     setPoem(`${userPoemZero}\n${userPoemOne}\n${userPoemTwo}`);
-
-  }, [userPoemZero, userPoemOne, userPoemTwo])
+  }, [userPoemZero, userPoemOne, userPoemTwo]);
 
   return (
     <AppContext.Provider value={config}>
@@ -49,24 +48,24 @@ const App = () => {
               <Info />
             </Route>
             <Route path="/call">
-              <InitLead 
+              <InitLead
                 poem={poem}
                 leadPoemBlockVisibility={leadPoemBlockVisibility}
                 leadTexts={
                   {
-                    leadTitle, 
-                    leadHelperText, 
-                    leadInfoText, 
-                    leadNav
+                    leadTitle,
+                    leadHelperText,
+                    leadInfoText,
+                    leadNav,
                   }
                 }
                 />
               <Call
                 poem={poem}
                 route="/call"
-                setUserPoemZero={setUserPoemZero} 
-                setUserPoemOne={setUserPoemOne} 
-                setUserPoemTwo={setUserPoemTwo} 
+                setUserPoemZero={setUserPoemZero}
+                setUserPoemOne={setUserPoemOne}
+                setUserPoemTwo={setUserPoemTwo}
                 setLeadTitle={setLeadTitle}
                 setLeadHelperText={setLeadHelperText}
                 setLeadInfoText={setLeadInfoText}
@@ -76,10 +75,10 @@ const App = () => {
             </Route>
 
             <Route path="/explore">
-            <ExploreLead 
+            <ExploreLead
                 leadTexts={
                   {
-                    leadTitle: config.leadTexts.routeExplore.title, 
+                    leadTitle: config.leadTexts.routeExplore.title,
                     leadHelperText: config.leadTexts.routeExplore.helper,
                     leadInfoText: config.leadTexts.routeExplore.info,
                     leadNav: config.leadTexts.routeExplore.nav,
@@ -90,24 +89,24 @@ const App = () => {
             </Route>
 
             <Route path="/complain">
-              <InitLead 
+              <InitLead
                   poem={poem}
                   leadPoemBlockVisibility={leadPoemBlockVisibility}
                   leadTexts={
                     {
-                      leadTitle, 
-                      leadHelperText, 
-                      leadInfoText, 
-                      leadNav
+                      leadTitle,
+                      leadHelperText,
+                      leadInfoText,
+                      leadNav,
                     }
                   }
                   />
                 <Complain
                   poem={poem}
                   route="/complain"
-                  setUserPoemZero={setUserPoemZero} 
-                  setUserPoemOne={setUserPoemOne} 
-                  setUserPoemTwo={setUserPoemTwo} 
+                  setUserPoemZero={setUserPoemZero}
+                  setUserPoemOne={setUserPoemOne}
+                  setUserPoemTwo={setUserPoemTwo}
                   setLeadTitle={setLeadTitle}
                   setLeadHelperText={setLeadHelperText}
                   setLeadInfoText={setLeadInfoText}
@@ -117,24 +116,24 @@ const App = () => {
             </Route>
 
             <Route path="/join">
-            <InitLead 
+            <InitLead
                   poem={poem}
                   leadPoemBlockVisibility={leadPoemBlockVisibility}
                   leadTexts={
                     {
-                      leadTitle, 
-                      leadHelperText, 
-                      leadInfoText, 
-                      leadNav
+                      leadTitle,
+                      leadHelperText,
+                      leadInfoText,
+                      leadNav,
                     }
                   }
                   />
                 <Join
                   poem={poem}
                   route="/join"
-                  setUserPoemZero={setUserPoemZero} 
-                  setUserPoemOne={setUserPoemOne} 
-                  setUserPoemTwo={setUserPoemTwo} 
+                  setUserPoemZero={setUserPoemZero}
+                  setUserPoemOne={setUserPoemOne}
+                  setUserPoemTwo={setUserPoemTwo}
                   setLeadTitle={setLeadTitle}
                   setLeadHelperText={setLeadHelperText}
                   setLeadInfoText={setLeadInfoText}

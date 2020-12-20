@@ -26,7 +26,7 @@ const LeadBlock = styled.div`
       'nav . action'
       'title . action'
       'info . action'
-`
+`;
 const ActionBtn = styled.button`
   grid-area: action;
   align-self: center;
@@ -49,11 +49,11 @@ const ActionBtn = styled.button`
   }
 `;
 
-const InitLead = ( { leadTexts } ) => {
-  const { 
+const InitLead = ({ leadTexts }) => {
+  const {
     leadTitle,
-    leadInfoText, 
-    leadNav
+    leadInfoText,
+    leadNav,
   } = leadTexts;
 
   const history = useHistory();
@@ -71,7 +71,7 @@ const InitLead = ( { leadTexts } ) => {
         </ActionBtn>
       </LeadBlock>
     </InitLeadSection>
-  )
+  );
 };
 
 InitLead.propTypes = {

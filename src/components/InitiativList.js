@@ -39,8 +39,7 @@ margin-bottom: 20px;
 
 const InitiativList = ({ array }) => (
   <InitiativContainer>
-    { array.map((item, i) => {
-      return (
+    { array.map((item, i) => (
         <li key={i + item.id}>
           <InitiativBox>
             <InitiativItem>
@@ -48,11 +47,9 @@ const InitiativList = ({ array }) => (
             </InitiativItem>
           </InitiativBox>
         </li>
-      )
-    })
+    ))
     }
   </InitiativContainer>
 );
-
 
 export default OrganizationList;

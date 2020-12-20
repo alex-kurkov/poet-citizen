@@ -1,7 +1,7 @@
 /* import React from 'react'; */
 import styled from 'styled-components/macro';
 
-const Paragraph =  styled.p`
+const Paragraph = styled.p`
 font-style: normal;
 line-height: 1.5;
 font-weight: 400;
@@ -36,19 +36,19 @@ const NavBarLink = styled(ParagraphOpenSans)`
   
   @media screen and (max-width: 440px) {
   }
-`
+`;
 const LeadMainText = styled(ParagraphOpenSans)`
   grid-area: title;
   align-self: end;
   line-height: 1.2;
   font-size: 36px;
-  color: ${(props=>props.color)};
+  color: ${((props) => props.color)};
 `;
 const PoemText = styled(ParagraphNoto)`
   font-size: 18px;
   line-height: 1.6;
   white-space: pre;
-`
+`;
 const LeadText = styled(ParagraphNoto)`
   grid-area: info;
   font-size: 18px;
@@ -58,7 +58,7 @@ const LeadHelper = styled(ParagraphNoto)`
   grid-area: helper;
   font-size: 18px;
   color: #000;
-`
+`;
 const LeadNavigation = styled(ParagraphNoto)`
   grid-area: nav;
   font-size: 18px;
@@ -71,6 +71,62 @@ const IntroGoal = styled(ParagraphNoto)`
   line-height: 34px;
   margin: 0 auto;
 `;
+const IntroBrief = styled(ParagraphOpenSans)`
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 52px;
+  margin-top: 0;
+  margit-bottom: 0;
+`;
+
+const ActiveTitle = styled(ParagraphOpenSans)`
+  margin: 88px 0 36px;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 45px;
+`;
+const IntroParagraf = styled(ParagraphOpenSans)`
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 36px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  width: 90%;
+
+  tab-size: 12px;
+`;
+
+const IntroGoalDiv = styled(ParagraphOpenSans)`
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 34px;
+  width: 75%;
+  display: flex;
+  position: relative;
+  margin-top: 32px;
+  background: #eee;
+  padding: 12px 80px;
+  box-sizing: border-box;
+`;
+const IntroTitleDiv = styled.p`
+  max-width: 648px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 52px;
+  margin-top: 108px;
+  margin-bottom: 36px;
+ `;
+ const IntroParticipationText = styled(ParagraphOpenSans)`
+ font-family: Georgia;
+ font-style: normal;
+ font-weight: normal;
+ font-size: 20px;
+ line-height: 24px;
+ margin-top: 44px;
+ margin-bottom: 0;
+`;
 
 export {
   LeadMainText,
@@ -79,5 +135,11 @@ export {
   LeadHelper,
   LeadNavigation,
   NavBarLink,
-  IntroGoal
+  IntroGoal,
+  ActiveTitle,
+  IntroBrief,
+  IntroParagraf,
+  IntroGoalDiv,
+  IntroTitleDiv,
+  IntroParticipationText,
 };

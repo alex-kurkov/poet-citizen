@@ -17,5 +17,5 @@ export {
   EditButton,
   AvatarEditButton,
   TrashButton,
-  ProfileBtn
+  ProfileBtn,
 };

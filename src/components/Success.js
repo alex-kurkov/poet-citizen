@@ -4,9 +4,8 @@ import {
   /* useRouteMatch */
 } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import {LeadText} from './Texts';
+import { LeadText } from './Texts';
 /* import PropTypes from 'prop-types'; */
-
 
 const SuccessBlock = styled.div`
   display: grid;
@@ -50,7 +49,7 @@ const PoemBlock = styled.div`
     background-color: #808080;
     border-radius: 1px;
   }
-`
+`;
 const SubmitBtn = styled.button`
   grid-area: submit;
   width: 360px;
@@ -90,21 +89,21 @@ const ActionBtn = styled.button`
   }
 `;
 
+const Success = ({ poem, actionBtnRoute = '/', actionBtnText = '' }) => {
+  const history = useHistory();
 
-const Success = ({ poem, actionBtnRoute = '/', actionBtnText = ''}) => {
-const history = useHistory();
-
-return (
+  return (
     <SuccessBlock>
       <PoemBlockWrapper>
         <PoemBlock>{poem}</PoemBlock>
       </PoemBlockWrapper>
       <LeadText>
-      Для отправки обращения, после нажатия кнопки “Готово”, Вам потребуется заполнить данные, если Вы не зарегистрировыны. 
+      Для отправки обращения, после нажатия кнопки “Готово”, Вам потребуется заполнить данные,
+      если Вы не зарегистрировыны.
       </LeadText>
       <SubmitBtn
         type="submit"
-      
+
       >
         Готово!</SubmitBtn>
         <ActionBtn
@@ -113,7 +112,7 @@ return (
         {actionBtnText}
         </ActionBtn>
     </SuccessBlock>
-  )
+  );
 };
 
 Success.propTypes = {

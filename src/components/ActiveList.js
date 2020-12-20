@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const ActiveContainer = styled.ul`
   list-style-type: none;
@@ -13,7 +13,7 @@ const ActiveItemDiv = styled.div`
 `;
 
 const ActiveItem = styled.p`
-  font-family: Georgia;
+  font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -22,7 +22,7 @@ const ActiveItem = styled.p`
 `;
 
 const ActiveItemNumber = styled.p`
-  font-family: Georgia;
+  font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
@@ -32,19 +32,20 @@ const ActiveItemNumber = styled.p`
   margin-bottom: 0;
 `;
 
-const ActiveList = ({ array }) => (
+const ActiveList = ({ array }) => {
+  console.log(array);
+  return (
   <ActiveContainer>
-    {array.map((item, i) => {
-      return (
-        <li key={i}>
+    {array.map((item, i) => (
+        <li key={`activity-${i}`}>
           <ActiveItemDiv>
             <ActiveItemNumber>{i + 1}.</ActiveItemNumber>
-            <ActiveItem>{item.info}</ActiveItem>
+            <ActiveItem>{item}</ActiveItem>
           </ActiveItemDiv>
         </li>
-      );
-    })}
+    ))}
   </ActiveContainer>
-);
+  );
+};
 
 export default ActiveList;

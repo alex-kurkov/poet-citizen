@@ -2,7 +2,7 @@ import React from 'react';
 /* import styled from 'styled-components/macro'; */
 import PropTypes from 'prop-types';
 
-const IcQuote = ( { fill } ) => (
+const IcQuote = ({ fill }) => (
       <svg
         viewBox="0 0 50 50"
         fill="none"

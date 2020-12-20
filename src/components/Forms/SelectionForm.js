@@ -14,7 +14,7 @@ const FormContainer = styled.ul`
   margin-block-start: 0;
   margin-block-end: 0;
   padding: 20px 0px;
-`
+`;
 const ChozenLayer = styled.div`
       opacity: 0;
       width: 0px;
@@ -35,7 +35,7 @@ const RadioInput = styled.input`
       transition: opacity 0.2s ease-out, width 0.2s ease-out;
       }
     }
-`
+`;
 
 const RadioInputLabel = styled.label`
   display: block;
@@ -77,7 +77,7 @@ const RadioInputLabel = styled.label`
     transition: opacity 0.3s ease-out;
   }
   &:after {
-    content: '${({labelText}) => labelText}';
+    content: '${({ labelText }) => labelText}';
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
@@ -159,13 +159,9 @@ const LabelInfo = styled.span`
 
 `;
 
-
-
-
 const SelectionForm = ({ handleSelection, array, areaName }) => (
   <FormContainer>
-    { array.map((item, i) => {
-        return (
+    { array.map((item, i) => (
           <StyledLi key={i + item.id}>
             <RadioInputLabel htmlFor={item.id} labelText={item.name}>
               <LabelTitle>{item.name}</LabelTitle>
@@ -179,8 +175,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
               <ChozenLayer>&#10003;</ChozenLayer>
           </RadioInputLabel>
           </StyledLi>
-        )
-      })
+    ))
     }
   </FormContainer>
 );

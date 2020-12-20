@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
+import Carousel from 'react-elastic-carousel';
+import { useHistory } from 'react-router-dom';
 import config from '../config';
 import SelectionForm from './Forms/SelectionForm';
-import Carousel from 'react-elastic-carousel';
 import FormArrowBtn from './Buttons/FormArrowBtn';
 import Success from './Success';
-import { useHistory } from 'react-router-dom';
 /* import PropTypes from 'prop-types'; */
-
 
 const CallSection = styled.section`
   width: 1440px;
@@ -35,40 +34,29 @@ const Call = ({
   const { rhymes } = config;
   const carousel = useRef();
 
-  let texts;
-  switch (route) {
-    case '/call':
-      texts = config.leadTexts.routeCall;
-      break;
-    case '/join':
-      texts = config.leadTexts.routeJoin;
-      break;
-    case '/explore':
-      texts = config.leadTexts.routeExplore;
-      break;
-    case '/complain':
-      texts = config.leadTexts.routeComplain;
-      break;
-    default: 
-      console.log('no correct route passed to component Call')
-  }
+  const texts = config.leadTexts.routeComplain;
 
   const [currentStep, setCurrentStep] = useState(1);
 
+  const clearPoem = () => {
+    setUserPoemZero('');
+    setUserPoemOne('');
+    setUserPoemTwo('');
+  };
 
   useEffect(() => {
     setUserPoemZero(texts.rhyme);
     setLeadTitle(texts.title);
     setLeadHelperText(texts.helper);
     setLeadInfoText(texts.info);
-    setLeadNav(texts.nav)
+    setLeadNav(texts.nav);
     return () => {
-      setUserPoemZero('')
+      clearPoem();
       setLeadPoemBlockVisibility(true);
     };
-  } ,[])
+  }, []);
   useEffect(() => {
-    switch(currentStep) {
+    switch (currentStep) {
       case 1:
         setLeadTitle(texts.title);
         setLeadHelperText(texts.helper);
@@ -90,35 +78,28 @@ const Call = ({
         setLeadNav(texts.nav_step3);
         setLeadPoemBlockVisibility(false);
         break;
-      default: 
+      default:
         setLeadTitle(texts.title);
     }
-  } ,[ currentStep ])
+  }, [currentStep]);
 
-  const ClearPoem = () => {
-    setUserPoemZero('');
-    setUserPoemOne('');
-    setUserPoemTwo('');
-  }
-
-/*   carousel.current.slideNext()
+  /*   carousel.current.slideNext()
  */
   const handleOrganizationSelection = (e) => {
     setUserPoemOne(e.currentTarget.value);
-  }
+  };
 
   const handleEmotionSelection = (e) => {
     setUserPoemTwo(e.currentTarget.value);
-  }
-
+  };
 
   return (
     <CallSection>
         <form
           onSubmit={(e) => {
-            e.preventDefault()
+            e.preventDefault();
             console.log(poem);
-            ClearPoem();
+            clearPoem();
             history.push('/main');
           }}>
           <Carousel
@@ -131,18 +112,17 @@ const Call = ({
             renderArrow={FormArrowBtn}
             >
 
-              <SelectionForm 
+              <SelectionForm
                 handleSelection={handleOrganizationSelection}
                 array={rhymes.organization}
                 areaName="organization"/>
 
-
-              <SelectionForm 
+              <SelectionForm
                 handleSelection={handleEmotionSelection}
                 array={rhymes.emotion}
                 areaName="emotion"/>
 
-              <Success 
+              <Success
                 poem={poem}
                 actionBtnRoute="/call"
                 actionBtnText="Предложи вигилантам сделать доброе дело" />
@@ -150,7 +130,7 @@ const Call = ({
           </Carousel>
         </form>
     </CallSection>
-  )
+  );
 };
 
 Call.propTypes = {
