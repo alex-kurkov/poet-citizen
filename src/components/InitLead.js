@@ -39,6 +39,7 @@ const InitPoem = styled.div`
   box-sizing: border-box;
   background: none;
   overflow-y: scroll;
+  overflow-x: hidden;
   white-space: pre;
   &::-webkit-scrollbar {
     width: 4px;

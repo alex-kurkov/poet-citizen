@@ -5,7 +5,7 @@ button.rec-dot{
 
 button.rec-dot_active {
   transform: scale(1.2);
-  box-shadow: 0 0 1px 3px rgba(235,16,16,0.5);
+  box-shadow: 0 0 1px 3px #ff7a00;
 }
 
 button.rec-dot:focus {

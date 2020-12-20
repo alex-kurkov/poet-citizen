@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import config from '../config';
 import SelectionForm from './Forms/SelectionForm';
 import Carousel from 'react-elastic-carousel';
-/* import FormArrowBtn from './Buttons/FormArrowBtn'; */
+import FormArrowBtn from './Buttons/FormArrowBtn';
 import Success from './Success';
 import { useHistory } from 'react-router-dom';
 /* import PropTypes from 'prop-types'; */
@@ -35,6 +35,9 @@ const Call = ({
   const carousel = useRef();
   const texts = config.leadTexts.routeCall;
 
+  const [currentStep, setCurrentStep] = useState(1);
+
+
   useEffect(() => {
     setUserPoemZero(texts.rhyme);
     setLeadTitle(texts.title);
@@ -46,6 +49,33 @@ const Call = ({
       setLeadPoemBlockVisibility(true);
     };
   } ,[])
+  useEffect(() => {
+    switch(currentStep) {
+      case 1:
+        setLeadTitle(texts.title);
+        setLeadHelperText(texts.helper);
+        setLeadInfoText(texts.info);
+        setLeadNav(texts.nav);
+        setLeadPoemBlockVisibility(true);
+        break;
+      case 2:
+        setLeadTitle(texts.title_step2);
+        setLeadInfoText(texts.info_step2);
+        setLeadNav(texts.nav_step2);
+        setLeadHelperText(texts.helper);
+        setLeadPoemBlockVisibility(true);
+        break;
+      case 3:
+        setLeadTitle(texts.title_step3);
+        setLeadInfoText(texts.info_step3);
+        setLeadHelperText('');
+        setLeadNav(texts.nav_step3);
+        setLeadPoemBlockVisibility(false);
+        break;
+      default: 
+        setLeadTitle(texts.title);
+    }
+  } ,[ currentStep ])
 
   const ClearPoem = () => {
     setUserPoemZero('');
@@ -53,25 +83,14 @@ const Call = ({
     setUserPoemTwo('');
   }
 
+/*   carousel.current.slideNext()
+ */
   const handleOrganizationSelection = (e) => {
     setUserPoemOne(e.currentTarget.value);
-    setTimeout(() => {
-      carousel.current.slideNext()
-      setLeadTitle(texts.title_step2);
-      setLeadInfoText(texts.info_step2);
-      setLeadNav(texts.nav_step2);
-    }, 2000);
   }
+
   const handleEmotionSelection = (e) => {
     setUserPoemTwo(e.currentTarget.value);
-    setTimeout(() => {
-      carousel.current.slideNext()
-      setLeadTitle(texts.title_step3);
-      setLeadInfoText(texts.info_step3);
-      setLeadHelperText('');
-      setLeadNav(texts.nav_step3);
-      setLeadPoemBlockVisibility(false);
-    }, 2000);
   }
 
 
@@ -85,13 +104,13 @@ const Call = ({
             history.push('/main');
           }}>
           <Carousel
-            showArrows={false}
-            pagination={false}
+            showArrows={true}
+            pagination={true}
             ref={carousel}
+            onChange={(item, idx) => setCurrentStep(idx + 1)}
             itemsToShow={1}
-            itemPadding={[0, 10]}
-            enableSwipe={false}
-/*             renderArrow={FormArrowBtn} */
+            enableSwipe={true}
+            renderArrow={FormArrowBtn}
             >
 
               <SelectionForm 

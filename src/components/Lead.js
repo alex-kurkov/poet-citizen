@@ -43,7 +43,7 @@ const LeadButton = styled.button`
   text-decoration: none;
   align-self: center;
   line-height: 1.2;
-  font-family: Inter, Arial, sans-serif;
+  font-family: Open Sans, Arial, sans-serif;
   cursor: pointer;
   outline: none;
   box-sizing: border-box;

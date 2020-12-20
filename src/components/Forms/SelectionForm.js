@@ -19,10 +19,11 @@ const ChozenLayer = styled.div`
       opacity: 0;
       width: 0px;
       position: absolute;
-      color: red;
+      color: #ff7a00;
       font-size: 100px;
       top: 50%;
       left: 40%;
+      z-index: 20;
 `;
 const RadioInput = styled.input`
   display: none;

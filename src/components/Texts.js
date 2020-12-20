@@ -37,14 +37,14 @@ const NavBarLink = styled(ParagraphOpenSans)`
   @media screen and (max-width: 440px) {
   }
 `
-const LeadMainText = styled(Paragraph)`
+const LeadMainText = styled(ParagraphOpenSans)`
   grid-area: title;
   align-self: end;
   line-height: 1.2;
   font-size: 36px;
   color: ${(props=>props.color)};
 `;
-const PoemText = styled(Paragraph)`
+const PoemText = styled(ParagraphNoto)`
   font-size: 18px;
   line-height: 1.6;
   white-space: pre;
@@ -54,12 +54,12 @@ const LeadText = styled(ParagraphNoto)`
   font-size: 18px;
   color: #000;
 `;
-const LeadHelper = styled(Paragraph)`
+const LeadHelper = styled(ParagraphNoto)`
   grid-area: helper;
   font-size: 18px;
   color: #000;
 `
-const LeadNavigation = styled(Paragraph)`
+const LeadNavigation = styled(ParagraphNoto)`
   grid-area: nav;
   font-size: 18px;
   color: #000;
