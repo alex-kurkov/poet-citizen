@@ -16,37 +16,28 @@ const FormContainer = styled.ul`
   padding: 20px 0px;
 `
 const ChozenLayer = styled.div`
-    width: 0;
-    height: 0;
-    &::before {
-      content: "";
       opacity: 0;
       width: 0px;
       position: absolute;
-      top: 0;
-      left: 0;
-    }
+      color: red;
+      font-size: 100px;
+      top: 50%;
+      left: 40%;
 `;
 const RadioInput = styled.input`
   display: none;
   &:checked {
     & ~ ${ChozenLayer} {
-      box-sizing: border-box;
-      border: 10px red solid;
       width: 100%;
       height: 100%;
-      transition: width 0.2s ease-out, height 0.2s ease-out;
-
-      &::before {
-        opacity: 1;
-        transition: opacity 1s ease;
+      opacity: 1;
+      transition: opacity 0.2s ease-out, width 0.2s ease-out;
       }
     }
-  }
 `
 
 const RadioInputLabel = styled.label`
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
@@ -184,7 +175,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
                 id={item.id}
                 name={areaName}
                 value={item.rhyme} />
-              <ChozenLayer />
+              <ChozenLayer>&#10003;</ChozenLayer>
           </RadioInputLabel>
           </StyledLi>
         )
