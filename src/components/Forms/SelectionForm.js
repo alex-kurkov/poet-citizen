@@ -13,7 +13,7 @@ const FormContainer = styled.ul`
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
-  padding: 0;
+  padding: 20px 0px;
 `
 const ChozenLayer = styled.div`
     width: 0;
@@ -60,11 +60,11 @@ const RadioInputLabel = styled.label`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 0;
+  padding: 36px 12px;
 
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: transform 0.3s ease-out;
   }
 
@@ -105,13 +105,20 @@ const RadioInputLabel = styled.label`
 `;
 
 const StyledLi = styled.li`
+  width: 96%;
+  height: 96%;
   position: relative;
   &:hover:nth-child(1) {
     ${RadioInputLabel} {
       transform-origin: bottom right;
     }
   }
-  &:hover:nth-child(2, 3) {
+  &:hover:nth-child(2) {
+    ${RadioInputLabel} {
+      transform-origin: bottom center;
+    }
+  }
+  &:hover:nth-child(3) {
     ${RadioInputLabel} {
       transform-origin: bottom center;
     }
@@ -123,40 +130,41 @@ const StyledLi = styled.li`
   }
   &:hover:nth-child(5) {
     ${RadioInputLabel} {
-      transform-origin: 100% 0%;
+      transform-origin: top right;
     }
   }
-  &:hover:nth-child(6, 7) {
+  &:hover:nth-child(6) {
     ${RadioInputLabel} {
-      transform-origin: 50% 100%;
+      transform-origin: center top;
+    }
+  }
+  &:hover:nth-child(7) {
+    ${RadioInputLabel} {
+      transform-origin: center top;
     }
   }
   &:hover:nth-child(8) {
     ${RadioInputLabel} {
-      transform-origin: 0% 0%;
+      transform-origin: top left;
     }
   }
 `;
 const LabelTitle = styled.h3`
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  display: block;
+  display: inline-block;
   color: orange;
   font-family: Open Sans;
   font-size: 24px;
   line-height: 1.5;
   font-weight: 600;
+  margin: 0 0 12px 0;
 `;
 const LabelInfo = styled.span`
-  position: absolute;
-  top: 100px;
-  left: 24px;
   display: block;
   color: #fff;
   font-family: Open Sans;
   font-size: 16px;
   font-weight: 400;
+
 `;
 
 
