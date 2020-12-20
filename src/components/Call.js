@@ -41,7 +41,10 @@ const Call = ({
     setLeadHelperText(texts.helper);
     setLeadInfoText(texts.info);
     setLeadNav(texts.nav)
-    return () => setUserPoemZero('');
+    return () => {
+      setUserPoemZero('')
+      setLeadPoemBlockVisibility(true);
+    };
   } ,[])
 
   const ClearPoem = () => {

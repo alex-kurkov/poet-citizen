@@ -21,26 +21,33 @@ const SuccessBlock = styled.div`
     'poem action';
   padding: 0;
 `;
-const PoemBlock = styled.div`
+const PoemBlockWrapper = styled.div`
   grid-area: poem;
   width: 100%;
   height: 100%;
-  position: relative;
   background-color: #ebebeb;
+  padding: 8px;
+  box-sizing: border-box;
+`;
+const PoemBlock = styled.div`
+  grid-area: poem;
+  height: 100%;
+  background: none;
   padding: 8px;
   box-sizing: border-box;
   white-space: pre;
   font-size: 24px;
   font-weight: 500;
   overflow-y: scroll;
+  overflow-x: hidden;
   white-space: pre;
   &::-webkit-scrollbar {
     width: 4px;
-    background-color: rgba(255, 129, 0, .5);
+    background-color: #fff;
   }
   &::-webkit-scrollbar-thumb {
     height: 35px;
-    background-color: rgba(255, 255, 255, .8);
+    background-color: #808080;
     border-radius: 1px;
   }
 `
@@ -91,9 +98,9 @@ const history = useHistory();
 
   return (
     <SuccessBlock>
-      <PoemBlock> 
-        {poem}
-      </PoemBlock>
+      <PoemBlockWrapper>
+        <PoemBlock>{poem}</PoemBlock>
+      </PoemBlockWrapper>
       <LeadText>
       Для отправки обращения, после нажатия кнопки “Готово”, Вам потребуется заполнить данные, если Вы не зарегистрировыны. 
       </LeadText>
