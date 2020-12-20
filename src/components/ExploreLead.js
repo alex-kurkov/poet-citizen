@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useHistory } from 'react-router-dom';
-import { LeadMainText, LeadText, LeadHelper,LeadNavigation } from './Texts';
+import { LeadMainText, LeadText, LeadNavigation } from './Texts';
 /* import PropTypes from 'prop-types'; */
 
 const InitLeadSection = styled.section`
@@ -52,7 +52,6 @@ const ActionBtn = styled.button`
 const InitLead = ( { leadTexts } ) => {
   const { 
     leadTitle,
-    leadHelperText, 
     leadInfoText, 
     leadNav
   } = leadTexts;

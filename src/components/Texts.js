@@ -63,7 +63,14 @@ const LeadNavigation = styled(ParagraphNoto)`
   grid-area: nav;
   font-size: 18px;
   color: #000;
-`
+`;
+
+const IntroGoal = styled(ParagraphNoto)`
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 34px;
+  margin: 0 auto;
+`;
 
 export {
   LeadMainText,
@@ -71,5 +78,6 @@ export {
   PoemText,
   LeadHelper,
   LeadNavigation,
-  NavBarLink
+  NavBarLink,
+  IntroGoal
 };

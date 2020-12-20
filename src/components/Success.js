@@ -78,6 +78,8 @@ const ActionBtn = styled.button`
   font-size: 24px;
   background: #c4c4c4;
   border: none;
+  align-self: end;
+  justify-self: center;
 
   &:hover {
     opacity: .7;
@@ -89,14 +91,10 @@ const ActionBtn = styled.button`
 `;
 
 
-const Success = ({ poem }) => {
+const Success = ({ poem, actionBtnRoute = '/', actionBtnText = ''}) => {
 const history = useHistory();
 
-  const handleRedirect = () => {
-    history.push('/main');
-  }
-
-  return (
+return (
     <SuccessBlock>
       <PoemBlockWrapper>
         <PoemBlock>{poem}</PoemBlock>
@@ -111,8 +109,8 @@ const history = useHistory();
         Готово!</SubmitBtn>
         <ActionBtn
           type="button"
-          onClick={handleRedirect}>
-        {'А другие\nинициативы\nты уже оценил?'}
+          onClick={() => history.push(actionBtnRoute)}>
+        {actionBtnText}
         </ActionBtn>
     </SuccessBlock>
   )

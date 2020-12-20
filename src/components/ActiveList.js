@@ -39,7 +39,7 @@ const ActiveList = ({ array }) => (
         <li key={i}>
           <ActiveItemDiv>
             <ActiveItemNumber>{i + 1}.</ActiveItemNumber>
-            <ActiveItem>{item}</ActiveItem>
+            <ActiveItem>{item.info}</ActiveItem>
           </ActiveItemDiv>
         </li>
       );

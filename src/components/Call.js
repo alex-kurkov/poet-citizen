@@ -125,7 +125,10 @@ const Call = ({
                 array={rhymes.emotion}
                 areaName="emotion"/>
 
-              <Success poem={poem}>
+              <Success 
+                poem={poem}
+                actionBtnRoute="/explore"
+                actionBtnText="А другие инициативы ты уже оценил?">
 
               </Success>
 

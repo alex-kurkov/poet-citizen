@@ -8,6 +8,7 @@ import OrganizationList from "./OrganizationList";
 import ActionList from "./ActionList";
 import ActiveList from "./ActiveList";
 import ActionBtn from "./ActionButton";
+import { IntroGoal } from './Texts';
 
 const InfoBlock = styled.section`
   width: 1440px;
@@ -49,16 +50,6 @@ const IntroParagraf = styled.p`
   tab-size: 12px;
 `;
 
-const IntroGoal = styled.p`
-  font-family: Georgia;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 34px;
-  margin-top: 0;
-  margit-bottom: 0;
-`;
-
 const IntroGoalDiv = styled.div`
   font-family: Georgia;
   font-style: normal;
@@ -69,6 +60,9 @@ const IntroGoalDiv = styled.div`
   display: flex;
   position: relative;
   margin-top: 32px;
+  background: #eee;
+  padding: 12px 48px;
+  box-sizing: border-box;
 `;
 
 const IntroTitleDiv = styled.p`
@@ -116,28 +110,20 @@ const ActiveTitle = styled.p`
   line-height: 45px;
 `;
 
-const IcQuotesDiv = styled.div`
-  width: 100px;
-  height: 100px;
+const IcQuotesWrap = styled.div`
+  width: 50px;
+  height: 50px;
   position: absolute;
-  top: -50px;
-  left: -100px;
+  top: 12px;
+  left: 12px;
   border-radius: 50%;
   color: #000;
 `;
 
-const IcQuotesWrap = styled.div`
-  width: 50%;
-  height: 50%;
-  margin: 0 auto;
-  padding: 25px;
-`;
-
-const Info = ({ children }) => {
+const Info = () => {
   const history = useHistory();
-  const { rhymes } = config;
-
-  const activeArray = [
+  const { rhymes, infoTexts } = config;
+/*   const activeArray = [
     "Распространение наркотиков и наркозависимость",
     "Незаконная продажа алкоголя",
     "Пьяное вождение, нарушение ПДД и правил парковки",
@@ -147,7 +133,7 @@ const Info = ({ children }) => {
     "Педофилия и незаконные мигранты(были популярны до разгрома «Реструкта»)",
     "«Экстремизм» в интернете",
     "Редко встречающаяся тематика: аборты, незаконный сбор пожертвований, борьба с сектами, борьба за нравственность",
-  ];
+  ]; */
 
   const actionArray = [
     { title: "Предложите свою инициативу", id: "callOwn", link: "/call" },
@@ -163,29 +149,14 @@ const Info = ({ children }) => {
     <InfoBlock>
       <IntroBrief>Предисловие</IntroBrief>
       <IntroDiv>
-        <IntroParagraf>
-          Сейчас вигилантские общества получили ширкое распространение в России.
-          Это здорово, когда люди объединияются в мощные сообщества и
-          поддерживают баланс справедливости со стороны граждан и
-          правоохранительных органов.
-        </IntroParagraf>
-        <IntroParagraf>
-          Но, к сожалению, вигилантские движения плохо развиты, и зачастую их
-          поведение становится камнем преткновения для популяризации этой
-          культуры.
-        </IntroParagraf>
-        <IntroGoalDiv>
-          <IcQuotesDiv>
-            <IcQuotesWrap>
-              <IcQuote fill="#FF7A00" />
-            </IcQuotesWrap>
-          </IcQuotesDiv>
+      {infoTexts.intro.map((item, i) => (<IntroParagraf>{item}</IntroParagraf>))}
 
-          <IntroGoal>
-            Данный портал создан для развития вигилантской идеалогии и
-            регулирования ее действий в социуме. Сейчас мы находимся на пути,
-            когда хорошая идея получает развитие!
-          </IntroGoal>
+        <IntroGoalDiv>
+          <IcQuotesWrap>
+              <IcQuote fill="#FF7A00" />
+          </IcQuotesWrap>
+
+          <IntroGoal>{infoTexts.introGoal}</IntroGoal>
         </IntroGoalDiv>
       </IntroDiv>
 
@@ -208,7 +179,7 @@ const Info = ({ children }) => {
           пороков:
         </ActiveTitle>
         <ActiveListDiv>
-          <ActiveList array={activeArray} />
+          <ActiveList array={rhymes.organization} />
 
           <ActionBtn
             text={"Предложи вигилантам сделать доброе дело"}

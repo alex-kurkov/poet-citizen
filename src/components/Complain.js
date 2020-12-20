@@ -142,9 +142,10 @@ const Call = ({
                 array={rhymes.emotion}
                 areaName="emotion"/>
 
-              <Success poem={poem}>
-
-              </Success>
+              <Success 
+                poem={poem}
+                actionBtnRoute="/call"
+                actionBtnText="Предложи вигилантам сделать доброе дело" />
 
           </Carousel>
         </form>
