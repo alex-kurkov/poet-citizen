@@ -1,6 +1,7 @@
 button.rec-dot{
   background-color: #ebebeb;
   box-shadow: 0 0 1px 3px #ccc;
+  margin-left: 12px;
 }
 
 button.rec-dot_active {
@@ -10,4 +11,8 @@ button.rec-dot_active {
 
 button.rec-dot:focus {
   box-shadow: 0 0 1px 3px rgba(235,16,16,0.5);
+}
+
+button.rec-dot:hover {
+  transform: scale(1.5);
 }
