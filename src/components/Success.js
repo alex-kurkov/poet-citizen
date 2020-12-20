@@ -74,7 +74,7 @@ const ActionBtn = styled.button`
   height: 332px;
   border-radius: 50%;
   font-family: 'Open Sans';
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 24px;
   background: #c4c4c4;
   border: none;

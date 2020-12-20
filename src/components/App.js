@@ -12,6 +12,7 @@ import InitLead from './InitLead';
 import Call from './Call';
 import Complain from './Complain';
 import Join from './Join';
+import ExploreLead from './ExploreLead'
 
 const Page = styled.div`
   min-width: 1440px;
@@ -75,9 +76,7 @@ const App = () => {
             </Route>
 
             <Route path="/explore">
-            <InitLead 
-                poem={poem}
-                leadPoemBlockVisibility={leadPoemBlockVisibility}
+            <ExploreLead 
                 leadTexts={
                   {
                     leadTitle: config.leadTexts.routeExplore.title, 
