@@ -122,7 +122,7 @@ const Card = (props) => {
         <CardElementRhyme>{card.rhyme}</CardElementRhyme>
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
-               <CardElementLikeGroupDiv>
+        <CardElementLikeGroupDiv>
           <LikeButton2 onClick={handleLikeClick} liked={true} />
           <CardElementLikeSum>{card.likes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
