@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components/macro";
-import LikeButton2 from "./Buttons/LikeButton2";
-import DislikeButton from "./Buttons/DislikeButton";
+import React from 'react';
+import styled from 'styled-components/macro';
+import LikeButton2 from './Buttons/LikeButton2';
+import DislikeButton from './Buttons/DislikeButton';
 
 const CardElementDiv = styled.div`
   display: flex;
@@ -43,6 +43,7 @@ const CardElementData = styled.p`
   margin-bottom: 0;
   margin-top: 0;
 `;
+
 const CardElementRhymeDiv = styled.div`
   width: 100%;
   height: 420px;
@@ -98,15 +99,6 @@ const CardElementLikeSum = styled.p`
   margin: 0 0 0 20px;
 `;
 
-/* const CardElementLikeBtn = styled.p`
-  width: 20px;
-  height: 18px;
-  background: url(../../../images/element/btn-heart.svg) center no-repeat;
-  background-size: 100% 100%;
-  cursor: pointer;
-  border: 0;
-`;
-*/
 
 const Card = (props) => {
   // const currentUser = React.useContext(CurrentUserContext);
