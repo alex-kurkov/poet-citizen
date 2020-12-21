@@ -50,6 +50,7 @@ const CardElementRhymeDiv = styled.div`
   padding: 40px 16px;
   background: #b5b5b5;
   box-sizing: border-box;
+  overflow-y: auto;
 `;
 
 const CardElementRhyme = styled.p`
