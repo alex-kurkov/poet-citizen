@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import LikeButton2 from './Buttons/LikeButton2';
-import DislikeButton from './Buttons/DislikeButton';
+import React from "react";
+import styled from "styled-components/macro";
+import LikeButton2 from "./Buttons/LikeButton2";
+import DislikeButton from "./Buttons/DislikeButton";
 
 const CardElementDiv = styled.div`
   display: flex;
@@ -32,19 +32,23 @@ const CardElementImg = styled.img`
 
 const CardElementData = styled.p`
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 12px;
+  right: 8px;
   font-family: Open Sans;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
+  z-index: 1;
+  margin-bottom: 0;
+  margin-top: 0;
 `;
 const CardElementRhymeDiv = styled.div`
   width: 100%;
   height: 420px;
   padding: 40px 16px;
   background: #b5b5b5;
+  box-sizing: border-box;
 `;
 
 const CardElementRhyme = styled.p`
@@ -64,6 +68,7 @@ const CardElementMarkDiv = styled.div`
   height: 56px;
   width: 100%;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-around;
   align-items: center;
@@ -71,9 +76,17 @@ const CardElementMarkDiv = styled.div`
   background: #ebebeb;
 `;
 
+const CardElementMarkVertLine = styled.div`
+  height: calc(100% - 8px);
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  border-left: 1px solid #000000;
+`;
+
 const CardElementLikeGroupDiv = styled.div`
   display: flex;
-align-items: center;
+  align-items: center;
 `;
 
 const CardElementLikeSum = styled.p`
@@ -97,7 +110,6 @@ const CardElementLikeSum = styled.p`
 
 const Card = (props) => {
   // const currentUser = React.useContext(CurrentUserContext);
-  /* console.log('Card.props', props); */
   const { card } = props;
 
   function handleLikeClick() {
@@ -112,23 +124,22 @@ const Card = (props) => {
     <CardElementDiv>
       <CardElementContainerDiv>
         <CardElementImg src={card.link} alt={card.alt} />
-        <CardElementData>{card.data}</CardElementData>
+        <CardElementData>{card.date}</CardElementData>
       </CardElementContainerDiv>
       <CardElementRhymeDiv>
         <CardElementRhyme>{card.rhyme}</CardElementRhyme>
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
-        <CardElementLikeGroupDiv>
+               <CardElementLikeGroupDiv>
           <LikeButton2 onClick={handleLikeClick} liked={true} />
           <CardElementLikeSum>{card.likes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
+        <CardElementMarkVertLine></CardElementMarkVertLine>
         <CardElementLikeGroupDiv>
           <DislikeButton onClick={handleDislikeClick} liked={false} />
           <CardElementLikeSum>{card.dislikes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
-
       </CardElementMarkDiv>
-
     </CardElementDiv>
   );
 };
