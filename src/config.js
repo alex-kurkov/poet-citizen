@@ -201,42 +201,5 @@ export default {
       'Редко встречающаяся тематика: аборты, незаконный сбор пожертвований, борьба с сектами, борьба за нравственность',
     ],
   },
-  hardCodedCards: [
-    {
-      rhyme: 'Зачем вы посетили нас?\nВ глуши забытого селенья\nЯ никогда не знала б вас,\nНе знала б горького мученья.\nДуши неопытной волненья\nСмирив со временем(как знать?),\nПо сердцу я нашла бы друга,\nБыла бы верная супруга\nИ добродетельная мать.',
-      date: '20/12/2020',
-      link: 'https://news.files.bbci.co.uk/include/shorthand/41212/media/rm1920-2-mr.jpg ',
-      _id: 'sdfr334srTTTwe4r3',
-      owner: { _id: 'rofijf33434wed7' }, // тут объект в значении
-      likes: [{}], // тут массив объектов пользователей
-      dislikes: [{}], // аналогично
-    },
-    {
-      rhyme: 'стих-стих-стих',
-      date: '27/12/2020',
-      link: 'https://bipbap.ru/wp-content/uploads/2017/05/082844d0e1239dd57ba68bfebc1928f4.jpeg',
-      _id: 'fffffdddfrTTTwe4r4',
-      owner: { _id: 'qwedfdfwed2' },
-      likes: [{}, {}, {}],
-      dislikes: [],
-    },
-    {
-      rhyme: 'Я люблю подмосковные рощи, и мосты над\nМосквою рекой \nЯ люблю твою Красную площадь,\nи Кемлёвских курантов бой\nВ городах и далёких станицах о тебе не\nумолкнет молва\nДорогая моя столица, золотая моя Москва\nДорогая моя столица, золотая моя Москва',
-      date: '27/12/2020',
-      link: 'https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-      _id: 'fffffdddfrTTTwe4r5',
-      owner: { _id: 'qwedfdfwed2' },
-      likes: [{}, {}, {}],
-      dislikes: [],
-    },
-    {
-      rhyme: 'стих-стих-стих',
-      date: '31/12/2020',
-      link: 'https://bipbap.ru/wp-content/uploads/2017/05/082844d0e1239dd57ba68bfebc1928f4.jpeg',
-      _id: 'fffffdddfrTTTwe4r8',
-      owner: { _id: 'qwedfdfwed6' },
-      likes: [],
-      dislikes: [{}, {}],
-    },
-  ],
+  baseUrl: 'http://api.poet-citizen.students.nomoreparties.xyz',
 };

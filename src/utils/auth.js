@@ -1,4 +1,5 @@
-const baseUrl = 'http://api.kurkov.students.nomoreparties.xyz';
+import config from '../config';
+const { baseUrl } = config;
 
 const getResponseData = (res) => new Promise((resolve, reject) => {
   const func = res.ok ? resolve : reject;

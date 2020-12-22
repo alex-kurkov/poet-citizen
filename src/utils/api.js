@@ -1,3 +1,6 @@
+import config from '../config';
+const { baseUrl } = config;
+
 class Api {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
@@ -87,6 +90,4 @@ class Api {
   }
 }
 
-export default new Api({
-  baseUrl: 'http://api.kurkov.students.nomoreparties.xyz',
-});
+export default new Api({ baseUrl });

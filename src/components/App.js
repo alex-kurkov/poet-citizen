@@ -17,8 +17,8 @@ import OtherInitiative from './OtherInitiative';
 import Loader from './Loader';
 import ProtectedRoute from './ProtectedRoute';
 import Authorize from './Authorize';
-/* import { login, register, checkToken } from '../utils/auth';
-import api from '../utils/api'; */
+import { login, register, checkToken } from '../utils/auth';
+import api from '../utils/api';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -31,7 +31,7 @@ const App = () => {
   /*   const { path, url } = useRouteMatch(); */
 
   const [loggedIn, setLoggedIn] = useState(null);
-/*   const [currentUser, setCurrentUser] = useState({}); */
+  const [currentUser, setCurrentUser] = useState({});
   const [poem, setPoem] = useState('');
   const [userPoemZero, setUserPoemZero] = useState('');
   const [userPoemOne, setUserPoemOne] = useState('');
@@ -44,47 +44,32 @@ const App = () => {
   const [cards, setCards] = useState([]);
   const [isLoaderVisible, setLoaderVisibible] = useState(false);
 
-
-
-/*   const checkUserToken = (jwt) => {
+  const checkUserToken = (jwt) => {
     checkToken(jwt)
       .then(((res) => {
         setLoggedIn(true);
-        setUserAuthData(res);
       }))
       .catch((e) => console.log(e));
   };
+
   useEffect(() => {
+    setLoaderVisibible(true);
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      setLoaderVisibible(true);
       checkUserToken(jwt);
-      setLoaderVisibible(false);
+      api.getUserData(jwt)
+        .then((user) => {
+          setCurrentUser(user);
+          console.log(user);
+        })
+        .catch((e) => console.log(e))
     }
+    api.getCards()
+      .then((serverCards) => setCards(serverCards))
+      .catch((e) => console.log(e));
+    setLoaderVisibible(false);
   }, []);
 
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (loggedIn && jwt) {
-      setLoaderVisibible(true);
-      Promise.all([
-        api.getUserData(jwt),
-        api.getCards(jwt),
-      ])
-        .then(([user, serverCards]) => {
-          if (jwt) checkUserToken(jwt);
-          setCurrentUser(user);
-          setCards(serverCards);
-        })
-        .catch((e) => console.log('status', e))
-        .finally(() => {
-          setLoaderVisibible(false);
-          history.push('/main');
-        });
-    }
-  }, [loggedIn]); */
-
-  useEffect(() => setCards(config.hardCodedCards), [])
   useEffect(() => {
     setPoem(`${userPoemZero}\n${userPoemOne}\n${userPoemTwo}`);
   }, [userPoemZero, userPoemOne, userPoemTwo]);
