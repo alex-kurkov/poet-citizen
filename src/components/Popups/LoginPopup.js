@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components/macro';
-import PropTypes from 'prop-types';
-import PopupWithForm from './PopupWithForm';
-import validate from '../../utils/validation';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components/macro";
+import PropTypes from "prop-types";
+import PopupWithForm from "./PopupWithForm";
+import validate from "../../utils/validation";
 
 const StyledLabel = styled.label`
   position: relative;
-`
+`;
+
+const StyledInputName = styled.p`
+font-family: Open Sans, Arial, sans-serif;
+font-weight: normal;
+font-size: 18px;
+line-height: 1.38;
+margin: 0;
+`;
+
 const StyledInput = styled.input`
   box-sizing: border-box;
   cursor: text;
   width: 100%;
-  height: 28px;
-  background: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  height: 44px;
+  background: #fbfbfb;
   padding: 0 2px 4px 2px;
-  font-family: Inter, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  margin: 24px 0 12px 0;
-  border-bottom: 1px solid #000;
+  font-family: Open Sans, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.38;
+  margin: 4px 0 16px;
+  border: 1px solid #bcbaba;
 
-  ${({ error }) => error &&
-   'color: red;'
-  }
-`
+  ${({ error }) => error && "color: red;"}
+`;
 
 const ErrorIndicator = styled.div`
   position: absolute;
@@ -36,7 +40,7 @@ const ErrorIndicator = styled.div`
   color: #f00;
 
   &::before {
-    content: '*';
+    content: "*";
   }
 `;
 const ErrorMessage = styled.span`
@@ -46,25 +50,29 @@ const ErrorMessage = styled.span`
   font-weight: 400;
   font-size: 14px;
   color: #f00;
-  margin-bottom: 12px
+  margin-bottom: 12px;
 `;
 
-const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }) => {
+const Login = ({
+  handleLogin,
+  isOpen,
+  onClose,
+  handleAuthLinkClick,
+  authStatus,
+}) => {
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [anyInputInvalid, setAnyInputInvalid] = useState(true);
   const [showError, setShowError] = useState({});
 
   const checkFormValidity = () => {
-    const any = Object
-      .values(errors)
-      .some((i) => i !== false);
+    const any = Object.values(errors).some((i) => i !== false);
     setAnyInputInvalid(any);
   };
 
@@ -94,35 +102,44 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
       anyInputInvalid={anyInputInvalid}
       authStatus={authStatus}
       handleAuthLinkClick={handleAuthLinkClick}
-      >
-        <StyledLabel>
-          <StyledInput
-            error={!!errors.email}
-            value={values.email}
-            onChange={handleInputChange}
-            onFocus={() => setShowError({ email: true })}
-            onBlur={() => setShowError({})}
-            type="email"
-            placeholder="Почта"
-            name="email"
-            noValidate />
-          {errors.email && <ErrorIndicator/>}
-          {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
-        </StyledLabel>
-        <StyledLabel>
-          <StyledInput
-            value={values.password}
-            onChange={handleInputChange}
-            onFocus={() => setShowError({ password: true })}
-            onBlur={() => setShowError({})}
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            noValidate />
-          {errors.password && <ErrorIndicator/>}
-          {errors.password && showError.password && <ErrorMessage>{errors.password}</ErrorMessage>}
-        </StyledLabel>
-      </PopupWithForm>
+      formButtonText="Войти"
+    >
+      <StyledLabel>
+        <StyledInputName>E-mail</StyledInputName>
+        <StyledInput
+          error={!!errors.email}
+          value={values.email}
+          onChange={handleInputChange}
+          onFocus={() => setShowError({ email: true })}
+          onBlur={() => setShowError({})}
+          type="email"
+          placeholder="E-mail"
+          name="email"
+          noValidate
+        />
+        {errors.email && <ErrorIndicator />}
+        {errors.email && showError.email && (
+          <ErrorMessage>{errors.email}</ErrorMessage>
+        )}
+      </StyledLabel>
+      <StyledLabel>
+        <StyledInputName>Пароль</StyledInputName>
+        <StyledInput
+          value={values.password}
+          onChange={handleInputChange}
+          onFocus={() => setShowError({ password: true })}
+          onBlur={() => setShowError({})}
+          type="password"
+          name="password"
+          placeholder="Пароль"
+          noValidate
+        />
+        {errors.password && <ErrorIndicator />}
+        {errors.password && showError.password && (
+          <ErrorMessage>{errors.password}</ErrorMessage>
+        )}
+      </StyledLabel>
+    </PopupWithForm>
   );
 };
 

@@ -14,7 +14,8 @@ const PopupWithForm = ({
   onSubmit,
   anyInputInvalid,
   authStatus,
-  handleAuthLinkClick
+  handleAuthLinkClick,
+  formButtonText,
 }) => (
   <Overlay onClick={onClose} isOpen={isOpen}>
     <Modal isOpen={isOpen}>
@@ -22,7 +23,7 @@ const PopupWithForm = ({
       <Form
         onSubmit={onSubmit}
         title={title}
-        formButtonText="Сохранить"
+        formButtonText={formButtonText}
         belongsTo="modal"
         anyInputInvalid={anyInputInvalid}>
           { children }

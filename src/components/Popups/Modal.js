@@ -5,11 +5,11 @@ import styled from 'styled-components/macro';
 const StyledModal = styled.div`
   box-sizing: border-box;
   position: absolute;
-  width: 430px;
+  width: 360px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  padding: 36px;
+  padding: 40px 24px 64px;
   transition: visibility 0s, opacity .5s ease;
   z-index: 99;
 
