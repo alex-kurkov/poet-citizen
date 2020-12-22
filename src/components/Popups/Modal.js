@@ -1,8 +1,32 @@
 import React from 'react';
 import PropTypes, { array, object } from 'prop-types';
+import styled from 'styled-components/macro';
+
+const StyledModal = styled.div`
+  box-sizing: border-box;
+  position: absolute;
+  width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  padding: 36px;
+  transition: visibility 0s, opacity .5s ease;
+  z-index: 99;
+
+  ${({isOpen}) => isOpen
+  ? `
+    visibility: visible;
+    opacity: 1;
+    `
+  : `
+    visibility: hidden;
+    opacity: 0;
+    `
+  }
+`;
 
 const Modal = ({ isOpen, children }) => (
-  <div className={`modal modal_visible_${isOpen}`}>{children}</div>
+  <StyledModal isOpen={isOpen}>{children}</StyledModal>
 );
 
 Modal.propTypes = {

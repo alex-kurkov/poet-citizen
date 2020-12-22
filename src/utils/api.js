@@ -26,14 +26,14 @@ class Api {
       .then(this._getResponseData);
   }
 
-  postCard({ name, link }, jwt) {
-    return fetch(`${this._baseUrl}/card`, {
+  postCard({ rhyme, link }, jwt) {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
         'content-type': 'application/json',
         authorization: `Bearer ${jwt}`,
       },
       method: 'POST',
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({ rhyme, link }),
       /*       credentials: 'include', */
     })
       .then(this._getResponseData);

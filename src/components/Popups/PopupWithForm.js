@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Overlay from './Overlay';
-import Form from '../Form';
+import Form from '../Forms/Form';
 import Modal from './Modal';
 import { CloseButton } from '../Buttons/index';
+import {AuthMsgLink, AuthMsg} from '../Texts';
 
 const PopupWithForm = ({
   title,
@@ -12,6 +13,8 @@ const PopupWithForm = ({
   onClose,
   onSubmit,
   anyInputInvalid,
+  authStatus,
+  handleAuthLinkClick
 }) => (
   <Overlay onClick={onClose} isOpen={isOpen}>
     <Modal isOpen={isOpen}>
@@ -24,6 +27,9 @@ const PopupWithForm = ({
         anyInputInvalid={anyInputInvalid}>
           { children }
       </ Form>
+      { authStatus && (<AuthMsg>{authStatus.text}
+        <AuthMsgLink as="a" onClick={handleAuthLinkClick}>{authStatus.linkText}</AuthMsgLink>
+      </AuthMsg>)}
     </Modal>
   </Overlay>
 );

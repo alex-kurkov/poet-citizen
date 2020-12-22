@@ -128,6 +128,27 @@ const IntroTitleDiv = styled.p`
  margin-bottom: 0;
 `;
 
+const AuthMsg = styled(ParagraphOpenSans)`
+  font-size: 14px;
+  margin: 16px auto 0 auto;
+  padding: 0;
+  color: #000;
+  width: 100%;
+`
+const AuthMsgLink = styled(ParagraphOpenSans)`
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 8px;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  transition: color 0.3s ease-in-out;
+  &:hover {
+    color: rgba(0, 0, 0, .6);
+  }
+`
+
 export {
   LeadMainText,
   LeadText,
@@ -142,4 +163,6 @@ export {
   IntroGoalDiv,
   IntroTitleDiv,
   IntroParticipationText,
+  AuthMsg,
+  AuthMsgLink
 };

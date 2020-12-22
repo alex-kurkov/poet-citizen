@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Switch, Redirect, Route, /* useRouteMatch */
+  Switch, Redirect, Route, useHistory/* useRouteMatch */
 } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import AppContext from '../contexts/AppContext';
@@ -15,10 +15,12 @@ import Join from './Join';
 import ExploreLead from './ExploreLead';
 import OtherInitiative from './OtherInitiative';
 import Loader from './Loader';
-import ProtectedRoute from './ProtectedRoute';
 import Authorize from './Authorize';
+import RegisterPopup from './Popups/RegisterPopup';
 import { login, register, checkToken } from '../utils/auth';
 import api from '../utils/api';
+import InfoTooltip from './Popups/InfoTooltip';
+import LoginPopup from './Popups/LoginPopup';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -28,9 +30,14 @@ const Page = styled.div`
 `;
 
 const App = () => {
+  const history = useHistory();
   /*   const { path, url } = useRouteMatch(); */
 
   const [loggedIn, setLoggedIn] = useState(null);
+  const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
+  const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
+  const [tooltipMessage, setTooltipMessage] = useState('');
   const [currentUser, setCurrentUser] = useState({});
   const [poem, setPoem] = useState('');
   const [userPoemZero, setUserPoemZero] = useState('');
@@ -43,6 +50,17 @@ const App = () => {
   const [leadNav, setLeadNav] = useState('');
   const [cards, setCards] = useState([]);
   const [isLoaderVisible, setLoaderVisibible] = useState(false);
+
+  const clearPoem = () => {
+    setUserPoemZero('');
+    setUserPoemOne('');
+    setUserPoemTwo('');
+  };
+
+  const closePopups = () => {
+    setRegisterPopupVisible(false);
+    setLoginPopupVisible(false);
+  }
 
   const checkUserToken = (jwt) => {
     checkToken(jwt)
@@ -75,12 +93,82 @@ const App = () => {
   }, [userPoemZero, userPoemOne, userPoemTwo]);
 
   const onProfileBtnClick = () => {
-    setLoaderVisibible(true);
-    setTimeout(() => {
-      setLoggedIn(!loggedIn);
-      setLoaderVisibible(false);
-    }, 3000)
+    if (!loggedIn) {
+      setRegisterPopupVisible(true)
+    } else {
+      console.log(currentUser);
+      // handle logout thru popup
+    }
   };
+
+  const handleLogin = (data) => {
+    setLoaderVisibible(true);
+    login(data)
+      .then((res) => {
+        console.log(res);
+        if (res.token) {
+          localStorage.setItem('jwt', res.token);
+          setLoggedIn(true);
+          setTooltipMessage('Вы успешно прошли аутентификацию!');
+          setInfoTooltipOpen(true);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        setTooltipMessage(e.message);
+        setInfoTooltipOpen(true);
+      })
+      .finally(() => {
+        setLoaderVisibible(false);
+        closePopups();
+      })
+  };
+
+  const handleRegister = (data) => {
+    setLoaderVisibible(true);
+    register(data)
+      .then((res) => {
+        if (res.data.email) {
+          setTooltipMessage('Вы успешно зарегистрировались!');
+          setInfoTooltipOpen(true);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        setTooltipMessage(e.message);
+        setInfoTooltipOpen(true);
+      })
+      .finally(() => {
+        setLoaderVisibible(false)
+        closePopups();
+      });
+  };
+  const handleAuthLinkClick = () => {
+      setRegisterPopupVisible(!registerPopupVisible);
+      setLoginPopupVisible(!loginPopupVisible);
+  }
+  const handleCallSubmit = (e) => {
+    e.preventDefault();
+    if (!loggedIn) {
+      setLoginPopupVisible(true)
+    } else {
+      setLoaderVisibible(true);
+      const jwt = localStorage.getItem('jwt');
+      api.postCard({ rhyme: poem }, jwt)
+        .then((newCard) => {
+          console.log(newCard);
+          setCards([newCard, ...cards]);
+          closePopups();
+          clearPoem();
+        })
+        .catch((error) => console.log(error))
+        .finally(() => {
+          setLoaderVisibible(false);
+          history.push('/explore');
+        });
+    }
+  }
+
 
   return (
     <AppContext.Provider value={config}>
@@ -95,10 +183,7 @@ const App = () => {
               <Authorize authenticate={onProfileBtnClick}/>
             </Route>
             <Route path="/call">
-              {loggedIn 
-                ? (
-                <> 
-                <InitLead
+              <InitLead
                 poem={poem}
                 leadPoemBlockVisibility={leadPoemBlockVisibility}
                 leadTexts={
@@ -113,6 +198,7 @@ const App = () => {
               <Call
                 poem={poem}
                 route="/call"
+                handleCallSubmit={handleCallSubmit}
                 setUserPoemZero={setUserPoemZero}
                 setUserPoemOne={setUserPoemOne}
                 setUserPoemTwo={setUserPoemTwo}
@@ -121,10 +207,7 @@ const App = () => {
                 setLeadInfoText={setLeadInfoText}
                 setLeadNav={setLeadNav}
                 setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
-                />
-                </>
-                )
-              : <Redirect to="/authorize" />}
+              />
             </Route>
 
             <Route path="/explore">
@@ -201,6 +284,33 @@ const App = () => {
 
         </Switch>
         {isLoaderVisible && (<Loader />)}
+        <RegisterPopup 
+          handleRegister={handleRegister}
+          isOpen={registerPopupVisible}
+          onClose={closePopups}
+          authStatus={{
+            text: 'Уже зарегистрированы?',
+            link: '/sign-in',
+            linkText: 'Войти',
+          }}
+          handleAuthLinkClick={handleAuthLinkClick}
+        />
+        <LoginPopup 
+          handleLogin={handleLogin}
+          isOpen={loginPopupVisible}
+          onClose={closePopups}
+          authStatus={{
+            text: 'Еще не зарегистрированы?',
+            linkText: 'Зарегистрироваться',
+          }}
+          handleAuthLinkClick={handleAuthLinkClick}
+        />
+        {infoTooltipOpen && <InfoTooltip
+          isOpen={infoTooltipOpen}
+          onClose={() => setInfoTooltipOpen(false)}
+          message={tooltipMessage}
+          success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true: loggedIn } />}
+
       </Page>
     </AppContext.Provider>
   );
