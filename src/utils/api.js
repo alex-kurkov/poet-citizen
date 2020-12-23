@@ -63,7 +63,7 @@ class Api {
       .then(this._getResponseData);
   }
 
-  setUserData({ name, about }, jwt) {
+  setUserData({ name, surname }, jwt) {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         'content-type': 'application/json',
@@ -71,7 +71,7 @@ class Api {
       },
       method: 'PATCH',
       /*       credentials: 'include', */
-      body: JSON.stringify({ name, about }),
+      body: JSON.stringify({ name, surname }),
     })
       .then(this._getResponseData);
   }

@@ -21,6 +21,7 @@ import { login, register, checkToken } from '../utils/auth';
 import api from '../utils/api';
 import InfoTooltip from './Popups/InfoTooltip';
 import LoginPopup from './Popups/LoginPopup';
+import EditProfilePopup from './Popups/EditProfilePopup';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -35,6 +36,7 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(null);
   const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
+  const [profilePopupVisible, setProfilePopupVisible] = useState(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState('');
@@ -60,6 +62,8 @@ const App = () => {
   const closePopups = () => {
     setRegisterPopupVisible(false);
     setLoginPopupVisible(false);
+    setProfilePopupVisible(false);
+/*     setInfoTooltipOpen(false); */
   }
 
   const checkUserToken = (jwt) => {
@@ -72,21 +76,26 @@ const App = () => {
 
   useEffect(() => {
     setLoaderVisibible(true);
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      checkUserToken(jwt);
-      api.getUserData(jwt)
-        .then((user) => {
-          setCurrentUser(user);
-          console.log(user);
-        })
-        .catch((e) => console.log(e))
-    }
     api.getCards()
       .then((serverCards) => setCards(serverCards))
       .catch((e) => console.log(e));
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) checkUserToken(jwt);
     setLoaderVisibible(false);
   }, []);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (loggedIn && jwt) {
+      setLoaderVisibible(true);
+      api.getUserData(jwt)
+        .then((user) => setCurrentUser(user))
+        .catch((e) => console.log('status', e))
+        .finally(() => {
+          setLoaderVisibible(false);
+        })
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
     setPoem(`${userPoemZero}\n${userPoemOne}\n${userPoemTwo}`);
@@ -96,8 +105,7 @@ const App = () => {
     if (!loggedIn) {
       setRegisterPopupVisible(true)
     } else {
-      console.log(currentUser);
-      // handle logout thru popup
+      setProfilePopupVisible(true);
     }
   };
 
@@ -147,6 +155,27 @@ const App = () => {
       setRegisterPopupVisible(!registerPopupVisible);
       setLoginPopupVisible(!loginPopupVisible);
   }
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    closePopups();
+  };
+
+  const handleUserUpdate = (data) => {
+    setLoaderVisibible(true);
+    const jwt = localStorage.getItem('jwt');
+    api.setUserData(data, jwt)
+      .then((userData) => {
+        setCurrentUser(userData);
+        closePopups();
+      })
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setLoaderVisibible(false);
+        closePopups();
+      });
+  };
+
   const handleCallSubmit = (e) => {
     e.preventDefault();
     if (!loggedIn) {
@@ -304,6 +333,17 @@ const App = () => {
             linkText: 'Зарегистрироваться',
           }}
           handleAuthLinkClick={handleAuthLinkClick}
+        />
+        <EditProfilePopup 
+          handleUserUpdate={handleUserUpdate}
+          isOpen={profilePopupVisible}
+          onClose={closePopups}
+          authStatus={{
+            text: 'Хотите выйти?',
+            linkText: 'Нажмите сюда',
+          }}
+          handleAuthLinkClick={handleLogout}
+          currentUser={currentUser}
         />
         {infoTooltipOpen && <InfoTooltip
           isOpen={infoTooltipOpen}

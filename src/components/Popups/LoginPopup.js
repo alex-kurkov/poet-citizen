@@ -1,53 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import PopupWithForm from './PopupWithForm';
 import validate from '../../utils/validation';
-
-const StyledLabel = styled.label`
-  position: relative;
-`
-const StyledInput = styled.input`
-  box-sizing: border-box;
-  cursor: text;
-  width: 100%;
-  height: 28px;
-  background: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  padding: 0 2px 4px 2px;
-  font-family: Inter, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  margin: 24px 0 12px 0;
-  border-bottom: 1px solid #000;
-
-  ${({ error }) => error &&
-   'color: red;'
-  }
-`
-
-const ErrorIndicator = styled.div`
-  position: absolute;
-  top: 4px;
-  left: -12px;
-  color: #f00;
-
-  &::before {
-    content: '*';
-  }
-`;
-const ErrorMessage = styled.span`
-  width: 100%;
-  height: fit-content;
-  font-family: Open Sans;
-  font-weight: 400;
-  font-size: 14px;
-  color: #f00;
-  margin-bottom: 12px
-`;
+import {
+  StyledLabel,
+  StyledInput,
+  ErrorIndicator,
+  ErrorMessage,
+} from '../Forms/FormStyledElements';
 
 const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }) => {
   const [errors, setErrors] = useState({
@@ -127,7 +87,9 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
 };
 
 Login.propTypes = {
-  handleRegister: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
   setHeaderAuthStatus: PropTypes.func,
+  isOpen: PropTypes.bool,
+  handleAuthLinkClick: PropTypes.func,
 };
 export default Login;

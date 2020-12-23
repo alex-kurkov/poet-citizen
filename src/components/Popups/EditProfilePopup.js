@@ -2,22 +2,23 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import validate from '../../utils/validation';
 import PopupWithForm from './PopupWithForm';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import {
+  StyledLabel,
+  StyledInput,
+  ErrorIndicator,
+  ErrorMessage,
+} from '../Forms/FormStyledElements';
 
-const EditProfilePopup = ({ onUpdateUser, isOpen, onClose }) => {
-  const currentUser = React.useContext(CurrentUserContext);
+
+const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, handleAuthLinkClick, authStatus }) => {
 
   const [errors, setErrors] = useState({
     name: '',
-    about: '',
+    surname: '',
   });
   const [values, setValues] = useState({});
   const [anyInputInvalid, setAnyInputInvalid] = useState(true);
   const [showError, setShowError] = useState({});
-
-  useEffect(() => {
-    setValues(currentUser);
-  }, [currentUser, isOpen]);
 
   const checkFormValidity = () => {
     const any = Object
@@ -40,54 +41,59 @@ const EditProfilePopup = ({ onUpdateUser, isOpen, onClose }) => {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser(values);
+    handleUserUpdate(values);
   };
 
   return (
     <PopupWithForm
-      title="Редактировать профиль"
+      title={`Редактировать профиль:\n${currentUser.name} ${currentUser.surname || ''}`}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleFormSubmit}
-      anyInputInvalid={anyInputInvalid}>
-        <label className="form__label">
-          <input
-            className={`form__input form__input_border_black form__input_color_${errors.name ? 'red' : 'black'}`}
+      anyInputInvalid={anyInputInvalid}
+      authStatus={authStatus}
+      handleAuthLinkClick={handleAuthLinkClick}
+      >
+        <StyledLabel>
+          <StyledInput
+            error={!!errors.name}
             value={values.name}
-            type="textarea"
-            rows="2"
+            type="text"
             name="name"
             onChange={handleInputChange}
             onFocus={() => setShowError({ name: true })}
             onBlur={() => setShowError({})}
-            placeholder="Введите имя"
+            placeholder="Введите новое имя"
             noValidate />
-          {errors.name && <div className="form__error-indicator"/>}
-          {errors.name && showError.name && <span className="form__error-message">{errors.name}</span>}
-        </label>
+          {errors.name && <ErrorIndicator/>}
+          {errors.name && showError.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+        </StyledLabel>
 
-        <label className="form__label">
-          <input
-            className={`form__input form__input_border_black form__input_color_${errors.about ? 'red' : 'black'}`}
-            value={values.about}
+        <StyledLabel>
+          <StyledInput
+            error={!!errors.surname}
+            value={values.surname}
             type="text"
-            name="about"
+            name="surname"
             onChange={handleInputChange}
-            onFocus={() => setShowError({ about: true })}
+            onFocus={() => setShowError({ surname: true })}
             onBlur={() => setShowError({})}
-            placeholder="О Вас"
+            placeholder="Фамилия"
             noValidate />
-          {errors.about && <div className="form__error-indicator"/>}
-          {errors.about && showError.about && <span className="form__error-message">{errors.about}</span>}
+          {errors.surname && <ErrorIndicator/>}
+          {errors.surname && showError.surname && <ErrorMessage>{errors.surname}</ErrorMessage>}
 
-        </label>
+        </StyledLabel>
     </PopupWithForm>);
 };
 
 EditProfilePopup.propTypes = {
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
-  onUpdateUser: PropTypes.func.isRequired,
+  handleUserUpdate: PropTypes.func.isRequired,
+  handleAuthLinkClick: PropTypes.func,
+  currentUser: PropTypes.object,
+  authStatus: PropTypes.object,
 };
 
 export default EditProfilePopup;

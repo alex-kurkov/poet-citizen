@@ -6,13 +6,13 @@ const getResponseData = (res) => new Promise((resolve, reject) => {
   res.json().then(func);
 });
 
-const register = ({ password, email }) => fetch(`${baseUrl}/signup`,
+const register = ({ password, email, name, surname }) => fetch(`${baseUrl}/signup`,
   {
     headers: {
       'content-type': 'application/json',
     },
     method: 'POST',
-    body: JSON.stringify({ password, email }),
+    body: JSON.stringify({ password, email, name, surname }),
   })
   .then(getResponseData);
 
