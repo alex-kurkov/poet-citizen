@@ -10,6 +10,9 @@ const StyledLinksBar = styled.nav`
   width: 100%;
   height: 100%;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 767px) {
 
@@ -22,6 +25,7 @@ const StyledLinksBar = styled.nav`
 const LinksContainer = styled.ul`
   color: inherit;
   height: 32px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

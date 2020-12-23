@@ -3,16 +3,19 @@ import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 
 const ProfileButton = styled.button`
-  width: 50px;
+  width: 63px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 25px;
   border: none;
-  background: none;
+  background: orange;
   align-self: center;
-  margin-left: 32px;
-  transition: all ease-in-out .3s;
+  transition: all 0.3s ease-in-out 0s;
   margin-left: 36px;
   margin-right: 8px;
+  padding: 0px 2px;
+  &:after {
+    box-shadow: 0 20px 0 rgba(250, 250, 0, 0.6), 20px 0 0 rgba(250, 200, 0, 0.6), 0 -20px 0 rgba(250, 150, 0, 0.6), -20px 0 0 rgba(250, 100, 0, 0.6);
+  }
   &:hover {
     opacity: .7;
     transform: scale(1.2);

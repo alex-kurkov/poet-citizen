@@ -9,10 +9,10 @@ const AppHeader = styled.header`
   box-sizing: border-box;
   width: 1440px;
   height: 64px;
-  padding: 20px 0;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #212228;
   color: #F2F2F2;
   gap: 16px;
