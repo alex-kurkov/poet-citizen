@@ -198,6 +198,7 @@ const App = () => {
     }
   }
   const handleCardLike = (card) => {
+    if (!currentUser.email) return setLoginPopupVisible(true);
     const jwt = localStorage.getItem('jwt');
     const isLiked = card.likes.some((item) => item._id === currentUser._id);
     api.changeLikeStatus(card._id, !isLiked, jwt)
@@ -209,6 +210,7 @@ const App = () => {
       .catch((error) => console.log(error));
   };
   const handleCardDislike = (card) => {
+    if (!currentUser.email) return setLoginPopupVisible(true);
     const jwt = localStorage.getItem('jwt');
     const isDisliked = card.dislikes.some((item) => item._id === currentUser._id);
     api.changeDislikeStatus(card._id, !isDisliked, jwt)

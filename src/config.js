@@ -201,5 +201,5 @@ export default {
       'Редко встречающаяся тематика: аборты, незаконный сбор пожертвований, борьба с сектами, борьба за нравственность',
     ],
   },
-  baseUrl: 'http://api.poet-citizen.students.nomoreparties.xyz',
+  baseUrl: 'https://api.poet-citizen.students.nomoreparties.xyz',
 };

@@ -62,14 +62,14 @@ const RhymeWrap = styled.div`
   white-space: pre-wrap;
 
   &::-webkit-scrollbar {
-    width: 4px;
-    border: .2px solid green;
-    border-radius: 2px;
+    width: 6px;
+    border: 1px solid green;
+    border-radius: 3px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #000;
-    opacity: .6;
-    border-radius: 2px;
+    background: black;
+    opacity: .8;
+    border-radius: 3px;
   }
 `;
 
@@ -142,12 +142,12 @@ const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
         <CardElementLikeGroupDiv>
-          <LikeButton2 onClick={() => onCardLike(card)} liked={liked} />
+          <LikeButton2 onClick={() => onCardLike(card)} liked={liked} currentUser={currentUser} />
           <CardElementLikeSum>{likes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
         <CardElementMarkVertLine />
         <CardElementLikeGroupDiv>
-          <DislikeButton onClick={() => onCardDislike(card)} disliked={disliked} />
+          <DislikeButton onClick={() => onCardDislike(card)} disliked={disliked} currentUser={currentUser} />
           <CardElementLikeSum>{dislikes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
       </CardElementMarkDiv>
