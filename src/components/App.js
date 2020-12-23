@@ -22,6 +22,7 @@ import api from '../utils/api';
 import InfoTooltip from './Popups/InfoTooltip';
 import LoginPopup from './Popups/LoginPopup';
 import EditProfilePopup from './Popups/EditProfilePopup';
+import Footer from './Footer';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -312,7 +313,8 @@ const App = () => {
           </Route>
 
         </Switch>
-        {isLoaderVisible && (<Loader />)}
+        <Footer />
+              {isLoaderVisible && (<Loader />)}
         <RegisterPopup 
           handleRegister={handleRegister}
           isOpen={registerPopupVisible}
@@ -349,8 +351,8 @@ const App = () => {
           isOpen={infoTooltipOpen}
           onClose={() => setInfoTooltipOpen(false)}
           message={tooltipMessage}
-          success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true: loggedIn } />}
-
+          success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
+        
       </Page>
     </AppContext.Provider>
   );

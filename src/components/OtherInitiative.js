@@ -7,7 +7,7 @@ import FormArrowBtn from './Buttons/FormArrowBtn';
 
 const OtherInitiativeSection = styled.section`
   width: 1440px;
-  height: calc(100vh - 700px);
+  min-height: calc(100vh - 700px);
   box-sizing: border-box;
   margin: 0 auto;
   background-color: #fff;
