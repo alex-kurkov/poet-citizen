@@ -148,6 +148,50 @@ const AuthMsgLink = styled(ParagraphOpenSans)`
     color: rgba(0, 0, 0, .6);
   }
 `
+const FooterLink = styled(ParagraphOpenSans)`
+  font-size: 16px;
+  line-height: 1.38;
+  color: #000;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+  @media screen and (max-width: 767px) {
+  }
+
+  @media screen and (max-width: 440px) {
+  }
+`;
+
+const FooterExtLink = styled.a`
+color: #000;
+border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: .6;
+  }
+  @media screen and (max-width: 767px) {
+  }
+  
+  @media screen and (max-width: 440px) {
+  }
+`;
+
+
+const FooterText = styled(ParagraphOpenSans)`
+  font-size: 16px;
+  line-height: 1.38;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 0;
+`;
 
 export {
   LeadMainText,
@@ -164,5 +208,8 @@ export {
   IntroTitleDiv,
   IntroParticipationText,
   AuthMsg,
-  AuthMsgLink
+  AuthMsgLink,
+  FooterLink,
+  FooterText,
+  FooterExtLink,
 };
