@@ -8,7 +8,7 @@ const CardElementDiv = styled.div`
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #000;
   color: #000000;
   width: 360px;
   height: 676px;
@@ -21,7 +21,7 @@ const CardElementContainerDiv = styled.div`
   height: 200px;
   align-items: center;
   justify-content: center;
-  background: #ebebeb;
+  background: #F2F2F2;
 `;
 
 const CardElementImg = styled.img`
@@ -47,10 +47,30 @@ const CardElementData = styled.p`
 const CardElementRhymeDiv = styled.div`
   width: 100%;
   height: 420px;
-  padding: 40px 16px;
-  background: #b5b5b5;
+  padding: 24px 16px;
+  background: #F2F2F2;
   box-sizing: border-box;
-  overflow-y: auto;
+`;
+
+const RhymeWrap = styled.div`
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border: .2px solid green;
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #000;
+    opacity: .6;
+    border-radius: 2px;
+  }
 `;
 
 const CardElementRhyme = styled.p`
@@ -59,11 +79,10 @@ const CardElementRhyme = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 26px;
-  text-overflow: ellipsis;
-  white-space: pre-wrap;
   overflow: hidden;
   margin-top: 0;
   margin-bottom: 0;
+  padding: 0 8px 0 0;
 `;
 
 const CardElementMarkDiv = styled.div`
@@ -75,7 +94,7 @@ const CardElementMarkDiv = styled.div`
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
-  background: #ebebeb;
+  background: #000;
 `;
 
 const CardElementMarkVertLine = styled.div`
@@ -83,7 +102,7 @@ const CardElementMarkVertLine = styled.div`
   position: absolute;
   left: 50%;
   top: 4px;
-  border-left: 1px solid #000000;
+  border-left: 1px solid #43D3B2;
 `;
 
 const CardElementLikeGroupDiv = styled.div`
@@ -97,6 +116,7 @@ const CardElementLikeSum = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 26px;
+  color: #F2F2F2;
   margin: 0 0 0 20px;
 `;
 
@@ -109,8 +129,6 @@ const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
   const liked = likes.some((item) => item._id === currentUser._id);
   const disliked = dislikes.some((item) => item._id === currentUser._id);
 
-  console.log(currentUser, card, likes, dislikes)
-
   return (
     <CardElementDiv>
       <CardElementContainerDiv>
@@ -118,7 +136,9 @@ const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
         <CardElementData>{createdAt}</CardElementData>
       </CardElementContainerDiv>
       <CardElementRhymeDiv>
-        <CardElementRhyme>{rhyme}</CardElementRhyme>
+        <RhymeWrap>
+          <CardElementRhyme>{rhyme}</CardElementRhyme>
+        </RhymeWrap>
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
         <CardElementLikeGroupDiv>

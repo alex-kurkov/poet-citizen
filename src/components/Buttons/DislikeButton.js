@@ -1,43 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
+import styled, { keyframes }  from 'styled-components/macro';
+
+
+const motion = keyframes`
+  from {}
+  to {
+    transform: translateY(5px);
+  }
+`
 
 const DislikeBtn = styled.button`
- border: 0;
- pointer-events: cursor;
- &:hover {
-   opacity: .65;
- }
+  border: 0;
+  background: none;
+  pointer-events: cursor;
+
+  &:hover {
+    animation: ${motion} .5s ease-out alternate infinite;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 const DislikeButton = ({ onClick, disliked }) => (
   <DislikeBtn onClick={onClick} disliked={disliked} >
     <svg
-      width='32'
-      height='32'
-      viewBox='0 0 32 32'
-      fill='none'
+      width="32px"
+      height="32px"
+      fillRule="evenodd" 
+      clipRule="evenodd"
+      shapeRendering="geometricPrecision"
+      viewBox='0 0 50 50'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <g clipPath='url(#clip0)'>
-        <path
-          d='M31.8438 18.9312C31.9375 18.1812 32 17.4187 32 16.6437C32 9.83125 28.2688 3.9 22.7438 0.756246L21.7125 2.93124L21.7125 17.7875L22.8563 18.9312L31.8438 18.9312ZM1.19878e-06 17.7875C1.0988e-06 18.9312 1.14375 20.075 2.2875 20.075L11.4313 20.075C10.8625 22.3625 10.2875 24.6437 10.2875 25.7875C10.2875 28.075 11.4312 30.3562 12 30.9312C12.0125 30.9437 12.5688 31.5 13.7125 31.5C15.425 31.5 15.425 29.7875 15.425 29.7875C15.425 29.7562 15.9938 26.9312 15.9938 25.7875C15.9938 24.6437 18.2813 20.075 19.425 18.9312L20.5688 18.3625L20.5688 2.36249L19.425 1.79375L6.85625 1.79374C4.56875 1.79374 3.425 2.93749 3.425 4.08124C3.425 5.22499 4.56875 6.36874 5.7125 6.36874C3.425 6.36874 2.28125 7.51249 2.28125 8.65625C2.28125 9.79999 3.425 10.9437 4.56875 10.9437C2.28125 10.9437 1.1375 12.0875 1.1375 13.2312C1.1375 14.375 2.28125 15.5187 3.425 15.5187C1.14375 15.5 1.29877e-06 16.6437 1.19878e-06 17.7875Z'
-          fill={disliked ? 'orange' : 'black'}
+      <path
+        fill={disliked ? '#BF0000' : '#F2F2F2'}
+        fillRule="nonzero"
+        d="M2.23 28.6c-0.14,-1.09 -0.23,-2.21 -0.23,-3.34 0,-9.98 5.46,-18.66 13.55,-23.26l1.51 3.18 0 21.75 -1.68 1.67 -13.15 0zm46.61 -1.67c0,1.67 -1.67,3.35 -3.35,3.35l-13.38 0c0.83,3.35 1.67,6.68 1.67,8.36 0,3.35 -1.67,6.69 -2.51,7.53 -0.01,0.02 -0.83,0.83 -2.5,0.83 -2.51,0 -2.51,-2.51 -2.51,-2.51 0,-0.04 -0.83,-4.18 -0.83,-5.85 0,-1.68 -3.35,-8.36 -5.02,-10.04l-1.68 -0.83 0 -23.42 1.68 -0.83 18.39 0c3.35,0 5.03,1.67 5.03,3.35 0,1.67 -1.68,3.35 -3.35,3.35 3.35,0 5.02,1.67 5.02,3.34 0,1.68 -1.67,3.35 -3.35,3.35 3.35,0 5.02,1.68 5.02,3.35 0,1.67 -1.67,3.35 -3.34,3.35 3.34,-0.03 5.01,1.65 5.01,3.32z"
         />
-      </g>
-      <defs>
-        <clipPath id='clip0'>
-          <rect
-            x='32'
-            y='32'
-            width='32'
-            height='32'
-            rx='2'
-            transform='rotate(-180 32 32)'
-            fill='white'
-          />
-        </clipPath>
-      </defs>
     </svg>
   </DislikeBtn>
 );
