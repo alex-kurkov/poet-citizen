@@ -56,6 +56,7 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
       handleAuthLinkClick={handleAuthLinkClick}
       >
         <StyledLabel>
+          E-mail
           <StyledInput
             error={!!errors.email}
             value={values.email}
