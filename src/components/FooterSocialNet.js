@@ -1,8 +1,9 @@
 import React from 'react';
+// eslint-disable-next-line
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import config from '../config';
-import { FooterLink, FooterText } from './Texts';
+import { FooterExtLink, FooterText } from './Texts';
 
 const FooterSocNetBox = styled.ul`
   display: grid;
@@ -61,7 +62,7 @@ pointer-events: all;
 
 const FooterSocialNet = () => {
   const { socialNetLinks } = config;
-  console.log("socialNetLinks", socialNetLinks);
+  console.log('socialNetLinks', socialNetLinks);
   socialNetLinks.map((icon, i) => console.log(icon));
   socialNetLinks.map(({ link, svg }, i) => console.log(svg));
   return (
@@ -71,9 +72,9 @@ const FooterSocialNet = () => {
           <FooterSocNetLinksContainer>
             {socialNetLinks.map(({ link, svg, name }, i) => (
               <FooterSocNetLiItem key={`footersocnetbar-${i}`}>
-                <FooterLink as={Link} to={link}>
+                <FooterExtLink href={link} target="_blank">
                   <FooterSocNetIcon src={svg} alt={name} />
-                </FooterLink>
+                </FooterExtLink>
               </FooterSocNetLiItem>
             ))}
           </FooterSocNetLinksContainer>

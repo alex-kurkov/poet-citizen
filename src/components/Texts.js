@@ -167,6 +167,24 @@ const FooterLink = styled(ParagraphOpenSans)`
   }
 `;
 
+const FooterExtLink = styled.a`
+color: #000;
+border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: .6;
+  }
+  @media screen and (max-width: 767px) {
+  }
+  
+  @media screen and (max-width: 440px) {
+  }
+`;
+
+
 const FooterText = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
@@ -193,4 +211,5 @@ export {
   AuthMsgLink,
   FooterLink,
   FooterText,
+  FooterExtLink,
 };

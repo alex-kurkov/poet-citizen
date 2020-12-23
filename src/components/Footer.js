@@ -4,7 +4,7 @@ import FooterLinksBar from './FooterLinksBar';
 import FooterSocialNet from './FooterSocialNet';
 import FooterTradeMark from './FooterTradeMark';
 
-const AppFooter = styled.footer` 
+const AppFooter = styled.footer`
   box-sizing: border-box;
   width: 1440px;
   margin: 92px auto 0;
@@ -12,14 +12,12 @@ const AppFooter = styled.footer`
   justify-content: space-between;
   font-size: 16px;
   line-height: 1.38;
- color: #000000;
+  color: #000000;
 
   @media screen and (max-width: 767px) {
-
   }
 
   @media screen and (max-width: 440px) {
-
   }
 `;
 
