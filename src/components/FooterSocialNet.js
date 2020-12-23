@@ -79,8 +79,9 @@ const FooterSocialNet = () => {
           </FooterSocNetLinksContainer>
         </FooterStyledLinksBar>
       </FooterSocNetBoxLiItem>
-      <FooterSocNetBoxLiItem></FooterSocNetBoxLiItem>
-      <FooterText>grazhdaninpoet@yandex.ru</FooterText>
+      <FooterSocNetBoxLiItem>
+        <FooterText>grazhdaninpoet@yandex.ru</FooterText>
+      </FooterSocNetBoxLiItem>
     </FooterSocNetBox>
   );
 };

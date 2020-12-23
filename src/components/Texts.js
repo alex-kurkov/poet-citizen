@@ -149,7 +149,6 @@ const AuthMsgLink = styled(ParagraphOpenSans)`
   }
 `
 const FooterLink = styled(ParagraphOpenSans)`
-  padding: 8px 20px;
   font-size: 16px;
   line-height: 1.38;
   color: #000;
