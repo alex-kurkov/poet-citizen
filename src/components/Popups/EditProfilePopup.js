@@ -55,6 +55,7 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
       handleAuthLinkClick={handleAuthLinkClick}
       >
         <StyledLabel>
+          Имя
           <StyledInput
             error={!!errors.name}
             value={values.name}
@@ -70,6 +71,7 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
         </StyledLabel>
 
         <StyledLabel>
+          Фамилия
           <StyledInput
             error={!!errors.surname}
             value={values.surname}

@@ -60,6 +60,7 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
       handleAuthLinkClick={handleAuthLinkClick}
       >
         <StyledLabel>
+          Имя
           <StyledInput
             error={!!errors.name}
             value={values.name}
@@ -75,6 +76,7 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
         </StyledLabel>
 
         <StyledLabel>
+          Фамилия
           <StyledInput
             error={!!errors.surname}
             value={values.surname}
@@ -90,6 +92,7 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
         </StyledLabel>
 
         <StyledLabel>
+          E-mail
           <StyledInput
             error={!!errors.email}
             value={values.email}
@@ -104,6 +107,7 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
           {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
         </StyledLabel>
         <StyledLabel>
+          Пароль
           <StyledInput
             value={values.password}
             onChange={handleInputChange}

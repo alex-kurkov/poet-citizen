@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 const StyledLabel = styled.label`
   position: relative;
-  font-family: Open Sans, Arial, sans-serif;
+  font-family: Open Sans, sans-serif;
   font-weight: normal;
   font-size: 18px;
   line-height: 1.38;
@@ -19,7 +19,7 @@ const StyledInput = styled.input`
   border-left: none;
   border-right: none;
   padding: 0 2px 4px 2px;
-  font-family: Open Sans, Arial, sans-serif;;
+  font-family: Open Sans, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.2;
@@ -44,7 +44,7 @@ const ErrorIndicator = styled.div`
 const ErrorMessage = styled.span`
   width: 100%;
   height: fit-content;
-  font-family: Open Sans;
+  font-family: Open Sans, sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #f00;
@@ -61,7 +61,7 @@ const StyledFieldset = styled.fieldset`
   text-align: left;
 `;
 const StyledLegend = styled.legend`
-  font-family: Open Sans;
+  font-family: Open Sans, sans-serif;
   font-weight: 400;
   font-size: 28px;
   line-height: 1.33;

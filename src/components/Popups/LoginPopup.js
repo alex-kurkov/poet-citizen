@@ -71,6 +71,7 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
           {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
         </StyledLabel>
         <StyledLabel>
+          Пароль
           <StyledInput
             value={values.password}
             onChange={handleInputChange}
