@@ -197,7 +197,28 @@ const App = () => {
         });
     }
   }
-
+  const handleCardLike = (card) => {
+    const jwt = localStorage.getItem('jwt');
+    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    api.changeLikeStatus(card._id, !isLiked, jwt)
+      .then((data) => {
+        const newCard = data.card;
+        const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+        setCards(newCards);
+      })
+      .catch((error) => console.log(error));
+  };
+  const handleCardDislike = (card) => {
+    const jwt = localStorage.getItem('jwt');
+    const isDisliked = card.dislikes.some((item) => item._id === currentUser._id);
+    api.changeDislikeStatus(card._id, !isDisliked, jwt)
+      .then((data) => {
+        const newCard = data.card;
+        const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+        setCards(newCards);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <AppContext.Provider value={config}>
@@ -250,7 +271,12 @@ const App = () => {
                   }
                 }
                 />
-                <OtherInitiative cards={cards} />
+                <OtherInitiative
+                  currentUser={currentUser}
+                  cards={cards}
+                  onCardLike={handleCardLike}
+                  onCardDislike={handleCardDislike}
+                  />
             </Route>
 
             <Route path="/complain">

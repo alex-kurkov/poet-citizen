@@ -54,7 +54,7 @@ const CardElementRhymeDiv = styled.div`
 `;
 
 const CardElementRhyme = styled.p`
-  font-family: Georgia;
+  font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -101,36 +101,34 @@ const CardElementLikeSum = styled.p`
 `;
 
 
-const Card = (props) => {
-  // const currentUser = React.useContext(CurrentUserContext);
-  const { card } = props;
+const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
+  const {
+    rhyme, link, likes, dislikes, createdAt
+  } = card;
 
-  function handleLikeClick() {
-    props.onCardLike(card);
-  }
+  const liked = likes.some((item) => item._id === currentUser._id);
+  const disliked = dislikes.some((item) => item._id === currentUser._id);
 
-  function handleDislikeClick() {
-    props.onCardDisLike(card);
-  }
+  console.log(currentUser, card, likes, dislikes)
 
   return (
     <CardElementDiv>
       <CardElementContainerDiv>
-        <CardElementImg src={card.link} alt={card.alt} />
-        <CardElementData>{card.date}</CardElementData>
+        <CardElementImg src={link} alt="Изображение инициативы" />
+        <CardElementData>{createdAt}</CardElementData>
       </CardElementContainerDiv>
       <CardElementRhymeDiv>
-        <CardElementRhyme>{card.rhyme}</CardElementRhyme>
+        <CardElementRhyme>{rhyme}</CardElementRhyme>
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
         <CardElementLikeGroupDiv>
-          <LikeButton2 onClick={handleLikeClick} liked={true} />
-          <CardElementLikeSum>{card.likes.length}</CardElementLikeSum>
+          <LikeButton2 onClick={() => onCardLike(card)} liked={liked} />
+          <CardElementLikeSum>{likes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
-        <CardElementMarkVertLine></CardElementMarkVertLine>
+        <CardElementMarkVertLine />
         <CardElementLikeGroupDiv>
-          <DislikeButton onClick={handleDislikeClick} liked={false} />
-          <CardElementLikeSum>{card.dislikes.length}</CardElementLikeSum>
+          <DislikeButton onClick={() => onCardDislike(card)} disliked={disliked} />
+          <CardElementLikeSum>{dislikes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
       </CardElementMarkDiv>
     </CardElementDiv>

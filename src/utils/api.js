@@ -88,6 +88,18 @@ class Api {
     })
       .then(this._getResponseData);
   }
+  changeDislikeStatus(cardId, isDisliked, jwt) {
+    const method = isDisliked ? 'PUT' : 'DELETE';
+    return fetch(`${this._baseUrl}/cards/${cardId}/dislikes`, {
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${jwt}`,
+      },
+      /*       credentials: 'include', */
+      method,
+    })
+      .then(this._getResponseData);
+  }
 }
 
 export default new Api({ baseUrl });

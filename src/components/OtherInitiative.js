@@ -15,15 +15,7 @@ const OtherInitiativeSection = styled.section`
   padding: 100px 100px;
 `;
 
-const onCardLike = () => {
-  console.log('like+1');
-};
-
-const onCardDislike = () => {
-  console.log('dislike-1');
-};
-
-const OtherInitiative = (props) => {
+const OtherInitiative = ({ currentUser, cards, onCardLike, onCardDislike}) => {
   return (
     <OtherInitiativeSection>
       <Carousel
@@ -33,11 +25,12 @@ const OtherInitiative = (props) => {
         enableSwipe={true}
         renderArrow={FormArrowBtn}
       >
-        {props.cards.map((card) => <
-          Card key={card._id}
+        {cards.map((card, idx) => <
+          Card key={`${idx}-${card._id}`}
           card={card}
+          currentUser={currentUser}
           onCardLike={onCardLike}
-          onCardDisLike={onCardDislike}
+          onCardDislike={onCardDislike}
         />)}
       </Carousel>
     </OtherInitiativeSection>

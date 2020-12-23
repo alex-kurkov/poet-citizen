@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import Overlay from './Overlay';
 import { CloseButton, FailureIcon, SuccessIcon } from '../Buttons/index';
 import Modal from './Modal';
-import IcQuote from '../IcQuote';
 
 const Tooltip = styled.div`
   padding: 24px auto;
