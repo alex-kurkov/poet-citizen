@@ -53,6 +53,7 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
       anyInputInvalid={anyInputInvalid}
       authStatus={authStatus}
       handleAuthLinkClick={handleAuthLinkClick}
+      formButtonText="Сохранить"
       >
         <StyledLabel>
           Имя

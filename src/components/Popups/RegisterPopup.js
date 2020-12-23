@@ -58,6 +58,7 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
       anyInputInvalid={anyInputInvalid}
       authStatus={authStatus}
       handleAuthLinkClick={handleAuthLinkClick}
+      formButtonText="Зарегистрироваться"
       >
         <StyledLabel>
           Имя

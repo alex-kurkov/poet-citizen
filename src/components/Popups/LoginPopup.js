@@ -54,6 +54,7 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
       anyInputInvalid={anyInputInvalid}
       authStatus={authStatus}
       handleAuthLinkClick={handleAuthLinkClick}
+      formButtonText="Войти"
       >
         <StyledLabel>
           E-mail

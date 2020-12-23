@@ -6,7 +6,8 @@ const StyledLabel = styled.label`
   font-weight: normal;
   font-size: 18px;
   line-height: 1.38;
-  margin: 0;
+  margin: 0 0 16px 0;
+  display: block;
 `
 
 const StyledInput = styled.input`
@@ -18,12 +19,11 @@ const StyledInput = styled.input`
   border-top: none;
   border-left: none;
   border-right: none;
-  padding: 0 2px 4px 2px;
+  padding: 4px 8px;
   font-family: Open Sans, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.2;
-  margin: 4px 0 16px;
   border: 1px solid #bcbaba;
 
   ${({ error }) => error &&
@@ -86,7 +86,7 @@ const SubmitBtn = styled.button`
   text-align: center;
   border: none;
   line-height: 1.2;
-  background-color: #c4c4c4;;
+  background-color: #FF7A00;
   color: #000;
   padding: 0;
   transition: opacity .3s ease-in-out;
