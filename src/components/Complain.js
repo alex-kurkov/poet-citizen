@@ -28,7 +28,7 @@ const Call = ({
   setLeadInfoText,
   setLeadNav,
   setLeadPoemBlockVisibility,
-  route,
+  handleCallSubmit,
 }) => {
   const history = useHistory();
   const { rhymes } = config;
@@ -96,12 +96,7 @@ const Call = ({
   return (
     <CallSection>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(poem);
-            clearPoem();
-            history.push('/main');
-          }}>
+          onSubmit={handleCallSubmit}>
           <Carousel
             showArrows={true}
             pagination={true}

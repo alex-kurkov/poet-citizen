@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import Poem from './Poem';
 import { LeadMainText, LeadText } from './Texts';
+import leadBG from '../img/main-lead-bg.png';
 /* import PropTypes from 'prop-types'; */
 
 const LeadSection = styled.section`
@@ -10,7 +11,10 @@ const LeadSection = styled.section`
   height: 636px;
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: #C4C4C4;
+  background: url(${leadBG});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 105px 252px 75px 252px;
 `;
 

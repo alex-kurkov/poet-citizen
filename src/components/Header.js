@@ -13,6 +13,8 @@ const AppHeader = styled.header`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  background-color: #212228;
+  color: #F2F2F2;
   gap: 16px;
   overflow: hidden;
 

@@ -297,6 +297,7 @@ const App = () => {
                 <Complain
                   poem={poem}
                   route="/complain"
+                  handleCallSubmit={handleCallSubmit}
                   setUserPoemZero={setUserPoemZero}
                   setUserPoemOne={setUserPoemOne}
                   setUserPoemTwo={setUserPoemTwo}
@@ -324,6 +325,7 @@ const App = () => {
                 <Join
                   poem={poem}
                   route="/join"
+                  handleCallSubmit={handleCallSubmit}
                   setUserPoemZero={setUserPoemZero}
                   setUserPoemOne={setUserPoemOne}
                   setUserPoemTwo={setUserPoemTwo}

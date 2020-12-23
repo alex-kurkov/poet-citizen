@@ -21,7 +21,7 @@ const NavBarLink = styled(ParagraphOpenSans)`
   font-size: 18px;
   display: block;
   padding: 8px 20px;
-  color: #000;
+  color: #F2F2F2;
   line-height: 19px;
   border: none;
   box-sizing: border-box;
