@@ -136,7 +136,7 @@ const AuthMsg = styled(ParagraphOpenSans)`
   width: 100%;
 `
 const AuthMsgLink = styled(ParagraphOpenSans)`
-  color: #000;
+  color: #fff;
   cursor: pointer;
   text-decoration: none;
   padding-left: 8px;
@@ -151,7 +151,7 @@ const AuthMsgLink = styled(ParagraphOpenSans)`
 const FooterLink = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
-  color: #000;
+  color: #fff;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
@@ -168,8 +168,10 @@ const FooterLink = styled(ParagraphOpenSans)`
 `;
 
 const FooterExtLink = styled.a`
-color: #000;
-border: none;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  border: none;
   box-sizing: border-box;
   text-decoration: none;
   transition: opacity 0.3s ease-in-out;
@@ -184,11 +186,10 @@ border: none;
   }
 `;
 
-
 const FooterText = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
-  color: #000;
+  color: #fff;
   margin-top: 0;
   margin-bottom: 0;
 `;

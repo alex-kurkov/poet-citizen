@@ -16,28 +16,12 @@ export default {
     lightGreen: '#43D3B2',
     deepGreen: '#288E78',
   },
-  socialNetLinks: [
-    {
-      name: 'Instagram',
-      svg: '../img/socNetIcons/instagram.svg',
-      link: 'https://Instagram.com',
+  socialNetLinks: {
+    instagram: 'https://Instagram.com',
+    twitter: 'https://twitter.com/',
+    telegram: 'https://web.telegram.org/',
+    vkontakte: 'https://vk.com',
     },
-    {
-      name: 'Twitter',
-      svg: '../img/socNetIcons/twitter.svg',
-      link: 'https://twitter.com/',
-    },
-    {
-      name: 'Telegram',
-      svg: '../img/socNetIcons/telegram.svg',
-      link: 'https://web.telegram.org/',
-    },
-    {
-      name: 'ВКонтакте',
-      svg: '../img/socNetIcons/vkontakte.svg',
-      link: 'https://vk.com',
-    },
-  ],
   navBarLinks: [
     {
       name: 'Подать жалобу',
