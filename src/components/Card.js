@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import LikeButton2 from './Buttons/LikeButton2';
 import DislikeButton from './Buttons/DislikeButton';
+import organizationBg from '../img/organization_bg.png';
 
 const CardElementDiv = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const CardElementContainerDiv = styled.div`
   height: 200px;
   align-items: center;
   justify-content: center;
-  background: #F2F2F2;
+  background: #f2f2f2;
 `;
 
 const CardElementImg = styled.img`
@@ -48,7 +49,7 @@ const CardElementRhymeDiv = styled.div`
   width: 100%;
   height: 420px;
   padding: 24px 16px;
-  background: #F2F2F2;
+  background: #f2f2f2;
   box-sizing: border-box;
 `;
 
@@ -68,7 +69,7 @@ const RhymeWrap = styled.div`
   }
   &::-webkit-scrollbar-thumb {
     background: black;
-    opacity: .8;
+    opacity: 0.8;
     border-radius: 3px;
   }
 `;
@@ -102,7 +103,7 @@ const CardElementMarkVertLine = styled.div`
   position: absolute;
   left: 50%;
   top: 4px;
-  border-left: 1px solid #43D3B2;
+  border-left: 1px solid #43d3b2;
 `;
 
 const CardElementLikeGroupDiv = styled.div`
@@ -116,23 +117,31 @@ const CardElementLikeSum = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 26px;
-  color: #F2F2F2;
+  color: #f2f2f2;
   margin: 0 0 0 20px;
 `;
 
-
-const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
-  const {
-    rhyme, link, likes, dislikes, createdAt
-  } = card;
+const Card = ({
+  currentUser,
+  onCardLike,
+  onCardDislike,
+  card,
+  allOrganization,
+}) => {
+  const { rhyme, link, likes, dislikes, createdAt } = card;
 
   const liked = likes.some((item) => item._id === currentUser._id);
   const disliked = dislikes.some((item) => item._id === currentUser._id);
+  const organization = allOrganization.filter(
+    (item) => item.id === card.organization
+  );
+  const organizationLink =
+    organization.length === 0 ? organizationBg : organization[0].image;
 
   return (
     <CardElementDiv>
       <CardElementContainerDiv>
-        <CardElementImg src={link} alt="Изображение инициативы" />
+        <CardElementImg src={organizationLink} alt='Изображение инициативы' />
         <CardElementData>{createdAt}</CardElementData>
       </CardElementContainerDiv>
       <CardElementRhymeDiv>
@@ -142,12 +151,20 @@ const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
         <CardElementLikeGroupDiv>
-          <LikeButton2 onClick={() => onCardLike(card)} liked={liked} currentUser={currentUser} />
+          <LikeButton2
+            onClick={() => onCardLike(card)}
+            liked={liked}
+            currentUser={currentUser}
+          />
           <CardElementLikeSum>{likes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
         <CardElementMarkVertLine />
         <CardElementLikeGroupDiv>
-          <DislikeButton onClick={() => onCardDislike(card)} disliked={disliked} currentUser={currentUser} />
+          <DislikeButton
+            onClick={() => onCardDislike(card)}
+            disliked={disliked}
+            currentUser={currentUser}
+          />
           <CardElementLikeSum>{dislikes.length}</CardElementLikeSum>
         </CardElementLikeGroupDiv>
       </CardElementMarkDiv>
