@@ -5,20 +5,20 @@ import styled from 'styled-components/macro';
 import config from '../config';
 import { FooterExtLink, FooterText } from './Texts';
 
-const FooterSocNetBox = styled.ul`
+const FooterSocNetBox = styled.div`
+  width: 20%;
   display: grid;
   grid-template-rows: repeat(2, 28px);
   grid-template-columns: repeat(1, auto);
   grid-row-gap: 12px;
-  padding: 0;
+  padding: 0 4px;
   margin: 0;
 
   @media screen and (max-width: 440px) {
   }
 `;
 
-const FooterSocNetBoxLiItem = styled.li`
-  list-style-type: none;
+const FooterSocNetBoxLiItem = styled.div`
   margin: 0 0;
   padding: 0;
 `;

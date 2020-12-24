@@ -8,6 +8,7 @@ const FooterStyledLinksBar = styled.nav`
   box-sizing: border-box;
   height: 100%;
   padding: 0;
+  width: 40%;
 
   @media screen and (max-width: 767px) {
   }

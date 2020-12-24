@@ -4,13 +4,14 @@ import { FooterText } from './Texts';
 
 const FooterBox = styled.ul`
   display: grid;
+  width: 40%;
   grid-template-rows: repeat(2, 28px);
   grid-template-columns: repeat(1, auto);
   grid-row-gap: 12px;
   justify-items: self-end;
   padding: 0;
   margin: 0;
-
+  padding-left: 8px;
   @media screen and (max-width: 440px) {
   }
 `;

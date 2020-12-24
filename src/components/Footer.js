@@ -4,15 +4,22 @@ import FooterLinksBar from './FooterLinksBar';
 import FooterSocialNet from './FooterSocialNet';
 import FooterTradeMark from './FooterTradeMark';
 
-const AppFooter = styled.footer`
+const FooterSection = styled.footer`
+  background: #212228;
+  height: 196px;
+  width: 100%;
+`;
+const FooterWrap = styled.footer`
+  background: none;
   box-sizing: border-box;
+  padding: 36px 156px 92px 156px;
   width: 1440px;
   margin: 92px auto 0;
   display: flex;
   justify-content: space-between;
   font-size: 16px;
   line-height: 1.38;
-  color: #000000;
+  color: #fff;
 
   @media screen and (max-width: 767px) {
   }
@@ -24,11 +31,13 @@ const AppFooter = styled.footer`
 
 const Footer = () => {
   return (
-    <AppFooter>
-      <FooterLinksBar />
-      <FooterSocialNet />
-      <FooterTradeMark />
-    </AppFooter>
+    <FooterSection>
+      <FooterWrap>
+        <FooterLinksBar />
+        <FooterSocialNet />
+        <FooterTradeMark />
+      </FooterWrap>
+    </FooterSection>
   );
 };
 
