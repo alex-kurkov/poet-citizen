@@ -27,6 +27,7 @@ const OtherInitiative = ({ currentUser, cards, onCardLike, onCardDislike }) => {
         pagination={true}
         itemsToShow={3}
         enableSwipe={true}
+        itemsToScroll={3}
         renderArrow={FormArrowBtn}
       >
         {cards.map((card, idx) => <
