@@ -135,11 +135,6 @@ export default {
   поделиться...”
   `,
   rhymes: {
-    motivation: {
-      call: 'callcallcall',
-      complain: 'complaincomplaincomplain',
-      join: 'joinjoinjoin',
-    },
     organization: [
       {
         rhyme: 'Пришла и говорю: как нынешнему снегу\nлегко лететь с небес в угоду февралю,\nтак мне в угоду вам легко взойти на сцену.\nНе верьте мне, когда я это говорю.\n', 

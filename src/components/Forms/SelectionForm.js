@@ -50,7 +50,7 @@ const RadioInputLabel = styled.label`
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   padding: 36px 12px;
   ${({bg}) => `
   background: url(${bg});
