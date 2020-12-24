@@ -15,13 +15,12 @@ const Path = styled.path`
 
 const ProfileButton = styled.div`
   box-sizing: content-box;
-  width: 40px;
+  min-width: 240px;
+  text-align: center;
   height: 38px;
   border-radius: 40px;
   align-self: center;
   transition: all 0.3s ease-in-out;
-  margin-left: 36px;
-  margin-right: 8px;
   padding: 0;
 
   &:hover {

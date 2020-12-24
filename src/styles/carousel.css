@@ -1,16 +1,17 @@
 button.rec-dot{
-  background-color: #ebebeb;
-  box-shadow: 0 0 1px 3px #ccc;
+  background-color: #43D3B2;
+  box-shadow: 0 0 1px 3px #43D3B2;
   margin-left: 12px;
 }
 
 button.rec-dot_active {
+  background: none;
   transform: scale(1.2);
-  box-shadow: 0 0 1px 3px #ff7a00;
 }
 
 button.rec-dot:focus {
-  box-shadow: 0 0 1px 3px rgba(235,16,16,0.5);
+  background: white;
+  box-shadow: 0 0 3px 3px #43D3B2;
 }
 
 button.rec-dot:hover {
