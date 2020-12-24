@@ -23,10 +23,13 @@ const FooterBoxLiItem = styled.li`
 `;
 
 const FooterTradeMark = () => {
+  const today = new Date();
+  const yearNow = today.getFullYear();
+
   return (
     <FooterBox>
       <FooterBoxLiItem>
-      <FooterText>&copy; 2020. “Гражданин поэт”</FooterText>
+      <FooterText>&copy; {yearNow}  “Гражданин поэт”</FooterText>
       </FooterBoxLiItem>
       <FooterBoxLiItem>
               <FooterText>Разработано студентами Яндекс.Практикума</FooterText>

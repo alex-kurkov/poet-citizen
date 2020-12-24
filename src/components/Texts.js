@@ -168,8 +168,10 @@ const FooterLink = styled(ParagraphOpenSans)`
 `;
 
 const FooterExtLink = styled.a`
-color: #fff;
-border: none;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  border: none;
   box-sizing: border-box;
   text-decoration: none;
   transition: opacity 0.3s ease-in-out;
@@ -183,7 +185,6 @@ border: none;
   @media screen and (max-width: 440px) {
   }
 `;
-
 
 const FooterText = styled(ParagraphOpenSans)`
   font-size: 16px;

@@ -1,9 +1,8 @@
 import React from 'react';
-// eslint-disable-next-line
-import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import config from '../config';
-import { FooterExtLink, FooterText } from './Texts';
+import { FooterText } from './Texts';
+import { Telegram, Instagram, Twitter, Vkontakte } from './icons/index';
 
 const FooterSocNetBox = styled.div`
   width: 20%;
@@ -16,11 +15,6 @@ const FooterSocNetBox = styled.div`
 
   @media screen and (max-width: 440px) {
   }
-`;
-
-const FooterSocNetBoxLiItem = styled.div`
-  margin: 0 0;
-  padding: 0;
 `;
 
 const FooterStyledLinksBar = styled.nav`
@@ -47,42 +41,37 @@ const FooterSocNetLinksContainer = styled.ul`
   }
 `;
 
-const FooterSocNetLiItem = styled.li`
-  list-style-type: none;
-  margin: 0 0;
-  padding: 0 4px;
-`;
-
-const FooterSocNetIcon = styled.img`
-width: 100%;
-height: 100%;
-pointer-events: all;
-`;
-
+const SocialIcon = styled.div`
+  width: 28px;
+  height: 28px;
+`
 
 const FooterSocialNet = () => {
   const { socialNetLinks } = config;
-  console.log('socialNetLinks', socialNetLinks);
-  socialNetLinks.map((icon, i) => console.log(icon));
-  socialNetLinks.map(({ link, svg }, i) => console.log(svg));
+
   return (
     <FooterSocNetBox>
-      <FooterSocNetBoxLiItem>
+
         <FooterStyledLinksBar>
           <FooterSocNetLinksContainer>
-            {socialNetLinks.map(({ link, svg, name }, i) => (
-              <FooterSocNetLiItem key={`footersocnetbar-${i}`}>
-                <FooterExtLink href={link} target="_blank">
-                  <FooterSocNetIcon src={svg} alt={name} />
-                </FooterExtLink>
-              </FooterSocNetLiItem>
-            ))}
+            <SocialIcon as="a" href={socialNetLinks.telegram}>
+              <Telegram fill="#fff" target="blank" />
+            </SocialIcon>
+            <SocialIcon as="a" href={socialNetLinks.instagram}>
+              <Instagram fill="#fff" target="blank" />
+            </SocialIcon>
+            <SocialIcon as="a" href={socialNetLinks.twitter}>
+              <Twitter fill="#fff" target="blank" />
+            </SocialIcon>
+            <SocialIcon as="a" href={socialNetLinks.vkontakte}>
+              <Vkontakte fill="#fff" target="blank" />
+            </SocialIcon>
           </FooterSocNetLinksContainer>
         </FooterStyledLinksBar>
-      </FooterSocNetBoxLiItem>
-      <FooterSocNetBoxLiItem>
-        <FooterText>grazhdaninpoet@yandex.ru</FooterText>
-      </FooterSocNetBoxLiItem>
+
+
+        <FooterText as="a" href="mailto:grazhdaninpoet@yandex.ru">grazhdaninpoet@yandex.ru</FooterText>
+
     </FooterSocNetBox>
   );
 };
