@@ -18,6 +18,7 @@ const CallSection = styled.section`
 `;
 
 const Call = ({
+  setUserOrganizationId,
   setUserPoemZero,
   setUserPoemOne,
   setUserPoemTwo,
@@ -85,6 +86,7 @@ const Call = ({
   /*   carousel.current.slideNext()
  */
   const handleOrganizationSelection = (e) => {
+    setUserOrganizationId(e.currentTarget.id);
     setUserPoemOne(e.currentTarget.value);
   };
 

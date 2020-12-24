@@ -35,7 +35,7 @@ const App = () => {
   const history = useHistory();
   /*   const { path, url } = useRouteMatch(); */
 
-  const [loggedIn, setLoggedIn] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
   const [profilePopupVisible, setProfilePopupVisible] = useState(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
@@ -43,6 +43,7 @@ const App = () => {
   const [tooltipMessage, setTooltipMessage] = useState('');
   const [currentUser, setCurrentUser] = useState({});
   const [poem, setPoem] = useState('');
+  const [userOrganizationId, setUserOrganizationId] = useState('');
   const [userPoemZero, setUserPoemZero] = useState('');
   const [userPoemOne, setUserPoemOne] = useState('');
   const [userPoemTwo, setUserPoemTwo] = useState('');
@@ -226,7 +227,7 @@ const App = () => {
   return (
     <AppContext.Provider value={config}>
       <Page>
-        <Header onProfileBtnClick={onProfileBtnClick} />
+        <Header loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
           <Switch>
             <Route path="/main">
               <Lead texts={config.leadTexts.routeMain}/>
@@ -252,6 +253,7 @@ const App = () => {
                 poem={poem}
                 route="/call"
                 handleCallSubmit={handleCallSubmit}
+                setUserOrganizationId={setUserOrganizationId}
                 setUserPoemZero={setUserPoemZero}
                 setUserPoemOne={setUserPoemOne}
                 setUserPoemTwo={setUserPoemTwo}

@@ -48,12 +48,13 @@ const RadioInputLabel = styled.label`
   user-select: none;
   width: 100%;
   height: 100%;
-  background: url(${cardBg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 36px 12px;
-
+  ${({bg}) => `
+  background: url(${bg});
+  `}
 
   &:hover {
     transform: scale(1.2);
@@ -163,7 +164,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
   <FormContainer>
     { array.map((item, i) => (
           <StyledLi key={i + item.id}>
-            <RadioInputLabel htmlFor={item.id} labelText={item.name}>
+            <RadioInputLabel bg={item.image} htmlFor={item.id} labelText={item.name}>
               <LabelTitle>{item.name}</LabelTitle>
               <LabelInfo>{item.info}</LabelInfo>
               <RadioInput

@@ -27,11 +27,11 @@ const AppHeader = styled.header`
   }
 `;
 
-const Header = ({onProfileBtnClick}) => (
+const Header = ({onProfileBtnClick, loggedIn}) => (
     <AppHeader>
       <Logo />
       <LinksBar />
-      <ProfileBtn onClick={onProfileBtnClick}/>
+      <ProfileBtn loggedIn={loggedIn} onClick={onProfileBtnClick}/>
     </AppHeader>
 );
 
