@@ -1,6 +1,6 @@
 {
-  "short_name": "Mesto",
-  "name": "Mesto Educational Project",
+  "short_name": "Poet Citizen",
+  "name": "Poet Citizen hackathon project",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "mesto192.png",
+      "src": "iconwhite192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "mesto512.png",
+      "src": "iconwhite512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

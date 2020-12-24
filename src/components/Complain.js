@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
-import { useHistory } from 'react-router-dom';
 import config from '../config';
 import SelectionForm from './Forms/SelectionForm';
 import FormArrowBtn from './Buttons/FormArrowBtn';
@@ -30,7 +29,6 @@ const Call = ({
   setLeadPoemBlockVisibility,
   handleCallSubmit,
 }) => {
-  const history = useHistory();
   const { rhymes } = config;
   const carousel = useRef();
 
