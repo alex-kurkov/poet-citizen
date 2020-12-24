@@ -3,9 +3,9 @@
      font-style: normal;
      font-weight: 400;
      src: local('Open Sans'),
-          url('./open-sans-v18-latin_cyrillic-regular.woff2') format('woff2'),
+/*           url('./open-sans-v18-latin_cyrillic-regular.woff2') format('woff2'),
           url('./open-sans-v18-latin_cyrillic-regular.woff') format('woff'),
-          url('./open-sans-v18-latin_cyrillic-regular.ttf') format('truetype'),
+ */          url('./open-sans-v18-latin_cyrillic-regular.ttf') format('truetype'),
 }
 
 @font-face {
@@ -13,9 +13,9 @@
      font-style: normal;
      font-weight: 600;
      src: local('Open Sans'),
-          url('./open-sans-v18-latin_cyrillic-600.woff2') format('woff2'),
+/*           url('./open-sans-v18-latin_cyrillic-600.woff2') format('woff2'),
           url('./open-sans-v18-latin_cyrillic-600.woff') format('woff'),
-          url('./open-sans-v18-latin_cyrillic-600.ttf') format('truetype'),
+ */          url('./open-sans-v18-latin_cyrillic-600.ttf') format('truetype'),
 }
 
 @font-face {
@@ -23,9 +23,9 @@
      font-style: normal;
      font-weight: 700;
      src: local('Open Sans'),
-          url('./open-sans-v18-latin_cyrillic-700.woff2') format('woff2'),
+/*           url('./open-sans-v18-latin_cyrillic-700.woff2') format('woff2'),
           url('./open-sans-v18-latin_cyrillic-700.woff') format('woff'),
-          url('./open-sans-v18-latin_cyrillic-700.ttf') format('truetype'),
+ */          url('./open-sans-v18-latin_cyrillic-700.ttf') format('truetype'),
 }
 
 @font-face {
@@ -33,9 +33,9 @@
      font-style: normal;
      font-weight: 400;
      src: local('Noto Serif'),
-          url('./noto-serif-v9-cyrillic-regular.woff2') format('woff2'),
+/*           url('./noto-serif-v9-cyrillic-regular.woff2') format('woff2'),
           url('./noto-serif-v9-cyrillic-regular.woff') format('woff'),
-          url('./noto-serif-v9-cyrillic-regular.ttf') format('truetype'),
+ */          url('./noto-serif-v9-cyrillic-regular.ttf') format('truetype'),
 }
 
 @font-face {
@@ -43,7 +43,7 @@
      font-style: normal;
      font-weight: 700;
      src: local('Noto Serif'),
-          url('./noto-serif-v9-cyrillic-700.woff2') format('woff2'),
+/*           url('./noto-serif-v9-cyrillic-700.woff2') format('woff2'),
           url('./noto-serif-v9-cyrillic-700.woff') format('woff'),
-          url('./noto-serif-v9-cyrillic-700.ttf') format('truetype'),
+ */          url('./noto-serif-v9-cyrillic-700.ttf') format('truetype'),
 }
