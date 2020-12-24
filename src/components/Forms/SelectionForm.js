@@ -164,7 +164,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
   <FormContainer>
     { array.map((item, i) => (
           <StyledLi key={i + item.id}>
-            <RadioInputLabel bg={item.image} htmlFor={item.id} labelText={item.name}>
+            <RadioInputLabel bg={item.image || cardBg} htmlFor={item.id} labelText={item.name}>
               <LabelTitle>{item.name}</LabelTitle>
               <LabelInfo>{item.info}</LabelInfo>
               <RadioInput

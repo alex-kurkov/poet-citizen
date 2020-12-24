@@ -78,7 +78,7 @@ const Info = () => {
         <IntroParagraf key={`intropar-${i}`}>{item}</IntroParagraf>
       ))}
 
-        <IntroGoalDiv>
+        <IntroGoalDiv as="div">
           <IcQuotesWrap>
               <IcQuote fill="#FF7A00" />
           </IcQuotesWrap>

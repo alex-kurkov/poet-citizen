@@ -32,9 +32,7 @@ const ActiveItemNumber = styled.p`
   margin-bottom: 0;
 `;
 
-const ActiveList = ({ array }) => {
-  console.log(array);
-  return (
+const ActiveList = ({ array }) => (
   <ActiveContainer>
     {array.map((item, i) => (
         <li key={`activity-${i}`}>
@@ -45,7 +43,6 @@ const ActiveList = ({ array }) => {
         </li>
     ))}
   </ActiveContainer>
-  );
-};
+);
 
 export default ActiveList;
