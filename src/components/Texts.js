@@ -43,16 +43,20 @@ const LeadMainText = styled(ParagraphOpenSans)`
   line-height: 1.2;
   font-size: 36px;
   color: ${((props) => props.color)};
+  &::first-letter {
+    color: #FF7A00;
+  }
 `;
 const PoemText = styled(ParagraphNoto)`
   font-size: 18px;
   line-height: 1.6;
   white-space: pre;
+  color: #F2F2F2;
 `;
-const LeadText = styled(ParagraphNoto)`
+const LeadText = styled(ParagraphOpenSans)`
   grid-area: info;
   font-size: 18px;
-  color: #000;
+  color: #F2F2F2;
 `;
 const LeadHelper = styled(ParagraphNoto)`
   grid-area: helper;
@@ -78,7 +82,9 @@ const IntroBrief = styled(ParagraphOpenSans)`
   margin-top: 0;
   margit-bottom: 0;
 `;
-
+const OrangeSpan = styled.span`
+  color: #FF7A00;
+`;
 const ActiveTitle = styled(ParagraphOpenSans)`
   margin: 88px 0 36px;
   font-weight: normal;
@@ -213,4 +219,5 @@ export {
   FooterLink,
   FooterText,
   FooterExtLink,
+  OrangeSpan,
 };

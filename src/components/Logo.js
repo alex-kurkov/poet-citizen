@@ -29,6 +29,7 @@ const move = keyframes`
 const LogoWrap = styled(Link)`
   height: 100%;
   display: block;
+  min-width: 240px;
   cursor: inherit;
   background: none;
   transition: opacity 0.3s ease-in-out;

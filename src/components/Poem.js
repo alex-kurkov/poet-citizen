@@ -5,36 +5,29 @@ import { PoemText } from './Texts';
 import IcQuote from './IcQuote';
 
 const PoemBlock = styled.div`
-  width: 264px;
-  height: 456px;
+  width: 35%;
+  margin-left: 12px;
+  height: 480px;
   position: relative;
-  background-color: white;
+  background-color: rgba(242, 242, 242, .25);
   padding: 52px 32px;
   box-sizing: border-box;
 `;
-const IcQuotesDiv = styled.div`
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  border-radius: 50%;
-  background-color: #DEDEDE;
-  color: #000;
-`;
 const IcQuotesWrap = styled.div`
-  width: 50%;
-  height: 50%;
-  margin: 0 auto;
-  padding: 25px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0px;
+  left: -12px;
+  border-radius: 50%;
+  background: none;
 `;
+
 const Poem = ({ poem }) => (
     <PoemBlock>
-      <IcQuotesDiv>
-        <IcQuotesWrap>
-          <IcQuote fill="#000"/>
-        </IcQuotesWrap>
-      </IcQuotesDiv>
+      <IcQuotesWrap>
+          <IcQuote fill="#FF7A00"/>
+      </IcQuotesWrap>
         <PoemText>
           {poem}
         </PoemText>
