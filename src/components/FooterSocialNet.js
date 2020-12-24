@@ -54,17 +54,17 @@ const FooterSocialNet = () => {
 
         <FooterStyledLinksBar>
           <FooterSocNetLinksContainer>
-            <SocialIcon as="a" href={socialNetLinks.telegram}>
-              <Telegram fill="#fff" target="blank" />
+            <SocialIcon as="a" target="_blank" href={socialNetLinks.telegram}>
+              <Telegram fill="#fff" />
             </SocialIcon>
-            <SocialIcon as="a" href={socialNetLinks.instagram}>
-              <Instagram fill="#fff" target="blank" />
+            <SocialIcon as="a" target="_blank" href={socialNetLinks.instagram}>
+              <Instagram fill="#fff" />
             </SocialIcon>
-            <SocialIcon as="a" href={socialNetLinks.twitter}>
-              <Twitter fill="#fff" target="blank" />
+            <SocialIcon as="a" target="_blank" href={socialNetLinks.twitter}>
+              <Twitter fill="#fff" />
             </SocialIcon>
-            <SocialIcon as="a" href={socialNetLinks.vkontakte}>
-              <Vkontakte fill="#fff" target="blank" />
+            <SocialIcon as="a" target="_blank" href={socialNetLinks.vkontakte}>
+              <Vkontakte fill="#fff" />
             </SocialIcon>
           </FooterSocNetLinksContainer>
         </FooterStyledLinksBar>
