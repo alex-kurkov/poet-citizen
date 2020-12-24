@@ -301,6 +301,7 @@ const App = () => {
                   poem={poem}
                   route="/complain"
                   handleCallSubmit={handleCallSubmit}
+                  setUserOrganizationId={setUserOrganizationId}
                   setUserPoemZero={setUserPoemZero}
                   setUserPoemOne={setUserPoemOne}
                   setUserPoemTwo={setUserPoemTwo}
@@ -329,6 +330,7 @@ const App = () => {
                   poem={poem}
                   route="/join"
                   handleCallSubmit={handleCallSubmit}
+                  setUserOrganizationId={setUserOrganizationId}
                   setUserPoemZero={setUserPoemZero}
                   setUserPoemOne={setUserPoemOne}
                   setUserPoemTwo={setUserPoemTwo}

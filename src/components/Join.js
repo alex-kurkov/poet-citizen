@@ -18,6 +18,7 @@ const CallSection = styled.section`
 `;
 
 const Call = ({
+  setUserOrganizationId,
   setUserPoemZero,
   setUserPoemOne,
   setUserPoemTwo,
@@ -84,6 +85,7 @@ const Call = ({
  */
   const handleOrganizationSelection = (e) => {
     setUserPoemOne(e.currentTarget.value);
+    setUserOrganizationId(e.currentTarget.id);
   };
 
   const handleEmotionSelection = (e) => {
