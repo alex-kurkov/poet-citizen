@@ -7,14 +7,20 @@ import leadBG from '../img/main-lead-bg.png';
 /* import PropTypes from 'prop-types'; */
 
 const LeadSection = styled.section`
-  width: 1440px;
+  background: #212228;
   height: 636px;
-  box-sizing: border-box;
-  margin: 0 auto;
+  width: 100%;
   background: url(${leadBG});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+`;
+
+const LeadWrap = styled.div`
+  width: 1440px;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
   padding: 105px 252px 75px 252px;
 `;
 
@@ -78,14 +84,16 @@ const Lead = ({ texts }) => {
   const { rhyme, info, title } = texts;
   return (
     <LeadSection>
-      <LeadBlock>
-        <Poem poem={rhyme}/>
-        <LeadInfoDiv>
-          <LeadMainText>{title}</LeadMainText>
-            <LeadText>{info}</LeadText>
-          <LeadButton as={Link} to="/call">Предложить</LeadButton>
-        </LeadInfoDiv>
-      </LeadBlock>
+      <LeadWrap>
+        <LeadBlock>
+          <Poem poem={rhyme}/>
+          <LeadInfoDiv>
+            <LeadMainText>{title}</LeadMainText>
+              <LeadText>{info}</LeadText>
+            <LeadButton as={Link} to="/call">Предложить</LeadButton>
+          </LeadInfoDiv>
+        </LeadBlock>
+      </LeadWrap>
     </LeadSection>
   );
 };

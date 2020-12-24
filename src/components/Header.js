@@ -5,10 +5,16 @@ import Logo from './Logo';
 import LinksBar from './LinksBar';
 import { ProfileBtn } from './Buttons/index';
 
-const AppHeader = styled.header`
+const HeaderSection = styled.header`
+  background: #212228;
+  height: 64px;
+  width: 100%;
+`;
+
+const AppHeader = styled.div`
   box-sizing: border-box;
   width: 1440px;
-  height: 64px;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -28,11 +34,13 @@ const AppHeader = styled.header`
 `;
 
 const Header = ({onProfileBtnClick, loggedIn}) => (
+   <HeaderSection>
     <AppHeader>
-      <Logo />
-      <LinksBar />
-      <ProfileBtn loggedIn={loggedIn} onClick={onProfileBtnClick}/>
-    </AppHeader>
+        <Logo />
+        <LinksBar />
+        <ProfileBtn loggedIn={loggedIn} onClick={onProfileBtnClick}/>
+      </AppHeader>
+   </HeaderSection> 
 );
 
 Header.propTypes = {
