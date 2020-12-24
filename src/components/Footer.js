@@ -9,7 +9,7 @@ const FooterSection = styled.footer`
   height: 196px;
   width: 100%;
 `;
-const FooterWrap = styled.footer`
+const FooterWrap = styled.div`
   background: none;
   box-sizing: border-box;
   padding: 36px 156px 92px 156px;
