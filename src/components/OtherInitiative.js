@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
 import Card from './Card';
 import FormArrowBtn from './Buttons/FormArrowBtn';
+import config from '../config';
 
 const OtherInitiativeSection = styled.section`
   width: 1440px;
@@ -15,7 +16,10 @@ const OtherInitiativeSection = styled.section`
   padding: 100px 100px;
 `;
 
-const OtherInitiative = ({ currentUser, cards, onCardLike, onCardDislike}) => {
+const OtherInitiative = ({ currentUser, cards, onCardLike, onCardDislike }) => {
+  const { rhymes } = config;
+  const allOrganization = rhymes.organization;
+
   return (
     <OtherInitiativeSection>
       <Carousel
@@ -28,6 +32,7 @@ const OtherInitiative = ({ currentUser, cards, onCardLike, onCardDislike}) => {
         {cards.map((card, idx) => <
           Card key={`${idx}-${card._id}`}
           card={card}
+          allOrganization={allOrganization}
           currentUser={currentUser}
           onCardLike={onCardLike}
           onCardDislike={onCardDislike}

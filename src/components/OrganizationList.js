@@ -25,6 +25,9 @@ const OrganizationBox = styled.div`
   width: 100%;
   height: 100%;
   background: #eee;
+   ${({ bg }) => `
+  background: url(${bg});
+  `}
 `;
 
 const OrganizationItem = styled.p`
@@ -41,7 +44,7 @@ const OrganizationList = ({ array }) => (
   <OrganizationContainer>
     {array.map((item, i) => (
         <li key={i + item.id}>
-          <OrganizationBox>
+        <OrganizationBox bg={item.image}>
             <OrganizationItem>{item.name}</OrganizationItem>
           </OrganizationBox>
         </li>

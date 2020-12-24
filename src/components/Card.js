@@ -121,18 +121,20 @@ const CardElementLikeSum = styled.p`
 `;
 
 
-const Card = ({ currentUser, onCardLike, onCardDislike, card }) => {
+const Card = ({ currentUser, onCardLike, onCardDislike, card, allOrganization }) => {
   const {
-    rhyme, link, likes, dislikes, createdAt
+    rhyme, link, likes, dislikes, createdAt,
   } = card;
 
   const liked = likes.some((item) => item._id === currentUser._id);
   const disliked = dislikes.some((item) => item._id === currentUser._id);
+  const organization = allOrganization.filter((item) => item.id === card.organization);
+  const organizationLink = (organization.length === 0) ? link : organization[0].image;
 
   return (
     <CardElementDiv>
       <CardElementContainerDiv>
-        <CardElementImg src={link} alt="Изображение инициативы" />
+        <CardElementImg src={organizationLink} alt="Изображение инициативы" />
         <CardElementData>{createdAt}</CardElementData>
       </CardElementContainerDiv>
       <CardElementRhymeDiv>
