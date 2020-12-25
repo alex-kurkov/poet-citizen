@@ -42,12 +42,12 @@ const ActionBox = styled.button`
   cursor: pointer;
   border: none;
   border-radius: 2px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   ${({ bg }) => `
   background: url(${bg});
   `}
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &:hover {
    transform: scale(1.2);
