@@ -4,7 +4,7 @@ import Overlay from './Overlay';
 import Form from '../Forms/Form';
 import Modal from './Modal';
 import { CloseButton } from '../Buttons/index';
-import {AuthMsgLink, AuthMsg} from '../Texts';
+import { SubmitBtn, SwapAuthBtn, ButtonWrapper } from '../Forms/FormStyledElements';
 
 const PopupWithForm = ({
   title,
@@ -23,14 +23,15 @@ const PopupWithForm = ({
       <Form
         onSubmit={onSubmit}
         title={title}
-        formButtonText={formButtonText}
         belongsTo="modal"
-        anyInputInvalid={anyInputInvalid}>
+      >
           { children }
+          <ButtonWrapper>
+            <SubmitBtn disabled={anyInputInvalid}>{formButtonText}</SubmitBtn>
+            { authStatus && (<SwapAuthBtn type="button" onClick={handleAuthLinkClick}>{authStatus.linkText}</SwapAuthBtn>
+              )}
+          </ButtonWrapper>
       </ Form>
-      { authStatus && (<AuthMsg>{authStatus.text}
-        <AuthMsgLink as="a" onClick={handleAuthLinkClick}>{authStatus.linkText}</AuthMsgLink>
-      </AuthMsg>)}
     </Modal>
   </Overlay>
 );

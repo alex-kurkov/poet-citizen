@@ -69,7 +69,6 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
             name="email"
             noValidate />
           {errors.email && <ErrorIndicator/>}
-          {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
         </StyledLabel>
         <StyledLabel>
           Пароль
@@ -83,8 +82,9 @@ const Login = ({ handleLogin, isOpen, onClose, handleAuthLinkClick, authStatus }
             placeholder="Пароль"
             noValidate />
           {errors.password && <ErrorIndicator/>}
-          {errors.password && showError.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </StyledLabel>
+        {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+        {errors.password && showError.password && <ErrorMessage>{errors.password}</ErrorMessage>}
       </PopupWithForm>
   );
 };
