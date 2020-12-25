@@ -46,6 +46,7 @@ const LeadMainText = styled(ParagraphOpenSans)`
   align-self: end;
   line-height: 1.2;
   font-size: 36px;
+  color: #f2f2f2;
   color: ${((props) => props.color)};
   &::first-letter {
     color: #FF7A00;
@@ -62,18 +63,18 @@ const LeadText = styled(ParagraphOpenSans)`
   font-size: 18px;
   color: #F2F2F2;
 `;
-const LeadHelper = styled(ParagraphNoto)`
+const LeadHelper = styled(ParagraphOpenSans)`
   grid-area: helper;
   font-size: 18px;
-  color: #000;
+  color: #f2f2f2;
 `;
-const LeadNavigation = styled(ParagraphNoto)`
+const LeadNavigation = styled(ParagraphOpenSans)`
   grid-area: nav;
   font-size: 18px;
-  color: #000;
+  color: #f2f2f2;
 `;
 
-const IntroGoal = styled(ParagraphNoto)`
+const IntroGoal = styled(ParagraphOpenSans)`
   font-weight: 600;
   font-size: 20px;
   line-height: 34px;
