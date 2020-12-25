@@ -157,14 +157,14 @@ const AuthMsgLink = styled(ParagraphOpenSans)`
 const FooterLink = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
-  color: #fff;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  transition: opacity 0.3s ease-in-out;
+  color: #f2f2f2;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    opacity: 0.6;
+    color: #43D3B2;
   }
   @media screen and (max-width: 767px) {
   }
@@ -176,14 +176,14 @@ const FooterLink = styled(ParagraphOpenSans)`
 const FooterExtLink = styled.a`
   width: 28px;
   height: 28px;
-  color: #fff;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  transition: opacity 0.3s ease-in-out;
+  color: #f2f2f2;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    opacity: .6;
+    color: #43D3B2;
   }
   @media screen and (max-width: 767px) {
   }
@@ -195,7 +195,7 @@ const FooterExtLink = styled.a`
 const FooterText = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
-  color: #fff;
+  color: #f2f2f2;
   margin-top: 0;
   margin-bottom: 0;
 `;

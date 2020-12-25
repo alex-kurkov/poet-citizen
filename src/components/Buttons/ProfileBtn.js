@@ -31,7 +31,7 @@ const ProfileButton = styled.div`
   padding: 0;
 
   &&:hover .path {
-      fill: orange;
+      fill: #FF7A00;
   }
   
   ${({loggedIn}) => loggedIn

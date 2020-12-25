@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import config from '../config';
-import { FooterText } from './Texts';
+import { FooterLink } from './Texts';
 import { Telegram, Instagram, Twitter, Vkontakte } from './icons/index';
 
 const FooterSocNetBox = styled.div`
@@ -70,7 +70,7 @@ const FooterSocialNet = () => {
         </FooterStyledLinksBar>
 
 
-        <FooterText as="a" href="mailto:grazhdaninpoet@yandex.ru">grazhdaninpoet@yandex.ru</FooterText>
+        <FooterLink as="a" href="mailto:grazhdaninpoet@yandex.ru">grazhdaninpoet@yandex.ru</FooterLink>
 
     </FooterSocNetBox>
   );
