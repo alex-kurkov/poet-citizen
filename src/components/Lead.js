@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components/macro';
-import leadBG from '../img/main-lead-bg.png';
+import leadBG from '../img/mainlead.jpg';
 import Carousel from 'react-elastic-carousel';
 import {FormArrowBtnLead} from './Buttons/FormArrowBtn';
 import Slide from './Slide'
