@@ -10,7 +10,7 @@ const ArrowBtn = styled.div`
   transform: translate(0px, 200px);
   ${(props) => props.disabled
     && ` cursor: inherit;
-      opacity: .3;
+      opacity: 0;
     `}
 `;
 
