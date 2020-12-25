@@ -19,17 +19,21 @@ const ParagraphNoto = styled(Paragraph)`
 `;
 const NavBarLink = styled(ParagraphOpenSans)`
   font-size: 18px;
-  display: block;
-  padding: 8px 20px;
+  display: inline-block;
   color: #F2F2F2;
   line-height: 19px;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  transition: opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
 
   &:hover {
-    opacity: .6;
+    color: #FF7A00;
+    transform: scale(1.1);
+  }
+  &:clicked {
+    color: #FF7A00;
   }
   @media screen and (max-width: 767px) {
   }
@@ -42,6 +46,7 @@ const LeadMainText = styled(ParagraphOpenSans)`
   align-self: end;
   line-height: 1.2;
   font-size: 36px;
+  color: #f2f2f2;
   color: ${((props) => props.color)};
   &::first-letter {
     color: #FF7A00;
@@ -58,18 +63,18 @@ const LeadText = styled(ParagraphOpenSans)`
   font-size: 18px;
   color: #F2F2F2;
 `;
-const LeadHelper = styled(ParagraphNoto)`
+const LeadHelper = styled(ParagraphOpenSans)`
   grid-area: helper;
   font-size: 18px;
-  color: #000;
+  color: #f2f2f2;
 `;
-const LeadNavigation = styled(ParagraphNoto)`
+const LeadNavigation = styled(ParagraphOpenSans)`
   grid-area: nav;
   font-size: 18px;
-  color: #000;
+  color: #f2f2f2;
 `;
 
-const IntroGoal = styled(ParagraphNoto)`
+const IntroGoal = styled(ParagraphOpenSans)`
   font-weight: 600;
   font-size: 20px;
   line-height: 34px;
@@ -157,14 +162,14 @@ const AuthMsgLink = styled(ParagraphOpenSans)`
 const FooterLink = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
-  color: #fff;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  transition: opacity 0.3s ease-in-out;
+  color: #f2f2f2;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    opacity: 0.6;
+    color: #43D3B2;
   }
   @media screen and (max-width: 767px) {
   }
@@ -176,14 +181,14 @@ const FooterLink = styled(ParagraphOpenSans)`
 const FooterExtLink = styled.a`
   width: 28px;
   height: 28px;
-  color: #fff;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  transition: opacity 0.3s ease-in-out;
+  color: #f2f2f2;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    opacity: .6;
+    color: #43D3B2;
   }
   @media screen and (max-width: 767px) {
   }
@@ -195,7 +200,7 @@ const FooterExtLink = styled.a`
 const FooterText = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
-  color: #fff;
+  color: #f2f2f2;
   margin-top: 0;
   margin-bottom: 0;
 `;

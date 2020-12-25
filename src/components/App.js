@@ -23,6 +23,10 @@ import InfoTooltip from './Popups/InfoTooltip';
 import LoginPopup from './Popups/LoginPopup';
 import EditProfilePopup from './Popups/EditProfilePopup';
 import Footer from './Footer';
+import callLeadBg from '../img/lead-call.jpg';
+import complainLeadBg from '../img/lead-complain.jpg';
+import exploreLeadBg from '../img/lead-explore.jpg';
+import joinLeadBg from '../img/lead-join.jpg';
 
 const Page = styled.div`
   min-width: 1440px;
@@ -238,6 +242,7 @@ const App = () => {
             </Route>
             <Route path="/call">
               <InitLead
+                background={callLeadBg}
                 poem={poem}
                 leadPoemBlockVisibility={leadPoemBlockVisibility}
                 leadTexts={
@@ -267,6 +272,7 @@ const App = () => {
 
             <Route path="/explore">
             <ExploreLead
+                background={exploreLeadBg}
                 leadTexts={
                   {
                     leadTitle: config.leadTexts.routeExplore.title,
@@ -286,6 +292,7 @@ const App = () => {
 
             <Route path="/complain">
               <InitLead
+                  background={complainLeadBg}
                   poem={poem}
                   leadPoemBlockVisibility={leadPoemBlockVisibility}
                   leadTexts={
@@ -315,6 +322,7 @@ const App = () => {
 
             <Route path="/join">
             <InitLead
+                  background={joinLeadBg}
                   poem={poem}
                   leadPoemBlockVisibility={leadPoemBlockVisibility}
                   leadTexts={

@@ -4,13 +4,23 @@ import { useHistory } from 'react-router-dom';
 import { LeadMainText, LeadText, LeadNavigation } from './Texts';
 /* import PropTypes from 'prop-types'; */
 
-const InitLeadSection = styled.section`
-  width: 1440px;
+
+const LeadSection = styled.section`
+  background: #212228;
   height: 472px;
+  width: 100%;
+  background: url(${({leadBG}) => leadBG});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+const LeadWrap = styled.div`
+  width: 1440px;
+  height: 100%;
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: #C4C4C4;
-  padding: 32px 156px;
+  padding: 60px 24px;
 `;
 
 const LeadBlock = styled.div`
@@ -49,7 +59,7 @@ const ActionBtn = styled.button`
   }
 `;
 
-const InitLead = ({ leadTexts }) => {
+const InitLead = ({ leadTexts, background }) => {
   const {
     leadTitle,
     leadInfoText,
@@ -59,18 +69,20 @@ const InitLead = ({ leadTexts }) => {
   const history = useHistory();
 
   return (
-    <InitLeadSection>
-      <LeadBlock>
-        <LeadNavigation>{leadNav}</LeadNavigation>
-        <LeadMainText>{leadTitle}</LeadMainText>
-        <LeadText>{leadInfoText}</LeadText>
-        <ActionBtn
-          type="button"
-          onClick={() => history.push('/call')}>
-        {'Предложи свою\nинициативу.\nСделай мир лучше'}
-        </ActionBtn>
-      </LeadBlock>
-    </InitLeadSection>
+    <LeadSection leadBG={background}>
+      <LeadWrap>
+        <LeadBlock>
+          <LeadNavigation>{leadNav}</LeadNavigation>
+          <LeadMainText>{leadTitle}</LeadMainText>
+          <LeadText>{leadInfoText}</LeadText>
+          <ActionBtn
+            type="button"
+            onClick={() => history.push('/call')}>
+          {'Предложи свою\nинициативу.\nСделай мир лучше'}
+          </ActionBtn>
+        </LeadBlock>
+      </LeadWrap>
+    </LeadSection>
   );
 };
 

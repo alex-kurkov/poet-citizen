@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { FooterText } from './Texts';
+import { FooterLink, FooterText } from './Texts';
 
 const FooterBox = styled.ul`
   display: grid;
@@ -32,7 +32,7 @@ const FooterTradeMark = () => {
       <FooterText>&copy; {yearNow}  “Гражданин поэт”</FooterText>
       </FooterBoxLiItem>
       <FooterBoxLiItem>
-              <FooterText>Разработано студентами Яндекс.Практикума</FooterText>
+              <FooterLink as="a" href="https://praktikum.yandex.ru/profile/web/" target="_blank">Разработано студентами Яндекс.Практикума</FooterLink>
       </FooterBoxLiItem>
     </FooterBox>
   );
