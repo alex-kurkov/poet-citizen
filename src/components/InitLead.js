@@ -52,6 +52,9 @@ const InitPoemWrapper = styled.div`
   height: 100%;
   box-sizing: border-box;
   background: none;
+  font-family: Noto serif, serif;
+  font-size: 20px;
+  font-weight: 400;
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: pre;
