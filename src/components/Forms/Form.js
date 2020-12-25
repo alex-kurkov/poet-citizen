@@ -5,11 +5,10 @@ import {
   StyledForm,
   StyledFieldset,
   StyledLegend,
-  SubmitBtn,
 } from './FormStyledElements';
 
 const Form = ({
-  onSubmit, title, formButtonText, anyInputInvalid, children,
+  onSubmit, title, children,
 }) => (
   <StyledForm onSubmit={onSubmit}>
 
@@ -17,12 +16,6 @@ const Form = ({
       <StyledLegend>{title}</StyledLegend>
       {children}
     </StyledFieldset>
-
-    <div>
-      <SubmitBtn disabled={anyInputInvalid}>
-        {formButtonText}
-      </SubmitBtn>
-    </div>
   </StyledForm>
 );
 

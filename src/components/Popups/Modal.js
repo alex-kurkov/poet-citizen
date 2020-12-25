@@ -6,10 +6,10 @@ const StyledModal = styled.div`
   box-sizing: border-box;
   position: absolute;
   width: 360px;
-  background-color: #fff;
-  border-radius: 10px;
+  background-color: #f2f2f2;
+  border-radius: 2px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  padding: 40px 24px 64px;
+  padding: 24px;
   transition: visibility 0s, opacity .5s ease;
   z-index: 99;
 

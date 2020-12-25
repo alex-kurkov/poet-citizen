@@ -108,7 +108,6 @@ const IntroParagraf = styled(ParagraphOpenSans)`
   margin-top: 0;
   margin-bottom: 20px;
   width: 90%;
-
   tab-size: 12px;
 `;
 
@@ -144,26 +143,6 @@ const IntroTitleDiv = styled.p`
  margin-bottom: 0;
 `;
 
-const AuthMsg = styled(ParagraphOpenSans)`
-  font-size: 14px;
-  margin: 16px auto 0 auto;
-  padding: 0;
-  color: #000;
-  width: 100%;
-`
-const AuthMsgLink = styled(ParagraphOpenSans)`
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-  padding-left: 8px;
-  font-family: Inter, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  transition: color 0.3s ease-in-out;
-  &:hover {
-    color: rgba(0, 0, 0, .6);
-  }
-`
 const FooterLink = styled(ParagraphOpenSans)`
   font-size: 16px;
   line-height: 1.38;
@@ -231,8 +210,6 @@ export {
   IntroGoalDiv,
   IntroTitleDiv,
   IntroParticipationText,
-  AuthMsg,
-  AuthMsgLink,
   FooterLink,
   FooterText,
   FooterExtLink,

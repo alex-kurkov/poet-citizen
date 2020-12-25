@@ -15,7 +15,7 @@ const StyledInput = styled.input`
   cursor: text;
   width: 100%;
   height: 44px;
-  background: #fbfbfb;
+  background: #f2f2f2;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -42,7 +42,10 @@ const ErrorIndicator = styled.div`
   }
 `;
 const ErrorMessage = styled.span`
-  width: 100%;
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  width: calc(100% - 48px);
   height: fit-content;
   font-family: Open Sans, sans-serif;
   font-weight: 400;
@@ -72,10 +75,12 @@ const StyledLegend = styled.legend`
   margin: 0 auto 24px;
   text-align: left;
 `;
-const SubmitBtn = styled.button`
+const Button = styled.button`
+  display: inline-block;
+  width: fit-content;
+  min-width: 30%;
   box-sizing: border-box;
   height: 50px;
-  width: 100%;
   line-height: 1.33;
   border-radius: 2px;
   font-family: Open Sans, sans-serif;
@@ -84,25 +89,40 @@ const SubmitBtn = styled.button`
   cursor: pointer;
   outline: none;
   text-align: center;
-  border: none;
   line-height: 1.2;
-  background-color: #FF7A00;
-  color: #000;
-  padding: 0;
-  transition: opacity .3s ease-in-out;
+  padding: 0 4px;
+  transition: transform .3s ease-in-out;
 
   &:hover {
-    opacity: .65;
+    transform: scale(1.05);
   }
+`
+
+const SubmitBtn = styled(Button)`
+  border: none;
+  background-color: #FF7A00;
+  color: #000;
   ${({ disabled }) => disabled && 
   `
   cursor: inherit;
   opacity: .2;
   &:hover {
-    opacity: .2;
+    transform: none;
   }
   `}
 `
+const SwapAuthBtn = styled(Button)`
+  border: #FF7A00 1px solid;
+  background-color: transparent;
+  color: #212228;
+`
+const ButtonWrapper = styled.div`
+  padding: 16px 0 4px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+`;
 
 export {
   StyledLabel,
@@ -113,4 +133,6 @@ export {
   StyledFieldset,
   StyledLegend,
   SubmitBtn,
+  SwapAuthBtn,
+  ButtonWrapper,
 };

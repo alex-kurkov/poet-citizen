@@ -73,7 +73,6 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
             placeholder="Введите новое имя"
             noValidate />
           {errors.name && <ErrorIndicator/>}
-          {errors.name && showError.name && <ErrorMessage>{errors.name}</ErrorMessage>}
         </StyledLabel>
 
         <StyledLabel>
@@ -89,7 +88,6 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
             placeholder="Фамилия"
             noValidate />
           {errors.surname && <ErrorIndicator/>}
-          {errors.surname && showError.surname && <ErrorMessage>{errors.surname}</ErrorMessage>}
         </StyledLabel>
 
         <StyledLabel>
@@ -105,7 +103,6 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
             name="email"
             noValidate />
           {errors.email && <ErrorIndicator/>}
-          {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
         </StyledLabel>
         <StyledLabel>
           Пароль
@@ -119,8 +116,13 @@ const Register = ({ handleRegister, isOpen, onClose, handleAuthLinkClick, authSt
             placeholder="Пароль"
             noValidate />
           {errors.password && <ErrorIndicator/>}
-          {errors.password && showError.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </StyledLabel>
+
+        {errors.name && showError.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+        {errors.email && showError.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+        {errors.surname && showError.surname && <ErrorMessage>{errors.surname}</ErrorMessage>}
+        {errors.password && showError.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+
       </PopupWithForm>
   );
 };
