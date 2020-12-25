@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { BegeSpan } from '../Texts';
 
 const ActionButton = styled.button`
   position: absolute;
@@ -8,38 +9,32 @@ const ActionButton = styled.button`
   grid-area: action;
   align-self: end;
   justify-self: end;
-  width: 332px;
-  height: 332px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-weight: 600px;
   font-size: 26px;
-  background: #e0e0e0;
+  background: #FF7A00;
   border: none;
+  white-space: pre;
+  transition: all ease-in-out .3s;
 
   &:hover {
-    opacity: 0.7;
-    transition: opacity ease-in-out 0.3s;
+    width: 372px;
+    height: 372px;
+    box-shadow: 0 0 25px #FF7A00;
   }
   &:focus {
     outline: none;
   }
 `;
 
-const ActionButtonText = styled.p`
-  margin-top: 0;
-  margin-bottom: 0;
-`;
-
-const ActionButtonTextSpan = styled.span`
-  color: #ff7a00;
-`;
 
 const ActionBtn = ({ handleRedirect, text, textSpan }) => (
-  <ActionButton type="button" onClick={handleRedirect}>
-    <ActionButtonText>{text}{' '}
-      <ActionButtonTextSpan> {textSpan}</ActionButtonTextSpan>
-    </ActionButtonText>
+  <ActionButton type='button' onClick={handleRedirect}>
+    {'Предложите\nвигилантам\nсделать '}
+    <BegeSpan>{'доброе\nдело'}</BegeSpan>
   </ActionButton>
 );
 
