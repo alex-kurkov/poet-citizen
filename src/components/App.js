@@ -384,7 +384,7 @@ const App = () => {
           onClose={closePopups}
           authStatus={{
             text: 'Хотите выйти?',
-            linkText: 'Нажмите сюда',
+            linkText: 'Хотите выйти?',
           }}
           handleAuthLinkClick={handleLogout}
           currentUser={currentUser}

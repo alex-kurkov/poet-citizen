@@ -77,7 +77,7 @@ const StyledLegend = styled.legend`
 `;
 const Button = styled.button`
   display: inline-block;
-  width: -webkit-fill-available;
+  width: initial;
   min-width: 30%;
   box-sizing: border-box;
   height: 50px;
@@ -118,8 +118,8 @@ const SwapAuthBtn = styled(Button)`
 `
 const ButtonWrapper = styled.div`
   padding: 16px 0 4px 0;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(min-content,75%) minmax(min-content,75%);
   gap: 8px;
   justify-content: space-between;
 `;
