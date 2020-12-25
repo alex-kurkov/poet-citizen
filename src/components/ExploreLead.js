@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useHistory } from 'react-router-dom';
-import { LeadMainText, LeadText, LeadNavigation } from './Texts';
+import { LeadMainText, LeadText, LeadNavigation, OrangeSpan } from './Texts';
 /* import PropTypes from 'prop-types'; */
 
 
@@ -41,18 +41,22 @@ const ActionBtn = styled.button`
   grid-area: action;
   align-self: center;
   justify-self: center;
-  width: 332px;
-  height: 332px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
   font-family: 'Open Sans';
-  font-weight: 500px;
+  font-weight: 600px;
   font-size: 24px;
-  background: #fff;
+  background: #f2f2f2;
   border: none;
+  white-space: pre;
+  transition: all ease-in-out .3s;
 
   &:hover {
-    opacity: .7;
-    transition: opacity ease-in-out .3s;
+    width: 372px;
+    height: 372px;
+/*     font-size: 25px; */
+    box-shadow: 0 0 25px #FF7A00;
   }
   &:focus {
     outline: none;
@@ -78,7 +82,8 @@ const InitLead = ({ leadTexts, background }) => {
           <ActionBtn
             type="button"
             onClick={() => history.push('/call')}>
-          {'Предложи свою\nинициативу.\nСделай мир лучше'}
+              {'Предложи\nсвою инициативу\n'}
+              <OrangeSpan>Сделай мир лучше</OrangeSpan>
           </ActionBtn>
         </LeadBlock>
       </LeadWrap>
