@@ -13,6 +13,9 @@ const StyledSvg = styled.svg`
   &:hover {
     animation: ${motion} .5s ease-out alternate infinite;
   }
+  &:hover path {
+    stroke: #FF7A00;
+  }
 `;
 
 const RightArrow = ({ fill }) => (

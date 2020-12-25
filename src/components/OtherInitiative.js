@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
 import Card from './Card';
-import FormArrowBtn from './Buttons/FormArrowBtn';
+import { FormArrowBtn } from './Buttons/FormArrowBtn';
 import config from '../config';
 
 const OtherInitiativeSection = styled.section`

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components/macro';
 import leadBG from '../img/main-lead-bg.png';
 import Carousel from 'react-elastic-carousel';
-import FormArrowBtn from './Buttons/FormArrowBtn';
+import {FormArrowBtnLead} from './Buttons/FormArrowBtn';
 import Slide from './Slide'
 /* import PropTypes from 'prop-types'; */
 
@@ -29,12 +29,12 @@ const Lead = () => {
     <LeadSection>
       <LeadWrap>
       <Carousel
+          easing="cubic-bezier(1, .15, .50, 1.55)"
           showArrows={true}
           pagination={true}
-  /*             onChange={(item, idx) => setCurrentSlide(`${idx + 1}`)} */
           itemsToShow={1}
           enableSwipe={true}
-          renderArrow={FormArrowBtn}
+          renderArrow={FormArrowBtnLead}
           disableArrowsOnEnd={false}
         >
         <Slide currentSlide="1" />

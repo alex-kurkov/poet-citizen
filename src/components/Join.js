@@ -4,7 +4,7 @@ import Carousel from 'react-elastic-carousel';
 import config from '../config';
 import SelectionForm from './Forms/SelectionForm';
 import SelectionFormEmotion from './Forms/SelectionFormEmotion';
-import FormArrowBtn from './Buttons/FormArrowBtn';
+import { FormArrowBtn }  from './Buttons/FormArrowBtn';
 import Success from './Success';
 /* import PropTypes from 'prop-types'; */
 
