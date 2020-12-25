@@ -19,17 +19,21 @@ const ParagraphNoto = styled(Paragraph)`
 `;
 const NavBarLink = styled(ParagraphOpenSans)`
   font-size: 18px;
-  display: block;
-  padding: 8px 20px;
+  display: inline-block;
   color: #F2F2F2;
   line-height: 19px;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  transition: opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
 
   &:hover {
-    opacity: .6;
+    color: #FF7A00;
+    transform: scale(1.1);
+  }
+  &:clicked {
+    color: #FF7A00;
   }
   @media screen and (max-width: 767px) {
   }
