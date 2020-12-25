@@ -68,7 +68,6 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
             placeholder="Введите новое имя"
             noValidate />
           {errors.name && <ErrorIndicator/>}
-          {errors.name && showError.name && <ErrorMessage>{errors.name}</ErrorMessage>}
         </StyledLabel>
 
         <StyledLabel>
@@ -84,9 +83,10 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
             placeholder="Фамилия"
             noValidate />
           {errors.surname && <ErrorIndicator/>}
-          {errors.surname && showError.surname && <ErrorMessage>{errors.surname}</ErrorMessage>}
 
         </StyledLabel>
+        {errors.name && showError.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+        {errors.surname && showError.surname && <ErrorMessage>{errors.surname}</ErrorMessage>}
     </PopupWithForm>);
 };
 

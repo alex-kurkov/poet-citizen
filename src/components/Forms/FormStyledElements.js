@@ -77,7 +77,7 @@ const StyledLegend = styled.legend`
 `;
 const Button = styled.button`
   display: inline-block;
-  width: fit-content;
+  width: -webkit-fill-available;
   min-width: 30%;
   box-sizing: border-box;
   height: 50px;
