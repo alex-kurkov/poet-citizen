@@ -70,7 +70,7 @@ const RadioInputLabel = styled.label`
   gap: 4px;
 
   &:hover .path {
-    fill: orange;
+    fill: #FF7A00;
     transition: fill .3s ease-in-out;
   } 
 /*   &:hover .emoticon {
