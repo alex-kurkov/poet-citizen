@@ -17,13 +17,16 @@ const FormContainer = styled.ul`
 `;
 const ChozenLayer = styled.div`
       opacity: 0;
-      width: 0px;
+      width: 0;
+      height: 0;
+      box-sizing: border-box;
       position: absolute;
-      color: #ff7a00;
-      font-size: 100px;
-      top: 50%;
-      left: 40%;
+      top: 0;
+      left: 0;
       z-index: 20;
+      box-shadow: 0px 0px 28px #FF7A00;
+/*       border-top: orange 8px solid;
+      border-bottom: orange 8px solid; */
 `;
 const RadioInput = styled.input`
   display: none;
@@ -32,7 +35,7 @@ const RadioInput = styled.input`
       width: 100%;
       height: 100%;
       opacity: 1;
-      transition: opacity 0.2s ease-out, width 0.2s ease-out;
+      transition: all 0.2s ease-out, width 0.2s ease-out;
       }
     }
 `;
@@ -101,6 +104,7 @@ const StyledLi = styled.li`
   width: 96%;
   height: 96%;
   position: relative;
+  box-shadow: 0px 5px 5px rgba(0,0,0,.3);
   &:hover:nth-child(1) {
     ${RadioInputLabel} {
       transform-origin: bottom right;
