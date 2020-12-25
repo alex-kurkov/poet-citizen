@@ -16,4 +16,5 @@ button.rec-dot:focus {
 
 button.rec-dot:hover {
   transform: scale(1.5);
+  box-shadow: 0 0 2px 4px #43D3B2;
 }

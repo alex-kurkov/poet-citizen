@@ -15,7 +15,15 @@ const ArrowBtn = styled.div`
 `;
 
 const FormArrowBtn = ({ type, onClick, isEdge }) => {
-  const pointer = type === consts.PREV ? <LeftArrow fill="gray"/> : <RightArrow fill="gray"/>;
+  const pointer = type === consts.PREV ? <LeftArrow fill="#212228"/> : <RightArrow fill="#212228"/>;
+  return (
+    <ArrowBtn onClick={onClick} disabled={isEdge}>
+      {pointer}
+    </ArrowBtn>
+  );
+};
+const FormArrowBtnLead = ({ type, onClick, isEdge }) => {
+  const pointer = type === consts.PREV ? <LeftArrow fill="#f2f2f2"/> : <RightArrow fill="#f2f2f2"/>;
   return (
     <ArrowBtn onClick={onClick} disabled={isEdge}>
       {pointer}
@@ -23,4 +31,4 @@ const FormArrowBtn = ({ type, onClick, isEdge }) => {
   );
 };
 
-export default FormArrowBtn;
+export { FormArrowBtn, FormArrowBtnLead };
