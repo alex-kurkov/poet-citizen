@@ -63,6 +63,11 @@ const LeadText = styled(ParagraphOpenSans)`
   font-size: 20px;
   color: #f2f2f2;
 `;
+const SuccessText = styled(ParagraphOpenSans)`
+  grid-area: info;
+  font-size: 20px;
+  color: #212228;
+`;
 const LeadHelper = styled(ParagraphOpenSans)`
   grid-area: helper;
   font-size: 18px;
@@ -233,4 +238,5 @@ export {
   FooterExtLink,
   OrangeSpan,
   OrganizationTextOrange,
+  SuccessText,
 };

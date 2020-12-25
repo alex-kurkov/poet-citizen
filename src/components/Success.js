@@ -4,7 +4,7 @@ import {
   /* useRouteMatch */
 } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import { LeadText } from './Texts';
+import { SuccessText } from './Texts';
 import IcQuote from './IcQuote';
 /* import PropTypes from 'prop-types'; */
 
@@ -120,10 +120,10 @@ const Success = ({ poem, actionBtnRoute = '/', actionBtnText = '' }) => {
         </IcQuotesWrap>
         <PoemBlock>{poem}</PoemBlock>
       </PoemBlockWrapper>
-      <LeadText>
+      <SuccessText>
       Для отправки обращения, после нажатия кнопки “Готово”, Вам потребуется заполнить данные,
       если Вы не зарегистрировыны.
-      </LeadText>
+      </SuccessText>
       <SubmitBtn
         type="submit"
 
