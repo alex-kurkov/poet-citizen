@@ -9,9 +9,20 @@ const PoemBlock = styled.div`
   margin-left: 12px;
   height: 480px;
   position: relative;
-  background-color: rgba(242, 242, 242, .25);
+  background: none;
   padding: 52px 32px;
+  background-color: rgba(242, 242, 242, .25);
   box-sizing: border-box;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    background-color: rgba(242, 242, 242, .25);
+    filter: blur(4px);
+    width: 100%;
+    height: 100%;
+  }
 `;
 const IcQuotesWrap = styled.div`
   width: 50px;

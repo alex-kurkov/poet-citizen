@@ -51,7 +51,6 @@ const LeadButton = styled.button`
   line-height: 1.2;
   padding: 8px 12px;
   background-color: #FF7A00;
-  box-shadow: 0px 0px 10px rgba(242, 242, 242, .3);
 
   @media screen and (max-width: 1023px) {
   }
@@ -60,9 +59,9 @@ const LeadButton = styled.button`
   @media screen and (max-width: 440px) {
   }
   &:hover {
-    box-shadow: 2px 2px 20px rgba(242, 242, 242, .5);
+    transform: scale(1.05);
     color: #f2f2f2;
-    transition: all .3s ease;
+    transition: transform .3s ease-in-out;
   }
 `;
 

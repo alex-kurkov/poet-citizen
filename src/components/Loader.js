@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 const Loader = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 101505;
   top: 50%;
   left: 50%;

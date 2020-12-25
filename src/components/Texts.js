@@ -54,13 +54,15 @@ const LeadMainText = styled(ParagraphOpenSans)`
 `;
 const PoemText = styled(ParagraphNoto)`
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 25px;
   white-space: pre;
   color: #f2f2f2;
+  z-index: 10;
 `;
-const LeadText = styled(ParagraphOpenSans)`
+const LeadText = styled(ParagraphNoto)`
   grid-area: info;
   font-size: 20px;
+  line-height: 33px;
   color: #f2f2f2;
 `;
 const SuccessText = styled(ParagraphOpenSans)`

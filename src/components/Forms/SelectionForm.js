@@ -6,10 +6,10 @@ import cardBg from '../../img/organization_bg.png';
 const FormContainer = styled.ul`
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 260px 260px 260px 260px;
-  column-gap: 24px;
-  grid-template-rows: 204px 204px;
-  row-gap: 36px;
+  grid-template-columns: 280px 280px 280px 280px;
+  column-gap: 12px;
+  grid-template-rows: 220px 220px;
+  row-gap: 12px;
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -24,9 +24,7 @@ const ChozenLayer = styled.div`
       top: 0;
       left: 0;
       z-index: 20;
-      box-shadow: 0px 0px 28px #FF7A00;
-/*       border-top: orange 8px solid;
-      border-bottom: orange 8px solid; */
+      border: #FF7A00 12px solid;
 `;
 const RadioInput = styled.input`
   display: none;
@@ -35,7 +33,7 @@ const RadioInput = styled.input`
       width: 100%;
       height: 100%;
       opacity: 1;
-      transition: all 0.2s ease-out, width 0.2s ease-out;
+      transition: all 0.2s ease-out;
       }
     }
 `;
@@ -45,33 +43,32 @@ const RadioInputLabel = styled.label`
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
-  padding: 44px 28px;
   margin-right: 0;
   line-height: 18px;
   user-select: none;
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  padding: 36px 12px;
+  padding: 36px 16px;
   ${({bg}) => `
   background: url(${bg});
   `}
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: transform 0.3s ease-out;
   }
 
   &:before {
     content: '';
-    width: 90%;
-    height: 90%;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
     display: inline-block;
     position: absolute;
-    left: 5%;
-    bottom: 5%;
+    left: 12px;
+    bottom: 12px;
     z-index: 5;
     background: #F2F2F2;
     opacity: 1;
@@ -101,10 +98,12 @@ const RadioInputLabel = styled.label`
 `;
 
 const StyledLi = styled.li`
-  width: 96%;
-  height: 96%;
+  width: 94%;
+  height: 94%;
+  align-self: center;
+  justify-self: center;
   position: relative;
-  box-shadow: 0px 5px 5px rgba(0,0,0,.3);
+ 
   &:hover:nth-child(1) {
     ${RadioInputLabel} {
       transform-origin: bottom right;
@@ -148,7 +147,7 @@ const StyledLi = styled.li`
 `;
 const LabelTitle = styled.h3`
   display: inline-block;
-  color: orange;
+  color: #FF7A00;
   font-family: Open Sans;
   font-size: 24px;
   line-height: 1.5;
@@ -157,9 +156,10 @@ const LabelTitle = styled.h3`
 `;
 const LabelInfo = styled.span`
   display: block;
-  color: #fff;
+  color: #f2f2f2;
   font-family: Open Sans;
   font-size: 16px;
+  line-height: 1.5;
   font-weight: 400;
 
 `;
@@ -177,7 +177,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
                 id={item.id}
                 name={areaName}
                 value={item.rhyme} />
-              <ChozenLayer>&#10003;</ChozenLayer>
+              <ChozenLayer></ChozenLayer>
           </RadioInputLabel>
           </StyledLi>
     ))

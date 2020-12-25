@@ -43,10 +43,11 @@ const InitPoemWrapper = styled.div`
   grid-area: poem;
   width: 100%;
   height: 100%;
+  border-radius: 2px;
   background-color: rgba(242, 242, 242, .25);
   padding: 12px;
   box-sizing: border-box;
-  `;
+`;
   const InitPoem = styled.div`
   padding: 4px 20px;
   height: 100%;
@@ -58,6 +59,7 @@ const InitPoemWrapper = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: pre;
+  z-index: 12;
 
   &::-webkit-scrollbar {
     width: 4px;
