@@ -14,7 +14,7 @@ const FooterWrap = styled.div`
   box-sizing: border-box;
   padding: 36px 156px 92px 156px;
   width: 1440px;
-  margin: 92px auto 0;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   font-size: 16px;

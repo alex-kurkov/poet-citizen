@@ -10,7 +10,7 @@ import Success from './Success';
 
 const CallSection = styled.section`
   width: 1440px;
-  min-height: 600px;
+  min-height: calc(100vh - 732px);
   box-sizing: border-box;
   margin: 0 auto;
   background-color: #fff;

@@ -8,7 +8,7 @@ import config from '../config';
 
 const OtherInitiativeSection = styled.section`
   width: 1440px;
-  min-height: calc(100vh - 700px);
+  min-height: calc(100vh - 732px);
   box-sizing: border-box;
   margin: 0 auto;
   background-color: #fff;

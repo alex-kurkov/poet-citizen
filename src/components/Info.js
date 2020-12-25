@@ -14,12 +14,12 @@ import {
 
 const InfoBlock = styled.section`
   width: 1440px;
-  min-height: calc(100vh - 700px);
+  min-height: calc(100vh - 896px);
   box-sizing: border-box;
   margin: 0 auto;
   background-color: #fff;
   color: #000;
-  padding: 100px 100px;
+  padding: 100px 100px 240px 100px;
 `;
 
 
