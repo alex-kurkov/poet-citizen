@@ -3,6 +3,9 @@ import styled from 'styled-components/macro';
 import LikeButton2 from './Buttons/LikeButton2';
 import DislikeButton from './Buttons/DislikeButton';
 import organizationBg from '../img/organization_bg.png';
+import { OrganizationTextOrange } from './Texts';
+import formatDate from '../utils/utils';
+import cardBg from '../img/organization_bg.png';
 
 const CardElementDiv = styled.div`
   display: flex;
@@ -20,9 +23,12 @@ const CardElementContainerDiv = styled.div`
   position: relative;
   width: 100%;
   height: 200px;
-  align-items: center;
-  justify-content: center;
-  background: #f2f2f2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  ${({ bg }) => `
+  background: url(${bg});
+  `}
 `;
 
 const CardElementImg = styled.img`
@@ -39,10 +45,11 @@ const CardElementData = styled.p`
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 22px;
+  line-height: 1.38;
   z-index: 1;
   margin-bottom: 0;
   margin-top: 0;
+  color: #F2F2F2;
 `;
 
 const CardElementRhymeDiv = styled.div`
@@ -121,6 +128,14 @@ const CardElementLikeSum = styled.p`
   margin: 0 0 0 20px;
 `;
 
+const OrganizationItem = styled(OrganizationTextOrange)`
+  display: inline-block;
+  font-size: 28px;
+  line-height: 1.36;
+  margin: 20px auto 0 24px;
+`;
+
+
 const Card = ({
   currentUser,
   onCardLike,
@@ -128,7 +143,7 @@ const Card = ({
   card,
   allOrganization,
 }) => {
-  const { rhyme, link, likes, dislikes, createdAt } = card;
+  const { rhyme, likes, dislikes, createdAt } = card;
 
   const liked = likes.some((item) => item._id === currentUser._id);
   const disliked = dislikes.some((item) => item._id === currentUser._id);
@@ -137,12 +152,11 @@ const Card = ({
   );
   const organizationLink =
     organization.length === 0 ? organizationBg : organization[0].image;
-
   return (
     <CardElementDiv>
-      <CardElementContainerDiv>
-        <CardElementImg src={organizationLink} alt='Изображение инициативы' />
-        <CardElementData>{createdAt}</CardElementData>
+      <CardElementContainerDiv bg={organizationLink || cardBg}>
+        <OrganizationItem>{organization[0].name}</OrganizationItem>
+        <CardElementData>{formatDate(createdAt)}</CardElementData>
       </CardElementContainerDiv>
       <CardElementRhymeDiv>
         <RhymeWrap>

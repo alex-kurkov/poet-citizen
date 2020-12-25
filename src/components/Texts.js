@@ -200,6 +200,13 @@ const FooterText = styled(ParagraphOpenSans)`
   margin-bottom: 0;
 `;
 
+const OrganizationTextOrange = styled.h3`
+  font-family: Open Sans, Lato, sans-serif;
+  font-weight: bold;
+  color: #ff7a00;
+`;
+
+
 export {
   LeadMainText,
   LeadText,
@@ -220,4 +227,5 @@ export {
   FooterText,
   FooterExtLink,
   OrangeSpan,
+  OrganizationTextOrange,
 };
