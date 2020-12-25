@@ -7,10 +7,15 @@ import config from '../config';
 import OrganizationList from './OrganizationList';
 import ActionList from './ActionList';
 import ActiveList from './ActiveList';
-import ActionBtn from './ActionButton';
+import ActionBtn from './Buttons/ActionButton';
 import {
   IntroGoal, ActiveTitle, IntroParticipationText, IntroBrief, IntroParagraf, IntroTitleDiv, IntroGoalDiv,
 } from './Texts';
+import {
+  callImg,
+  joinImg,
+  exploreImg,
+} from '../utils/imagesAction'
 
 const InfoBlock = styled.section`
   width: 1440px;
@@ -61,12 +66,22 @@ const Info = () => {
   const { activitiesInfo, introGoal, intro } = infoTexts;
 
   const actionArray = [
-    { title: 'Предложите свою инициативу', id: 'callOwn', link: '/call' },
-    { title: 'Станьте частью движения', id: 'joinMovement', link: '/join' },
     {
-      title: 'Оцените инициативы других',
+      title: ['Предложите', 'свою', 'инициативу'],
+      id: 'callOwn',
+      link: '/call',
+      image: callImg
+    },
+    {
+      title: ['Станьте', 'частью', 'движения'],
+      id: 'joinMovement',
+      link: '/join',
+      image: joinImg },
+    {
+      title: ['Оцените', 'инициативы', 'других'],
       id: 'exploreOther',
       link: '/explore',
+      image: exploreImg
     },
   ];
 
@@ -109,8 +124,8 @@ const Info = () => {
           <ActiveList array={activitiesInfo} />
 
           <ActionBtn
-            text={'Предложи вигилантам сделать доброе дело'}
-            textSpan={''}
+            text={'Предложи вигилантам сделать '}
+            textSpan={'доброе дело'}
             handleRedirect={() => {
               history.push('/call');
             }}

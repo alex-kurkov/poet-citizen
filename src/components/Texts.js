@@ -90,6 +90,11 @@ const IntroBrief = styled(ParagraphOpenSans)`
 const OrangeSpan = styled.span`
   color: #FF7A00;
 `;
+
+const BegeSpan = styled.span`
+  color: #212228;
+`;
+
 const ActiveTitle = styled(ParagraphOpenSans)`
   margin: 88px 0 36px;
   font-weight: normal;
@@ -232,5 +237,6 @@ export {
   FooterText,
   FooterExtLink,
   OrangeSpan,
+  BegeSpan,
   OrganizationTextOrange,
 };

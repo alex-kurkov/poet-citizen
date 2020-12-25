@@ -31,12 +31,6 @@ const CardElementContainerDiv = styled.div`
   `}
 `;
 
-const CardElementImg = styled.img`
-  object-fit: cover;
-  width: 100%;
-  height: 200px;
-`;
-
 const CardElementData = styled.p`
   position: absolute;
   bottom: 12px;

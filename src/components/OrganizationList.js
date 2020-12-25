@@ -27,6 +27,7 @@ const OrganizationBox = styled.div`
   line-height: 18px;
   width: 100%;
   height: 100%;
+  border-radius: 2px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -50,6 +51,7 @@ const OrganizationBox = styled.div`
     z-index: 5;
     background: #f2f2f2;
     opacity: 1;
+    border-radius: 2px;
   }
   &:hover:before {
     opacity: 0;
