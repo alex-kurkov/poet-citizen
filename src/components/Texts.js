@@ -56,12 +56,12 @@ const PoemText = styled(ParagraphNoto)`
   font-size: 18px;
   line-height: 1.6;
   white-space: pre;
-  color: #F2F2F2;
+  color: #f2f2f2;
 `;
 const LeadText = styled(ParagraphOpenSans)`
   grid-area: info;
   font-size: 20px;
-  color: #212228;
+  color: #f2f2f2;
 `;
 const LeadHelper = styled(ParagraphOpenSans)`
   grid-area: helper;
