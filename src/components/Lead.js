@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import leadBG from '../img/mainlead.jpg';
 import Carousel from 'react-elastic-carousel';

@@ -3,8 +3,7 @@ import styled from 'styled-components/macro';
 import { useHistory } from 'react-router-dom';
 import Poem from './Poem';
 import config from '../config';
-import { LeadMainText, LeadText, OrangeSpan } from './Texts';
-
+import { LeadMainText, LeadText } from './Texts';
 /* import PropTypes from 'prop-types'; */
 
 const LeadBlock = styled.div`

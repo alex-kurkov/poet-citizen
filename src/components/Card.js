@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import LikeButton2 from './Buttons/LikeButton2';
-import DislikeButton from './Buttons/DislikeButton';
+import {LikeButton, DisLikeButton} from './Buttons/index';
 import organizationBg from '../img/organization_bg.png';
 import { OrganizationTextOrange } from './Texts';
 import formatDate from '../utils/utils';
@@ -159,7 +158,7 @@ const Card = ({
       </CardElementRhymeDiv>
       <CardElementMarkDiv>
         <CardElementLikeGroupDiv>
-          <LikeButton2
+          <LikeButton
             onClick={() => onCardLike(card)}
             liked={liked}
             currentUser={currentUser}
@@ -168,7 +167,7 @@ const Card = ({
         </CardElementLikeGroupDiv>
         <CardElementMarkVertLine />
         <CardElementLikeGroupDiv>
-          <DislikeButton
+          <DisLikeButton
             onClick={() => onCardDislike(card)}
             disliked={disliked}
             currentUser={currentUser}
