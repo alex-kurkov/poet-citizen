@@ -46,7 +46,7 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
 
   return (
     <PopupWithForm
-      title={`Редактировать профиль:\n${currentUser.name} ${currentUser.surname || ''}`}
+      title={`Редактировать профиль: \n${currentUser.name} ${currentUser.surname || ''}`}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleFormSubmit}
@@ -65,7 +65,7 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
             onChange={handleInputChange}
             onFocus={() => setShowError({ name: true })}
             onBlur={() => setShowError({})}
-            placeholder="Введите новое имя"
+            placeholder="Имя"
             noValidate />
           {errors.name && <ErrorIndicator/>}
         </StyledLabel>

@@ -29,7 +29,7 @@ const Lead = () => {
     <LeadSection>
       <LeadWrap>
       <Carousel
-          easing="cubic-bezier(1, .15, .50, 1.55)"
+          easing="ease-in-out"
           showArrows={true}
           pagination={true}
           itemsToShow={1}

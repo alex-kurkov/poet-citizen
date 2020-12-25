@@ -59,10 +59,13 @@ const TooltipBtn = styled.button`
 
 const InfoTooltip = ({
   isOpen,
-  onClose,
+  onFailure,
+  onSuccess,
   success,
   message,
+  onClose
 }) => {
+
   return (
     <Overlay onClick={onClose} isOpen={isOpen}>
       <Modal isOpen={isOpen}>
@@ -74,7 +77,7 @@ const InfoTooltip = ({
               <SuccessIcon fill="#00D27A"/>
             </IconWrap>
             <TooltipTitle>{message}</TooltipTitle>
-            <TooltipBtn onClick={onClose}>OK</TooltipBtn>
+            <TooltipBtn onClick={() => onSuccess()}>OK</TooltipBtn>
           </Tooltip>)
           : (
           <Tooltip>
@@ -82,7 +85,7 @@ const InfoTooltip = ({
               <FailureIcon />
             </IconWrap>
             <TooltipTitle>{message}</TooltipTitle>
-            <TooltipBtn onClick={onClose}>ЕЩЕ РАЗ</TooltipBtn>
+            <TooltipBtn onClick={() => onFailure()}>ЕЩЕ РАЗ</TooltipBtn>
           </Tooltip>)
         }
     </Modal>
@@ -93,6 +96,8 @@ const InfoTooltip = ({
 InfoTooltip.propTypes = {
   message: PropTypes.string,
   isOpen: PropTypes.bool,
+  onFailure: PropTypes.func,
+  onSuccess: PropTypes.func,
   onClose: PropTypes.func,
   success: PropTypes.bool,
 };

@@ -38,7 +38,6 @@ const Page = styled.div`
 const App = () => {
   const history = useHistory();
   /*   const { path, url } = useRouteMatch(); */
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
   const [profilePopupVisible, setProfilePopupVisible] = useState(false);
@@ -124,17 +123,16 @@ const App = () => {
           localStorage.setItem('jwt', res.token);
           setLoggedIn(true);
           setTooltipMessage('Вы успешно прошли аутентификацию!');
-          setInfoTooltipOpen(true);
         }
       })
       .catch((e) => {
         console.log(e);
         setTooltipMessage(e.message);
-        setInfoTooltipOpen(true);
       })
       .finally(() => {
-        setLoaderVisibible(false);
+        setInfoTooltipOpen(true);
         closePopups();
+        setLoaderVisibible(false);
       })
   };
 
@@ -144,17 +142,16 @@ const App = () => {
       .then((res) => {
         if (res.data.email) {
           setTooltipMessage('Вы успешно зарегистрировались!');
-          setInfoTooltipOpen(true);
         }
       })
       .catch((e) => {
         console.log(e);
         setTooltipMessage(e.message);
-        setInfoTooltipOpen(true);
       })
       .finally(() => {
-        setLoaderVisibible(false)
         closePopups();
+        setInfoTooltipOpen(true);
+        setLoaderVisibible(false)
       });
   };
   const handleAuthLinkClick = () => {
@@ -390,8 +387,10 @@ const App = () => {
           currentUser={currentUser}
         />
         {infoTooltipOpen && <InfoTooltip
-          isOpen={infoTooltipOpen}
+          onSuccess={() => setInfoTooltipOpen(false)}
+          onFailure={() => setInfoTooltipOpen(false)}
           onClose={() => setInfoTooltipOpen(false)}
+          isOpen={infoTooltipOpen}
           message={tooltipMessage}
           success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
         

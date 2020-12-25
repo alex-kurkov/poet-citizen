@@ -28,10 +28,6 @@ export default {
     },
   navBarLinks: [
     {
-      name: 'Подать жалобу',
-      link: '/complain',
-    },
-    {
       name: 'Выдвинуть инициативу',
       link: '/call',
     },
@@ -42,6 +38,10 @@ export default {
     {
       name: 'Вступить в ряды',
       link: '/join',
+    },
+    {
+      name: 'Подать жалобу',
+      link: '/complain',
     },
   ],
   tipography: {
@@ -188,7 +188,7 @@ export default {
       },
       {
         rhyme: 'Она томит, как ярость, злость и месть.\nОна не чтит причин. Она равновелика,\nКогда причины нет, когда причина есть.',
-        name: 'паника',
+        name: 'Паника',
         id: 'panic',
       },
       {
