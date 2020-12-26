@@ -124,8 +124,6 @@ const Info = () => {
           <ActiveList array={activitiesInfo} />
 
           <ActionBtn
-            text={'Предложи вигилантам сделать '}
-            textSpan={'доброе дело'}
             handleRedirect={() => {
               history.push('/call');
             }}

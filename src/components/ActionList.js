@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import cardBg from '../img/organization_bg.png';
+import { makeTextFromArray } from '../utils/utils';
 
 const ActionContainer = styled.ul`
   display: grid;
@@ -16,15 +17,16 @@ const ActionContainer = styled.ul`
 `;
 
 const ActionItem = styled.p`
- display: block;
-  color: #fff;
-  width: 100%;
+  display: block;
+  color: #F2F2F2;
+  box-sizing: border-box;
+  max-width: 30%;
   height: min-content;
-  font-family: Open Sans;
+  font-family: Open Sans, Lato, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 33px;
+  font-size: 36px;
+  line-height: 1.36;
   margin: 0 20px;
 `;
 
@@ -52,6 +54,7 @@ const ActionBox = styled.button`
   &:hover {
    transform: scale(1.2);
    transition: transform 0.3s ease-out;
+   box-shadow: 0 0 25px;
   }
 
   &:before {
@@ -71,7 +74,9 @@ const ActionBox = styled.button`
     &:after {
     content: '${({ labelText }) => labelText}';
     margin:0;
-    font-family: Open Sans;
+    box-sizing: border-box;
+    max-width: 30%;
+    font-family: Open Sans, Lato, sans-serif;
     font-size: 28px;
     font-weight: 600;
     line-height: 1.36; 
@@ -129,8 +134,7 @@ const ActionList = ({ array }) => {
           }}
           type='button'
           bg={item.image || cardBg}
-          labelText={item.title.join(' \r\n')}>
-
+          labelText={item.title.join(' ')}>
           <ActionItem>{item.title.join(' ')}</ActionItem>
           </ActionBox>
         </StyledLi>

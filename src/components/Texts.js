@@ -97,7 +97,7 @@ const OrangeSpan = styled.span`
 `;
 
 const BegeSpan = styled.span`
-  color: #212228;
+  color: #F2F2F2;
 `;
 
 const ActiveTitle = styled(ParagraphOpenSans)`
