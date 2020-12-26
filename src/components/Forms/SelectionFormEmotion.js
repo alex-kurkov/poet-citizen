@@ -125,6 +125,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
               </EmoticonWrapper>
               <LabelTitle className="label-title">{item.name}</LabelTitle>
               <RadioInput
+                required
                 onChange={handleSelection}
                 type="radio"
                 id={item.id}

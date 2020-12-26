@@ -31,12 +31,14 @@ const Call = ({
   setLeadPoemBlockVisibility,
   handleCallSubmit,
 }) => {
-  const { rhymes } = config;
+  const formS=useRef();
   const carousel = useRef();
-
+  const { rhymes } = config;
   const texts = config.leadTexts.routeComplain;
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [organizationChecked, setOrganizationChecked] = useState(false);
+  const [emotionChecked, setEmotionChecked] = useState(false);
 
   const clearPoem = () => {
     setUserPoemZero('');
@@ -55,6 +57,7 @@ const Call = ({
       setLeadPoemBlockVisibility(true);
     };
   }, []);
+
   useEffect(() => {
     switch (currentStep) {
       case 1:
@@ -83,20 +86,23 @@ const Call = ({
     }
   }, [currentStep]);
 
-  /*   carousel.current.slideNext()
- */
   const handleOrganizationSelection = (e) => {
     setUserPoemOne(e.currentTarget.value);
     setUserOrganizationId(e.currentTarget.id);
+    const checkedOrganization = Array.from(formS.current.organization).some(i=>i.checked);
+    setOrganizationChecked(checkedOrganization);
   };
 
   const handleEmotionSelection = (e) => {
     setUserPoemTwo(e.currentTarget.value);
+    const checkedEmotion = Array.from(formS.current.emotion).some(i=>i.checked);
+    setEmotionChecked(checkedEmotion);
   };
 
   return (
     <CallSection>
         <form
+          ref={formS}
           onSubmit={handleCallSubmit}>
           <Carousel
             showArrows={true}
@@ -119,6 +125,8 @@ const Call = ({
                 areaName="emotion"/>
 
               <Success
+                organizationChecked={organizationChecked}
+                emotionChecked={emotionChecked}
                 poem={poem}
                 actionBtnRoute="/call"
                 actionBtnText="Предложи вигилантам сделать доброе дело" />
