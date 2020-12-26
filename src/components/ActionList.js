@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import cardBg from '../img/organization_bg.png';
+import circleOrange from '../img/action/circle-orange.svg';
 
 const ActionContainer = styled.ul`
   display: grid;
@@ -56,7 +57,7 @@ const ActionBox = styled.button`
   }
 
   &:before {
-    content: "";
+    content: '';
     width: 90%;
     height: 90%;
     display: inline-block;
@@ -71,7 +72,7 @@ const ActionBox = styled.button`
   }
 
   &:after {
-    content: "${({ labelText }) => labelText}";
+    content: '${({ labelText }) => labelText}';
     margin: 0;
     box-sizing: border-box;
     max-width: 30%;
@@ -119,6 +120,40 @@ const StyledLi = styled.li`
     }
   }
   `;
+
+
+const ActionCircle = styled.div`
+  width: 76px;
+  height: 76px;
+  background: url(${circleOrange});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 52px;
+  bottom: 36px;
+
+  &:before {
+    content: '';
+    width: 68px;
+    height: 0;
+    border-bottom: 1.5px solid #f2f2f2;
+    position: absolute;
+    left: 38px;
+    top: 38px;
+  }
+    &:after {
+    content='';
+    position: absolute; 
+    top: 72px; 
+    left: 72px;
+     width: 10px;
+     height: 10px;
+     border-top: 1.5px solid #F2F2F2;
+     border-right: 1.5px solid #F2F2F2;
+  }
+`;
+
 const ActionList = ({ array }) => {
   const history = useHistory();
 
@@ -135,6 +170,7 @@ const ActionList = ({ array }) => {
           bg={item.image || cardBg}
           labelText={item.title.join(' ')}>
           <ActionItem>{item.title.join(' ')}</ActionItem>
+          <ActionCircle></ActionCircle>
           </ActionBox>
         </StyledLi>
     ))
