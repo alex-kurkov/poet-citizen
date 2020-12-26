@@ -29,11 +29,8 @@ import exploreLeadBg from '../img/lead-explore.jpg';
 import joinLeadBg from '../img/lead-join.jpg';
 
 const Page = styled.div`
-  min-width: 1440px;
-  margin: 0 auto;
-  color: #E5E5E5;
-  padding: 0;
-`;
+  background-color: #f2f2f2;
+`
 
 const App = () => {
   const history = useHistory();
@@ -57,6 +54,46 @@ const App = () => {
   const [leadNav, setLeadNav] = useState('');
   const [cards, setCards] = useState([]);
   const [isLoaderVisible, setLoaderVisibible] = useState(false);
+  const [crumbsStack, setCrumbsStack] = useState([{id: '/main', method: ()=>{}, name: 'Гражданин-поэт'}]);
+
+  const crumbsMethods = {
+    '/main': () =>{ 
+      setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'}]);
+    },
+    '/explore': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/explore', method: ()=> history.push('/explore'), name: 'Оценить'},
+      ]);
+    },
+    '/join': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/join', method: ()=> history.push('/join'), name: 'join'},
+      ]);
+    },
+    '/call': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/call', method: ()=> history.push('/call'), name: 'call'},
+      ]);
+    },
+    '/complain': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/complain', method: ()=> history.push('/complain'), name: 'complain'},
+      ]);
+    },
+    '/organization': (props) => {
+      setCrumbsStack([...crumbsStack.slice(0,2), {id: '/organization', name:'/organization', method: () => props.current.goTo(0)}]);
+    },
+    '/emotion': (props) => {
+      setCrumbsStack([...crumbsStack.slice(0,3), {id: '/emotion', name:'/emotion', method: () => props.current.goTo(1)}]);
+    },
+    '/result':  (props) => {
+      setCrumbsStack([...crumbsStack.slice(0,4), {id: '/result', name:'/result', method: () => props.current.goTo(2)}]);
+    },
+  }
 
   const clearPoem = () => {
     setUserPoemZero('');
@@ -201,7 +238,7 @@ const App = () => {
     }
   }
   const handleCardLike = (card) => {
-    if (!currentUser.email) return setLoginPopupVisible(true);
+    if (!loggedIn) return setLoginPopupVisible(true);
     const jwt = localStorage.getItem('jwt');
     const isLiked = card.likes.some((item) => item._id === currentUser._id);
     api.changeLikeStatus(card._id, !isLiked, jwt)
@@ -213,7 +250,7 @@ const App = () => {
       .catch((error) => console.log(error));
   };
   const handleCardDislike = (card) => {
-    if (!currentUser.email) return setLoginPopupVisible(true);
+    if (!loggedIn) return setLoginPopupVisible(true);
     const jwt = localStorage.getItem('jwt');
     const isDisliked = card.dislikes.some((item) => item._id === currentUser._id);
     api.changeDislikeStatus(card._id, !isDisliked, jwt)
@@ -226,9 +263,26 @@ const App = () => {
   };
 
   return (
+    <Page>
+              {
+        crumbsStack
+          .map((item, idx) => {
+            return (<button 
+            onClick={() => {
+              console.log(item)
+              console.log(crumbsStack)
+              item.method()
+            
+            }} 
+            id={`crumbs-${idx}`}>
+              {item.name}
+            </button>)
+            })
+        }
+
     <AppContext.Provider value={config}>
-      <Page>
-        <Header loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
+        <Header crumbsMethods={crumbsMethods} loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
+        <main>
           <Switch>
             <Route path="/main">
               <Lead texts={config.leadTexts.routeMain}/>
@@ -252,6 +306,7 @@ const App = () => {
                 }
                 />
               <Call
+                crumbsMethods={crumbsMethods}
                 poem={poem}
                 route="/call"
                 handleCallSubmit={handleCallSubmit}
@@ -350,52 +405,52 @@ const App = () => {
           <Route path="/">
             <Redirect to="/main" />
           </Route>
-
         </Switch>
-        <Footer />
-              {isLoaderVisible && (<Loader />)}
-        <RegisterPopup 
-          handleRegister={handleRegister}
-          isOpen={registerPopupVisible}
-          onClose={closePopups}
-          authStatus={{
-            text: 'Уже зарегистрированы?',
-            link: '/sign-in',
-            linkText: 'Войти',
-          }}
-          handleAuthLinkClick={handleAuthLinkClick}
+      </main>
+
+      <Footer />
+      <RegisterPopup 
+        handleRegister={handleRegister}
+        isOpen={registerPopupVisible}
+        onClose={closePopups}
+        authStatus={{
+          text: 'Уже зарегистрированы?',
+          link: '/sign-in',
+          linkText: 'Войти',
+        }}
+        handleAuthLinkClick={handleAuthLinkClick}
         />
-        <LoginPopup 
-          handleLogin={handleLogin}
-          isOpen={loginPopupVisible}
-          onClose={closePopups}
-          authStatus={{
-            text: 'Еще не зарегистрированы?',
-            linkText: 'Зарегистрироваться',
-          }}
-          handleAuthLinkClick={handleAuthLinkClick}
+      <LoginPopup 
+        handleLogin={handleLogin}
+        isOpen={loginPopupVisible}
+        onClose={closePopups}
+        authStatus={{
+          text: 'Еще не зарегистрированы?',
+          linkText: 'Зарегистрироваться',
+        }}
+        handleAuthLinkClick={handleAuthLinkClick}
         />
-        <EditProfilePopup 
-          handleUserUpdate={handleUserUpdate}
-          isOpen={profilePopupVisible}
-          onClose={closePopups}
-          authStatus={{
-            text: 'Хотите выйти?',
-            linkText: 'Хотите выйти?',
-          }}
-          handleAuthLinkClick={handleLogout}
-          currentUser={currentUser}
-        />
-        {infoTooltipOpen && <InfoTooltip
-          onSuccess={() => setInfoTooltipOpen(false)}
-          onFailure={() => setInfoTooltipOpen(false)}
-          onClose={() => setInfoTooltipOpen(false)}
-          isOpen={infoTooltipOpen}
-          message={tooltipMessage}
-          success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
-        
-      </Page>
+      <EditProfilePopup 
+        handleUserUpdate={handleUserUpdate}
+        isOpen={profilePopupVisible}
+        onClose={closePopups}
+        authStatus={{
+          text: 'Хотите выйти?',
+          linkText: 'Хотите выйти?',
+        }}
+        handleAuthLinkClick={handleLogout}
+        currentUser={currentUser}
+      />
+      {infoTooltipOpen && <InfoTooltip
+        onSuccess={() => setInfoTooltipOpen(false)}
+        onFailure={() => setInfoTooltipOpen(false)}
+        onClose={() => setInfoTooltipOpen(false)}
+        isOpen={infoTooltipOpen}
+        message={tooltipMessage}
+        success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
+      {isLoaderVisible && (<Loader />)}
     </AppContext.Provider>
+    </Page>
   );
 };
 export default App;

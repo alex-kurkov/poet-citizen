@@ -27,6 +27,7 @@ const PoemBlockWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: transparent;
+  border-radius: 2px;
   border: #000 1px solid;
   padding: 44px 24px 52px 24px;
   box-sizing: border-box;
@@ -83,7 +84,19 @@ const SubmitBtn = styled.button`
   &:hover {
     transform: scale(1.05);
   }
+
+${({enabled}) => enabled 
+  ?
+    `  &:after {
+        content: 'Готово!'
+    }`
+  : 
+    `  &:after {
+      content: ' СНАЧАЛА СДЕЛАЙТЕ СВОЙ ВЫБОР!'
+    }`
+  }
 `;
+
 const ActionBtn = styled.button`
   grid-area: action;
   align-self: end;
@@ -109,7 +122,14 @@ const ActionBtn = styled.button`
   }
 `;
 
-const Success = ({ poem, actionBtnRoute = '/', actionBtnText = '' }) => {
+const Success = ({ 
+  poem, 
+  actionBtnRoute = '/', 
+  actionBtnText = '', 
+  organizationChecked,
+  emotionChecked,
+}) => {
+
   const history = useHistory();
 
   return (
@@ -126,9 +146,7 @@ const Success = ({ poem, actionBtnRoute = '/', actionBtnText = '' }) => {
       </SuccessText>
       <SubmitBtn
         type="submit"
-
-      >
-        Готово!</SubmitBtn>
+        enabled={(organizationChecked && emotionChecked)} />
         <ActionBtn
           type="button"
           onClick={() => history.push(actionBtnRoute)}>

@@ -43,14 +43,14 @@ const LiItem = styled.li`
   padding: 0 4px;
 `;
 
-const LinksBar = () => {
+const LinksBar = ({crumbsMethods}) => {
   const { navBarLinks } = React.useContext(AppContext);
   return (
     <StyledLinksBar>
       <LinksContainer>
         {navBarLinks.map(({ link, name }, i) => (
           <LiItem key={`navbar-${i}`}>
-            <NavBarLink as={Link} to={link}>{name}</NavBarLink>
+            <NavBarLink onClick={() => crumbsMethods[link]()} as={Link} to={link}>{name}</NavBarLink>
           </LiItem>))
         }
       </LinksContainer>

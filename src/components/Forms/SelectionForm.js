@@ -172,6 +172,7 @@ const SelectionForm = ({ handleSelection, array, areaName }) => (
               <LabelTitle>{item.name}</LabelTitle>
               <LabelInfo>{item.info}</LabelInfo>
               <RadioInput
+                required
                 onChange={handleSelection}
                 type="radio"
                 id={item.id}

@@ -11,8 +11,8 @@ const OtherInitiativeSection = styled.section`
   min-height: calc(100vh - 732px);
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: #fff;
-  color: #000;
+  background-color: #f2f2f2;
+  color: #212228;
   padding: 100px 100px;
 `;
 

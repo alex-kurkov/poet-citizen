@@ -13,9 +13,9 @@ const CallSection = styled.section`
   min-height: calc(100vh - 732px);
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: #fff;
   padding: 32px 64px;
-  color: black;
+  background-color: #f2f2f2;
+  color: #212228;
 `;
 
 const Call = ({
@@ -30,14 +30,16 @@ const Call = ({
   setLeadNav,
   setLeadPoemBlockVisibility,
   handleCallSubmit,
-  
+  crumbsMethods,
 }) => {
-  const { rhymes } = config;
+  const formS=useRef();
   const carousel = useRef();
-
+  const { rhymes } = config;
   const texts = config.leadTexts.routeCall;
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [organizationChecked, setOrganizationChecked] = useState(false);
+  const [emotionChecked, setEmotionChecked] = useState(false);
 
   const clearPoem = () => {
     setUserPoemZero('');
@@ -52,27 +54,32 @@ const Call = ({
     setLeadInfoText(texts.info);
     setLeadNav(texts.nav);
     return () => {
+      crumbsMethods['/organization']();
       clearPoem();
       setLeadPoemBlockVisibility(true);
     };
   }, []);
+
   useEffect(() => {
     switch (currentStep) {
       case 1:
+        crumbsMethods['/organization'](carousel);
         setLeadTitle(texts.title);
         setLeadHelperText(texts.helper);
         setLeadInfoText(texts.info);
         setLeadNav(texts.nav);
         setLeadPoemBlockVisibility(true);
         break;
-      case 2:
+        case 2:
+        crumbsMethods['/emotion'](carousel);
         setLeadTitle(texts.title_step2);
         setLeadInfoText(texts.info_step2);
         setLeadNav(texts.nav_step2);
         setLeadHelperText(texts.helper);
         setLeadPoemBlockVisibility(true);
         break;
-      case 3:
+        case 3:
+        crumbsMethods['/result'](carousel);
         setLeadTitle(texts.title_step3);
         setLeadInfoText(texts.info_step3);
         setLeadHelperText('');
@@ -84,20 +91,23 @@ const Call = ({
     }
   }, [currentStep]);
 
-  /*   carousel.current.slideNext()
- */
   const handleOrganizationSelection = (e) => {
     setUserOrganizationId(e.currentTarget.id);
     setUserPoemOne(e.currentTarget.value);
+    const checkedOrganization = Array.from(formS.current.organization).some(i=>i.checked);
+    setOrganizationChecked(checkedOrganization);
   };
 
   const handleEmotionSelection = (e) => {
     setUserPoemTwo(e.currentTarget.value);
+    const checkedEmotion = Array.from(formS.current.emotion).some(i=>i.checked);
+    setEmotionChecked(checkedEmotion);
   };
 
   return (
     <CallSection>
         <form
+          ref={formS}
           onSubmit={handleCallSubmit}>
           <Carousel
             showArrows={true}
@@ -120,6 +130,8 @@ const Call = ({
                 areaName="emotion"/>
 
               <Success
+                organizationChecked={organizationChecked}
+                emotionChecked={emotionChecked}
                 poem={poem}
                 actionBtnRoute="/explore"
                 actionBtnText="А другие инициативы ты уже оценил?" />

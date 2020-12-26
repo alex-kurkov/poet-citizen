@@ -33,11 +33,11 @@ const AppHeader = styled.div`
   }
 `;
 
-const Header = ({onProfileBtnClick, loggedIn}) => (
+const Header = ({onProfileBtnClick, loggedIn, crumbsMethods }) => (
    <HeaderSection>
     <AppHeader>
-        <Logo />
-        <LinksBar />
+        <Logo crumbsMethods={crumbsMethods}/>
+        <LinksBar crumbsMethods={crumbsMethods}/>
         <ProfileBtn loggedIn={loggedIn} onClick={onProfileBtnClick}/>
       </AppHeader>
    </HeaderSection> 
