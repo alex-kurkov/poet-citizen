@@ -51,13 +51,12 @@ const ActionBox = styled.button`
   background-size: cover;
 
   &:hover {
-   transform: scale(1.2);
-   transition: transform 0.3s ease-out;
-   box-shadow: 0 0 25px;
+    transition: transform 0.3s ease-out;
+    box-shadow: 0 0 25px;
   }
 
   &:before {
-    content: '';
+    content: "";
     width: 90%;
     height: 90%;
     display: inline-block;
@@ -67,18 +66,19 @@ const ActionBox = styled.button`
     z-index: 5;
     background: #f2f2f2;
     opacity: 1;
+    filter: blur(2px);
     border-radius: 2px;
   }
 
-    &:after {
-    content: '${({ labelText }) => labelText}';
-    margin:0;
+  &:after {
+    content: "${({ labelText }) => labelText}";
+    margin: 0;
     box-sizing: border-box;
     max-width: 30%;
     font-family: Open Sans, Lato, sans-serif;
     font-size: 28px;
     font-weight: 600;
-    line-height: 1.36; 
+    line-height: 1.36;
     color: #212228;
     display: inline-block;
     position: absolute;

@@ -122,7 +122,7 @@ const Success = ({ poem, actionBtnRoute = '/', actionBtnText = '' }) => {
       </PoemBlockWrapper>
       <SuccessText>
       Для отправки обращения, после нажатия кнопки “Готово”, Вам потребуется заполнить данные,
-      если Вы не зарегистрировыны.
+      если Вы не зарегистрированы.
       </SuccessText>
       <SubmitBtn
         type="submit"
