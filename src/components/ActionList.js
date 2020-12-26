@@ -142,15 +142,16 @@ const ActionCircle = styled.div`
     left: 38px;
     top: 38px;
   }
-    &:after {
-    content='';
-    position: absolute; 
-    top: 72px; 
-    left: 72px;
-     width: 10px;
-     height: 10px;
-     border-top: 1.5px solid #F2F2F2;
-     border-right: 1.5px solid #F2F2F2;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 34px;
+    left: 93px;
+    width: 10px;
+    height: 10px;
+    border-top: 1.5px solid #f2f2f2;
+    border-right: 1.5px solid #f2f2f2;
+    transform: rotate(45deg);
   }
 `;
 
