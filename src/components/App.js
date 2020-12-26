@@ -28,13 +28,6 @@ import complainLeadBg from '../img/lead-complain.jpg';
 import exploreLeadBg from '../img/lead-explore.jpg';
 import joinLeadBg from '../img/lead-join.jpg';
 
-const Page = styled.div`
-  min-width: 1440px;
-  margin: 0 auto;
-  color: #E5E5E5;
-  padding: 0;
-`;
-
 const App = () => {
   const history = useHistory();
   /*   const { path, url } = useRouteMatch(); */
@@ -55,6 +48,12 @@ const App = () => {
   const [leadHelperText, setLeadHelperText] = useState('');
   const [leadInfoText, setLeadInfoText] = useState('');
   const [leadNav, setLeadNav] = useState('');
+  const [crumbsStack, setCrumbsStack] = useState([{
+    name: 'Гражданин-поэт',
+    onClick: function click() {
+      return history.push('/main');
+    },
+  }]);
   const [cards, setCards] = useState([]);
   const [isLoaderVisible, setLoaderVisibible] = useState(false);
 
@@ -227,8 +226,8 @@ const App = () => {
 
   return (
     <AppContext.Provider value={config}>
-      <Page>
         <Header loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
+        <main>
           <Switch>
             <Route path="/main">
               <Lead texts={config.leadTexts.routeMain}/>
@@ -350,51 +349,66 @@ const App = () => {
           <Route path="/">
             <Redirect to="/main" />
           </Route>
-
         </Switch>
-        <Footer />
-              {isLoaderVisible && (<Loader />)}
-        <RegisterPopup 
-          handleRegister={handleRegister}
-          isOpen={registerPopupVisible}
-          onClose={closePopups}
-          authStatus={{
-            text: 'Уже зарегистрированы?',
-            link: '/sign-in',
-            linkText: 'Войти',
-          }}
-          handleAuthLinkClick={handleAuthLinkClick}
+      </main>
+
+      
+        {
+        console.log(crumbsStack)
+        }
+        {
+        crumbsStack
+          .map((item, idx) => {
+            return (<button 
+            onClick={() => item.onClick()} 
+            id={`crumbs-${idx}`}>
+              {item.name}
+            </button>)
+            })
+          .join(' / ')
+        }
+
+      <Footer />
+      <RegisterPopup 
+        handleRegister={handleRegister}
+        isOpen={registerPopupVisible}
+        onClose={closePopups}
+        authStatus={{
+          text: 'Уже зарегистрированы?',
+          link: '/sign-in',
+          linkText: 'Войти',
+        }}
+        handleAuthLinkClick={handleAuthLinkClick}
         />
-        <LoginPopup 
-          handleLogin={handleLogin}
-          isOpen={loginPopupVisible}
-          onClose={closePopups}
-          authStatus={{
-            text: 'Еще не зарегистрированы?',
-            linkText: 'Зарегистрироваться',
-          }}
-          handleAuthLinkClick={handleAuthLinkClick}
+      <LoginPopup 
+        handleLogin={handleLogin}
+        isOpen={loginPopupVisible}
+        onClose={closePopups}
+        authStatus={{
+          text: 'Еще не зарегистрированы?',
+          linkText: 'Зарегистрироваться',
+        }}
+        handleAuthLinkClick={handleAuthLinkClick}
         />
-        <EditProfilePopup 
-          handleUserUpdate={handleUserUpdate}
-          isOpen={profilePopupVisible}
-          onClose={closePopups}
-          authStatus={{
-            text: 'Хотите выйти?',
-            linkText: 'Хотите выйти?',
-          }}
-          handleAuthLinkClick={handleLogout}
-          currentUser={currentUser}
-        />
-        {infoTooltipOpen && <InfoTooltip
-          onSuccess={() => setInfoTooltipOpen(false)}
-          onFailure={() => setInfoTooltipOpen(false)}
-          onClose={() => setInfoTooltipOpen(false)}
-          isOpen={infoTooltipOpen}
-          message={tooltipMessage}
-          success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
-        
-      </Page>
+      <EditProfilePopup 
+        handleUserUpdate={handleUserUpdate}
+        isOpen={profilePopupVisible}
+        onClose={closePopups}
+        authStatus={{
+          text: 'Хотите выйти?',
+          linkText: 'Хотите выйти?',
+        }}
+        handleAuthLinkClick={handleLogout}
+        currentUser={currentUser}
+      />
+      {infoTooltipOpen && <InfoTooltip
+        onSuccess={() => setInfoTooltipOpen(false)}
+        onFailure={() => setInfoTooltipOpen(false)}
+        onClose={() => setInfoTooltipOpen(false)}
+        isOpen={infoTooltipOpen}
+        message={tooltipMessage}
+        success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
+      {isLoaderVisible && (<Loader />)}
     </AppContext.Provider>
   );
 };
