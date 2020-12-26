@@ -60,8 +60,10 @@ const SvgButton = styled.svg`
   pointer-events: all;
 `;
 
-const Logo = () => (
-    <LogoWrap to="/main"
+const Logo = ({ crumbsMethods }) => (
+    <LogoWrap 
+    onClick={() => crumbsMethods['/main']()}
+    to="/main"
     rel="Гражданин поэт">
       <SvgButton
         viewBox="0 0 506 350" 

@@ -28,6 +28,10 @@ import complainLeadBg from '../img/lead-complain.jpg';
 import exploreLeadBg from '../img/lead-explore.jpg';
 import joinLeadBg from '../img/lead-join.jpg';
 
+const Page = styled.div`
+  background-color: #f2f2f2;
+`
+
 const App = () => {
   const history = useHistory();
   /*   const { path, url } = useRouteMatch(); */
@@ -48,14 +52,48 @@ const App = () => {
   const [leadHelperText, setLeadHelperText] = useState('');
   const [leadInfoText, setLeadInfoText] = useState('');
   const [leadNav, setLeadNav] = useState('');
-  const [crumbsStack, setCrumbsStack] = useState([{
-    name: 'Гражданин-поэт',
-    onClick: function click() {
-      return history.push('/main');
-    },
-  }]);
   const [cards, setCards] = useState([]);
   const [isLoaderVisible, setLoaderVisibible] = useState(false);
+  const [crumbsStack, setCrumbsStack] = useState([{id: '/main', method: ()=>{}, name: 'Гражданин-поэт'}]);
+
+  const crumbsMethods = {
+    '/main': () =>{ 
+      setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'}]);
+    },
+    '/explore': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/explore', method: ()=> history.push('/explore'), name: 'Оценить'},
+      ]);
+    },
+    '/join': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/join', method: ()=> history.push('/join'), name: 'join'},
+      ]);
+    },
+    '/call': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/call', method: ()=> history.push('/call'), name: 'call'},
+      ]);
+    },
+    '/complain': () => {
+      setCrumbsStack([
+        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
+        {id: '/complain', method: ()=> history.push('/complain'), name: 'complain'},
+      ]);
+    },
+    '/organization': (props) => {
+      setCrumbsStack([...crumbsStack.slice(0,2), {id: '/organization', name:'/organization', method: () => props.current.goTo(0)}]);
+    },
+    '/emotion': (props) => {
+      setCrumbsStack([...crumbsStack.slice(0,3), {id: '/emotion', name:'/emotion', method: () => props.current.goTo(1)}]);
+    },
+    '/result':  (props) => {
+      setCrumbsStack([...crumbsStack.slice(0,4), {id: '/result', name:'/result', method: () => props.current.goTo(2)}]);
+    },
+  }
 
   const clearPoem = () => {
     setUserPoemZero('');
@@ -225,8 +263,25 @@ const App = () => {
   };
 
   return (
+    <Page>
+              {
+        crumbsStack
+          .map((item, idx) => {
+            return (<button 
+            onClick={() => {
+              console.log(item)
+              console.log(crumbsStack)
+              item.method()
+            
+            }} 
+            id={`crumbs-${idx}`}>
+              {item.name}
+            </button>)
+            })
+        }
+
     <AppContext.Provider value={config}>
-        <Header loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
+        <Header crumbsMethods={crumbsMethods} loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
         <main>
           <Switch>
             <Route path="/main">
@@ -251,6 +306,7 @@ const App = () => {
                 }
                 />
               <Call
+                crumbsMethods={crumbsMethods}
                 poem={poem}
                 route="/call"
                 handleCallSubmit={handleCallSubmit}
@@ -352,22 +408,6 @@ const App = () => {
         </Switch>
       </main>
 
-      
-        {
-        console.log(crumbsStack)
-        }
-        {
-        crumbsStack
-          .map((item, idx) => {
-            return (<button 
-            onClick={() => item.onClick()} 
-            id={`crumbs-${idx}`}>
-              {item.name}
-            </button>)
-            })
-          .join(' / ')
-        }
-
       <Footer />
       <RegisterPopup 
         handleRegister={handleRegister}
@@ -410,6 +450,7 @@ const App = () => {
         success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
       {isLoaderVisible && (<Loader />)}
     </AppContext.Provider>
+    </Page>
   );
 };
 export default App;
