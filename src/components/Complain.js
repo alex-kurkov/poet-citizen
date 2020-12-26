@@ -13,9 +13,9 @@ const CallSection = styled.section`
   min-height: calc(100vh - 732px);
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #f2f2f2;
+  color: #212228;
   padding: 32px 64px;
-  color: black;
 `;
 
 const Call = ({

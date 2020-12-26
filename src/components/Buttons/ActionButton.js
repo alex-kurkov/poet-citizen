@@ -18,12 +18,10 @@ const ActionButton = styled.button`
   background: #FF7A00;
   border: none;
   white-space: pre;
-  transition: all ease-in-out .3s;
+  transition: transform ease-in-out .3s;
 
   &:hover {
-    width: 372px;
-    height: 372px;
-    box-shadow: 0 0 25px #FF7A00;
+    transform: scale(1.05);
   }
   &:focus {
     outline: none;

@@ -10,6 +10,7 @@ const PoemBlock = styled.div`
   height: 480px;
   position: relative;
   background: none;
+  border-radius: 2px;
   padding: 52px 32px;
   background-color: rgba(242, 242, 242, .25);
   box-sizing: border-box;

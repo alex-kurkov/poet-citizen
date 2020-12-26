@@ -27,6 +27,7 @@ const PoemBlockWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: transparent;
+  border-radius: 2px;
   border: #000 1px solid;
   padding: 44px 24px 52px 24px;
   box-sizing: border-box;

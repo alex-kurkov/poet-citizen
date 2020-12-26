@@ -22,9 +22,9 @@ const InfoBlock = styled.section`
   min-height: calc(100vh - 896px);
   box-sizing: border-box;
   margin: 0 auto;
-  background-color: #fff;
-  color: #000;
-  padding: 100px 100px 240px 100px;
+  background-color: #f2f2f2;
+  color: #212228;
+  padding: 100px 100px 290px 100px;
 `;
 
 
@@ -36,7 +36,7 @@ const IntroDiv = styled.div`
 `;
 
 const IntroTitleSpan = styled.span`
-color: #ff7a00;
+  color: #ff7a00;
 `;
 
 const ActiveDiv = styled.div`

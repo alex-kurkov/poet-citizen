@@ -126,7 +126,6 @@ const IntroGoalDiv = styled(ParagraphOpenSans)`
   display: flex;
   position: relative;
   margin-top: 32px;
-  background: #eee;
   padding: 12px 80px;
   box-sizing: border-box;
 `;
