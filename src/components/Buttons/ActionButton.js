@@ -23,7 +23,6 @@ const ActionButton = styled.button`
   &:hover {
     width: 372px;
     height: 372px;
-    box-shadow: 0 0 25px #FF7A00;
     font-size: 28px;
   }
   &:focus {
