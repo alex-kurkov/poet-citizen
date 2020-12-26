@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import cardBg from '../img/organization_bg.png';
-import { makeTextFromArray } from '../utils/utils';
 
 const ActionContainer = styled.ul`
   display: grid;
