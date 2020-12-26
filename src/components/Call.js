@@ -53,8 +53,8 @@ const Call = ({
     setLeadHelperText(texts.helper);
     setLeadInfoText(texts.info);
     setLeadNav(texts.nav);
+    crumbsMethods['/call']();
     return () => {
-      crumbsMethods['/organization']();
       clearPoem();
       setLeadPoemBlockVisibility(true);
     };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 /* import PropTypes from 'prop-types'; */
@@ -60,10 +60,13 @@ const IcQuotesWrap = styled.div`
   color: #000;
 `;
 
-const Info = () => {
+const Info = ({ crumbsMethods }) => {
   const history = useHistory();
   const { rhymes, infoTexts } = config;
   const { activitiesInfo, introGoal, intro } = infoTexts;
+  useEffect(() => {
+    crumbsMethods['/main']();
+  }, []);
 
   const actionArray = [
     {
