@@ -29,7 +29,8 @@ const Call = ({
   setLeadInfoText,
   setLeadNav,
   setLeadPoemBlockVisibility,
-  handleCallSubmit
+  handleCallSubmit,
+  crumbsMethods,
 }) => {
   const formS=useRef();
   const carousel = useRef();
@@ -52,7 +53,9 @@ const Call = ({
     setLeadHelperText(texts.helper);
     setLeadInfoText(texts.info);
     setLeadNav(texts.nav);
+    crumbsMethods['/join']();
     return () => {
+      crumbsMethods['/main']();
       clearPoem();
       setLeadPoemBlockVisibility(true);
     };
@@ -61,6 +64,7 @@ const Call = ({
   useEffect(() => {
     switch (currentStep) {
       case 1:
+        crumbsMethods['/organization'](carousel);
         setLeadTitle(texts.title);
         setLeadHelperText(texts.helper);
         setLeadInfoText(texts.info);
@@ -68,6 +72,7 @@ const Call = ({
         setLeadPoemBlockVisibility(true);
         break;
       case 2:
+        crumbsMethods['/emotion'](carousel);
         setLeadTitle(texts.title_step2);
         setLeadInfoText(texts.info_step2);
         setLeadNav(texts.nav_step2);
@@ -75,6 +80,7 @@ const Call = ({
         setLeadPoemBlockVisibility(true);
         break;
       case 3:
+        crumbsMethods['/result'](carousel);
         setLeadTitle(texts.title_step3);
         setLeadInfoText(texts.info_step3);
         setLeadHelperText('');

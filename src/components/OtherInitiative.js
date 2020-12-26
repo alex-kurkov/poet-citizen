@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
 import Card from './Card';
@@ -16,10 +16,13 @@ const OtherInitiativeSection = styled.section`
   padding: 100px 100px;
 `;
 
-const OtherInitiative = ({ currentUser, cards, onCardLike, onCardDislike }) => {
+const OtherInitiative = ({crumbsMethods, currentUser, cards, onCardLike, onCardDislike }) => {
   const { rhymes } = config;
   const allOrganization = rhymes.organization;
-
+  useEffect(() => {
+    crumbsMethods['/explore']();
+    return () => crumbsMethods['/main']();
+  }, []);
   return (
     <OtherInitiativeSection>
       <Carousel

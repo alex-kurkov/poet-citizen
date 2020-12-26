@@ -28,7 +28,7 @@ export default {
     },
   navBarLinks: [
     {
-      name: 'Выдвинуть инициативу',
+      name: 'Предложить инициативу',
       link: '/call',
     },
     {

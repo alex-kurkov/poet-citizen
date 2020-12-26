@@ -57,41 +57,19 @@ const App = () => {
   const [crumbsStack, setCrumbsStack] = useState([{id: '/main', method: ()=>{}, name: 'Гражданин-поэт'}]);
 
   const crumbsMethods = {
-    '/main': () =>{ 
-      setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'}]);
-    },
-    '/explore': () => {
-      setCrumbsStack([
-        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
-        {id: '/explore', method: ()=> history.push('/explore'), name: 'Оценить'},
-      ]);
-    },
-    '/join': () => {
-      setCrumbsStack([
-        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
-        {id: '/join', method: ()=> history.push('/join'), name: 'join'},
-      ]);
-    },
-    '/call': () => {
-      setCrumbsStack([
-        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
-        {id: '/call', method: ()=> history.push('/call'), name: 'call'},
-      ]);
-    },
-    '/complain': () => {
-      setCrumbsStack([
-        {id: '/main', method: ()=> history.push('/main'), name: 'Гражданин'},
-        {id: '/complain', method: ()=> history.push('/complain'), name: 'complain'},
-      ]);
-    },
+    '/main': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}]),
+    '/explore': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/explore', method: ()=> history.push('/explore'), name: 'Другие инициативы'}]),
+    '/join': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/join', method: ()=> history.push('/join'), name: 'Вступить в организацию'}]),
+    '/call': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/call', method: ()=> history.push('/call'), name: 'Предложить инициативу'}]),
+    '/complain': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/complain', method: ()=> history.push('/complain'), name: 'Подать жалобу'}]),
     '/organization': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0,2), {id: '/organization', name:'/organization', method: () => props.current.goTo(0)}]);
+      setCrumbsStack([...crumbsStack.slice(0,2), {id: '/organization', name:'Выбор движения', method: () => props.current.goTo(0)}]);
     },
     '/emotion': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0,3), {id: '/emotion', name:'/emotion', method: () => props.current.goTo(1)}]);
+      setCrumbsStack([...crumbsStack.slice(0,3), {id: '/emotion', name:'Отношение к проблеме', method: () => props.current.goTo(1)}]);
     },
     '/result':  (props) => {
-      setCrumbsStack([...crumbsStack.slice(0,4), {id: '/result', name:'/result', method: () => props.current.goTo(2)}]);
+      setCrumbsStack([...crumbsStack.slice(0,4), {id: '/result', name:'Сформированная инициатива', method: () => props.current.goTo(2)}]);
     },
   }
 
@@ -264,35 +242,20 @@ const App = () => {
 
   return (
     <Page>
-              {
-        crumbsStack
-          .map((item, idx) => {
-            return (<button 
-            onClick={() => {
-              console.log(item)
-              console.log(crumbsStack)
-              item.method()
-            
-            }} 
-            id={`crumbs-${idx}`}>
-              {item.name}
-            </button>)
-            })
-        }
-
     <AppContext.Provider value={config}>
         <Header crumbsMethods={crumbsMethods} loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
         <main>
           <Switch>
             <Route path="/main">
               <Lead texts={config.leadTexts.routeMain}/>
-              <Info />
+              <Info crumbsMethods={crumbsMethods} />
             </Route>
             <Route exact path='/authorize'>
               <Authorize authenticate={onProfileBtnClick}/>
             </Route>
             <Route path="/call">
               <InitLead
+                crumbsStack={crumbsStack}
                 background={callLeadBg}
                 poem={poem}
                 leadPoemBlockVisibility={leadPoemBlockVisibility}
@@ -302,6 +265,7 @@ const App = () => {
                     leadHelperText,
                     leadInfoText,
                     leadNav,
+                    
                   }
                 }
                 />
@@ -324,69 +288,74 @@ const App = () => {
 
             <Route path="/explore">
             <ExploreLead
-                background={exploreLeadBg}
-                leadTexts={
-                  {
-                    leadTitle: config.leadTexts.routeExplore.title,
-                    leadHelperText: config.leadTexts.routeExplore.helper,
-                    leadInfoText: config.leadTexts.routeExplore.info,
-                    leadNav: config.leadTexts.routeExplore.nav,
-                  }
+              background={exploreLeadBg}
+              leadTexts={
+                {
+                  leadTitle: config.leadTexts.routeExplore.title,
+                  leadHelperText: config.leadTexts.routeExplore.helper,
+                  leadInfoText: config.leadTexts.routeExplore.info,
+                  leadNav: config.leadTexts.routeExplore.nav,
                 }
+              }
+              />
+              <OtherInitiative
+                crumbsMethods={crumbsMethods}
+                currentUser={currentUser}
+                cards={cards}
+                onCardLike={handleCardLike}
+                onCardDislike={handleCardDislike}
                 />
-                <OtherInitiative
-                  currentUser={currentUser}
-                  cards={cards}
-                  onCardLike={handleCardLike}
-                  onCardDislike={handleCardDislike}
-                  />
             </Route>
 
             <Route path="/complain">
               <InitLead
-                  background={complainLeadBg}
-                  poem={poem}
-                  leadPoemBlockVisibility={leadPoemBlockVisibility}
-                  leadTexts={
-                    {
-                      leadTitle,
-                      leadHelperText,
-                      leadInfoText,
-                      leadNav,
-                    }
+                crumbsStack={crumbsStack}
+                background={complainLeadBg}
+                poem={poem}
+                leadPoemBlockVisibility={leadPoemBlockVisibility}
+                leadTexts={
+                  {
+                    leadTitle,
+                    leadHelperText,
+                    leadInfoText,
+                    leadNav,
                   }
-                  />
-                <Complain
-                  poem={poem}
-                  route="/complain"
-                  handleCallSubmit={handleCallSubmit}
-                  setUserOrganizationId={setUserOrganizationId}
-                  setUserPoemZero={setUserPoemZero}
-                  setUserPoemOne={setUserPoemOne}
-                  setUserPoemTwo={setUserPoemTwo}
-                  setLeadTitle={setLeadTitle}
-                  setLeadHelperText={setLeadHelperText}
-                  setLeadInfoText={setLeadInfoText}
-                  setLeadNav={setLeadNav}
-                  setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
-                  />
+                }
+                />
+              <Complain
+                crumbsMethods={crumbsMethods}
+                poem={poem}
+                route="/complain"
+                handleCallSubmit={handleCallSubmit}
+                setUserOrganizationId={setUserOrganizationId}
+                setUserPoemZero={setUserPoemZero}
+                setUserPoemOne={setUserPoemOne}
+                setUserPoemTwo={setUserPoemTwo}
+                setLeadTitle={setLeadTitle}
+                setLeadHelperText={setLeadHelperText}
+                setLeadInfoText={setLeadInfoText}
+                setLeadNav={setLeadNav}
+                setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+                />
             </Route>
 
             <Route path="/join">
             <InitLead
-                  background={joinLeadBg}
-                  poem={poem}
-                  leadPoemBlockVisibility={leadPoemBlockVisibility}
-                  leadTexts={
-                    {
-                      leadTitle,
-                      leadHelperText,
-                      leadInfoText,
-                      leadNav,
-                    }
-                  }
+              crumbsStack={crumbsStack}
+              background={joinLeadBg}
+              poem={poem}
+              leadPoemBlockVisibility={leadPoemBlockVisibility}
+              leadTexts={
+                {
+                  leadTitle,
+                  leadHelperText,
+                  leadInfoText,
+                  leadNav,
+                }
+              }
                   />
                 <Join
+                  crumbsMethods={crumbsMethods}
                   poem={poem}
                   route="/join"
                   handleCallSubmit={handleCallSubmit}

@@ -4,6 +4,7 @@ import {
   LeadMainText, LeadText, LeadHelper, LeadNavigation, PoemText,
 } from './Texts';
 import IcQuote from './IcQuote';
+import BreadCrumbsLine from './BreadCrumbsLine';
 /* import PropTypes from 'prop-types'; */
 
 const LeadSection = styled.section`
@@ -83,7 +84,7 @@ const IcQuotesWrap = styled.div`
   background: none;
 `;
 
-const InitLead = ({ leadTexts, poem, leadPoemBlockVisibility, background }) => {
+const InitLead = ({ crumbsStack, leadTexts, poem, leadPoemBlockVisibility, background }) => {
   const {
     leadTitle,
     leadHelperText,
@@ -95,7 +96,8 @@ const InitLead = ({ leadTexts, poem, leadPoemBlockVisibility, background }) => {
     <LeadSection leadBG={background}>
       <LeadWrap>
         <LeadBlock>
-          <LeadNavigation>{leadNav}</LeadNavigation>
+          <BreadCrumbsLine crumbsStack={crumbsStack}/>
+          {/* <LeadNavigation>{leadNav}</LeadNavigation> */}
           <LeadMainText>{leadTitle}</LeadMainText>
           <LeadText>{leadInfoText}</LeadText>
           <LeadHelper>{leadHelperText}</LeadHelper>
