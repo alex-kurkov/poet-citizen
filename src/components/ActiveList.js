@@ -12,8 +12,15 @@ const ActiveItemDiv = styled.div`
   align-items: baseline;
 `;
 
+const ActiveLiStyled = styled.li`
+margin-bottom: 24px;
+ &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 const ActiveItem = styled.p`
-  font-family: Open Sans;
+  font-family: Georgia;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -22,12 +29,12 @@ const ActiveItem = styled.p`
 `;
 
 const ActiveItemNumber = styled.p`
-  font-family: Open Sans;
+  font-family: Georgia;
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
   line-height: 34px;
-  color: #ff7a00;
+  color: #FF7A00;
   margin-top: 0;
   margin-bottom: 0;
 `;
@@ -35,12 +42,12 @@ const ActiveItemNumber = styled.p`
 const ActiveList = ({ array }) => (
   <ActiveContainer>
     {array.map((item, i) => (
-        <li key={`activity-${i}`}>
+        <ActiveLiStyled key={`activity-${i}`}>
           <ActiveItemDiv>
             <ActiveItemNumber>{i + 1}.</ActiveItemNumber>
             <ActiveItem>{item}</ActiveItem>
           </ActiveItemDiv>
-        </li>
+        </ActiveLiStyled>
     ))}
   </ActiveContainer>
 );

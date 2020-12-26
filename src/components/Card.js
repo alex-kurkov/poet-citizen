@@ -11,7 +11,6 @@ const CardElementDiv = styled.div`
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  background-color: #000;
   color: #000000;
   width: 360px;
   height: 676px;
@@ -22,19 +21,20 @@ const CardElementContainerDiv = styled.div`
   position: relative;
   width: 100%;
   height: 200px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  border-radius: 2px 2px 0px 0px;
   ${({ bg }) => `
   background: url(${bg});
-  `}
+  `};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const CardElementData = styled.p`
   position: absolute;
   bottom: 12px;
   right: 8px;
-  font-family: Open Sans;
+  font-family: Open Sans, Lato, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -63,19 +63,19 @@ const RhymeWrap = styled.div`
   white-space: pre-wrap;
 
   &::-webkit-scrollbar {
-    width: 6px;
-    border: 1px solid green;
-    border-radius: 3px;
+    width: 4px;
+    border: 1px solid #43D3B2;
+    border-radius: 2px;
   }
   &::-webkit-scrollbar-thumb {
-    background: black;
+    background: #212228;
     opacity: 0.8;
-    border-radius: 3px;
+    border-radius: 2px;
   }
 `;
 
 const CardElementRhyme = styled.p`
-  font-family: Open Sans;
+  font-family: Open Sans, Lato, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -96,6 +96,7 @@ const CardElementMarkDiv = styled.div`
   align-items: center;
   box-sizing: border-box;
   background: #000;
+  border-radius: 0px 0px 2px 2px;
 `;
 
 const CardElementMarkVertLine = styled.div`
@@ -112,7 +113,7 @@ const CardElementLikeGroupDiv = styled.div`
 `;
 
 const CardElementLikeSum = styled.p`
-  font-family: Open Sans;
+  font-family: Open Sans, Lato, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

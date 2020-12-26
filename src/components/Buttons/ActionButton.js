@@ -12,7 +12,7 @@ const ActionButton = styled.button`
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  font-family: 'Open Sans';
+  font-family: Open Sans, Lato, sans-serif;
   font-weight: 600px;
   font-size: 26px;
   background: #FF7A00;
@@ -24,6 +24,7 @@ const ActionButton = styled.button`
     width: 372px;
     height: 372px;
     box-shadow: 0 0 25px #FF7A00;
+    font-size: 28px;
   }
   &:focus {
     outline: none;

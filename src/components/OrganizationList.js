@@ -59,7 +59,7 @@ const OrganizationBox = styled.div`
   }
   &:after {
     content: '${({ labelText }) => labelText}';
-    font-family: Open Sans;\
+    font-family: Open Sans, Lato, sans-serif;
     font-size: 24px;
     font-weight: 600;
     line-height: 1.38; 
@@ -133,7 +133,7 @@ const OrganizationItem = styled(OrganizationTextOrange)`
 const OrganizationInfo = styled.span`
   display: block;
   color: #fff;
-  font-family: Open Sans;
+  font-family: Open Sans, Lato, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1,38;
