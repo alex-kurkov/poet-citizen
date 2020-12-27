@@ -70,7 +70,7 @@ const ActionBox = styled.button`
     bottom: 5%;
     z-index: 5;
     background: #f2f2f2;
-    opacity: 1;
+    opacity: .82;
     border-radius: 2px;
   }
 
@@ -176,7 +176,7 @@ const ActionCircle = styled.div`
   }
 `;
 
-const ActionList = ({ array }) => {
+const ActionList = ({ array, crumbsMethods }) => {
   const history = useHistory();
 
   return (
@@ -186,6 +186,7 @@ const ActionList = ({ array }) => {
         <StyledLi key={i + item.id}>
           <ActionBox
             onClick={() => {
+              crumbsMethods[item.link]();
               history.push(item.link);
             }}
             type='button'

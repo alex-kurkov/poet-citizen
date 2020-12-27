@@ -109,7 +109,7 @@ const Info = ({ crumbsMethods }) => {
         Как <IntroTitleSpan>Вы</IntroTitleSpan> можете принять участие в
         регулировании общественного порядка?
       </IntroTitleDiv>
-      <ActionList array={actionArray} />
+      <ActionList crumbsMethods={crumbsMethods} array={actionArray} />
       <IntroParticipationText>
         Чтобы принять участие, необходимо зарегистрироваться на нашем сайте.
       </IntroParticipationText>
@@ -128,6 +128,7 @@ const Info = ({ crumbsMethods }) => {
 
           <ActionBtn
             handleRedirect={() => {
+              crumbsMethods['/call']();
               history.push('/call');
             }}
           />
