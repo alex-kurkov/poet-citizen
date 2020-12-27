@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
-import config from '../config';
 import SelectionForm from './Forms/SelectionForm';
 import SelectionFormEmotion from './Forms/SelectionFormEmotion';
 import { FormArrowBtn } from './Buttons/FormArrowBtn';
 import Success from './Success';
+import AppContext from '../contexts/AppContext';
+import getRandom from '../utils/getRandomIntFromRange';
 /* import PropTypes from 'prop-types'; */
 
 const CallSection = styled.section`
@@ -27,32 +28,33 @@ const Call = ({
   setLeadTitle,
   setLeadHelperText,
   setLeadInfoText,
-  setLeadNav,
   setLeadPoemBlockVisibility,
   handleCallSubmit,
   crumbsMethods,
 }) => {
-  const formS=useRef();
+  const config = useContext(AppContext);
+  const formS = useRef();
   const carousel = useRef();
   const { rhymes } = config;
   const texts = config.leadTexts.routeCall;
-
+  
   const [currentStep, setCurrentStep] = useState(1);
   const [organizationChecked, setOrganizationChecked] = useState(false);
   const [emotionChecked, setEmotionChecked] = useState(false);
-
+  
   const clearPoem = () => {
     setUserPoemZero('');
     setUserPoemOne('');
     setUserPoemTwo('');
   };
-
+  
   useEffect(() => {
-    setUserPoemZero(texts.rhyme);
+    const { rhymeArr } = texts;
+    const randomRhyme = rhymeArr[getRandom(0, rhymeArr.length)];
+    setUserPoemZero(randomRhyme);
     setLeadTitle(texts.title);
     setLeadHelperText(texts.helper);
     setLeadInfoText(texts.info);
-    setLeadNav(texts.nav);
     crumbsMethods['/call']();
     return () => {
       clearPoem();
@@ -67,14 +69,12 @@ const Call = ({
         setLeadTitle(texts.title);
         setLeadHelperText(texts.helper);
         setLeadInfoText(texts.info);
-        setLeadNav(texts.nav);
         setLeadPoemBlockVisibility(true);
         break;
         case 2:
         crumbsMethods['/emotion'](carousel);
         setLeadTitle(texts.title_step2);
         setLeadInfoText(texts.info_step2);
-        setLeadNav(texts.nav_step2);
         setLeadHelperText(texts.helper);
         setLeadPoemBlockVisibility(true);
         break;
@@ -83,7 +83,6 @@ const Call = ({
         setLeadTitle(texts.title_step3);
         setLeadInfoText(texts.info_step3);
         setLeadHelperText('');
-        setLeadNav(texts.nav_step3);
         setLeadPoemBlockVisibility(false);
         break;
       default:

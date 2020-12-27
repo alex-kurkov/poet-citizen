@@ -80,19 +80,33 @@ const SubmitBtn = styled.button`
   border: none;
   transition: all ease-in-out .3s;
   transform-origin: center;
+  position: relative;
   
   &:hover {
     transform: scale(1.05);
   }
+  &:focus {
+    outline: none;
+  }
+  &:after {
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
 
-${({enabled}) => enabled 
-  ?
-    `  &:after {
-        content: 'Готово!'
-    }`
-  : 
-    `  &:after {
-      content: ' СНАЧАЛА СДЕЛАЙТЕ СВОЙ ВЫБОР!'
+${({enabled}) => !enabled 
+  &&`  
+    &:hover:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #f2f2f2;
+      border: #ff7a00 thin solid;
+      height: 100%;
+      padding: 4px;
+      font-size: 90%;
+      content: ' Сгонфигурируйте свою инициативу на предыдуших шагах';
+      opacity: 1;
     }`
   }
 `;
@@ -147,7 +161,7 @@ const Success = ({
       </SuccessText>
       <SubmitBtn
         type="submit"
-        enabled={(organizationChecked && emotionChecked)} />
+        enabled={(organizationChecked && emotionChecked)} > Готово </SubmitBtn>
         <ActionBtn
           type="button"
           onClick={() => {

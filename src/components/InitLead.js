@@ -45,7 +45,8 @@ const InitPoemWrapper = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 2px;
-  background-color: rgba(242, 242, 242, .25);
+  background-color: rgba(242, 242, 242, .15);
+  backdrop-filter: blur(5px);
   padding: 12px;
   box-sizing: border-box;
 `;

@@ -18,7 +18,8 @@ const Crumb = styled.button`
   background: transparent;
   color: #43D3B2;
   border: none;
-  transition: transform .3s ease-in-out;
+  cursor: pointer;
+  transition: color .3s ease-in-out;
   margin: 0 8px 0 4px;
   position: relative;
   padding: 0 4px;
@@ -32,11 +33,10 @@ const Crumb = styled.button`
   }
   &:hover {
     color: #FF7A00;
-    transform: scale(1.1);
   }
   &:focus {
+    color: #FF7A00;
     outline: none;
-    transform: scale(1.1);
   }
 `
 
