@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useHistory } from 'react-router-dom';
-import { LeadMainText, LeadText, LeadNavigation, OrangeSpan } from './Texts';
+import { LeadMainText, LeadText, OrangeSpan } from './Texts';
+import BreadCrumbsLine from './BreadCrumbsLine';
 /* import PropTypes from 'prop-types'; */
 
 
@@ -60,11 +61,10 @@ const ActionBtn = styled.button`
   }
 `;
 
-const InitLead = ({ leadTexts, background }) => {
+const InitLead = ({ crumbsStack, leadTexts, background }) => {
   const {
     leadTitle,
     leadInfoText,
-    leadNav,
   } = leadTexts;
 
   const history = useHistory();
@@ -73,7 +73,7 @@ const InitLead = ({ leadTexts, background }) => {
     <LeadSection leadBG={background}>
       <LeadWrap>
         <LeadBlock>
-          <LeadNavigation>{leadNav}</LeadNavigation>
+          <BreadCrumbsLine crumbsStack={crumbsStack}/>
           <LeadMainText>{leadTitle}</LeadMainText>
           <LeadText>{leadInfoText}</LeadText>
           <ActionBtn

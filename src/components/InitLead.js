@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import {
-  LeadMainText, LeadText, LeadHelper, LeadNavigation, PoemText,
+  LeadMainText, LeadText, LeadHelper, PoemText,
 } from './Texts';
 import IcQuote from './IcQuote';
 import BreadCrumbsLine from './BreadCrumbsLine';
@@ -89,7 +89,6 @@ const InitLead = ({ crumbsStack, leadTexts, poem, leadPoemBlockVisibility, backg
     leadTitle,
     leadHelperText,
     leadInfoText,
-    leadNav,
   } = leadTexts;
 
   return (

@@ -19,15 +19,15 @@ const Crumb = styled.button`
   color: #43D3B2;
   border: none;
   transition: transform .3s ease-in-out;
-  margin: 0 4px;
+  margin: 0 8px 0 4px;
   position: relative;
   padding: 0 4px;
 
   &:after {
     position: absolute;
-    font-weight: 700;
+    font-weight: 400;
     content: '/';
-    right: 0px;
+    right: -4px;
     top: 0%;
   }
   &:hover {
