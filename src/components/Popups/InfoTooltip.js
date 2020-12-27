@@ -111,7 +111,7 @@ const InfoTooltip = ({
               <FailureIcon />
             </IconWrap>
             <TooltipTitle>{message}</TooltipTitle>
-            <TooltipBtn onClick={() => onFailure()}>ЕЩЕ РАЗ</TooltipBtn>
+            <TooltipBtn onClick={() => onFailure()}>ЗАКРЫТЬ</TooltipBtn>
           </Tooltip>)
         }
        </Modal>

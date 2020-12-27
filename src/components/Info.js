@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import IcQuote from './IcQuote';
 import config from '../config';
 import OrganizationList from './OrganizationList';
@@ -24,7 +24,7 @@ const InfoBlock = styled.section`
   margin: 0 auto;
   background-color: #f2f2f2;
   color: #212228;
-  padding: 100px 100px 290px 100px;
+  padding: 100px 100px 300px 100px;
 `;
 
 
@@ -138,6 +138,8 @@ const Info = ({ crumbsMethods }) => {
   );
 };
 
-Info.propTypes = {};
+Info.propTypes = {
+  crumbsMethods: PropTypes.object.isRequired,
+};
 
 export default Info;

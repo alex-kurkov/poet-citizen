@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   useHistory,
   /* useRouteMatch */
@@ -6,7 +7,6 @@ import {
 import styled from 'styled-components/macro';
 import { SuccessText } from './Texts';
 import IcQuote from './IcQuote';
-/* import PropTypes from 'prop-types'; */
 
 const SuccessBlock = styled.div`
   display: grid;
@@ -175,6 +175,12 @@ const Success = ({
 };
 
 Success.propTypes = {
+  poem: PropTypes.string.isRequired, 
+  actionBtnRoute: PropTypes.string.isRequired, 
+  actionBtnText: PropTypes.string.isRequired, 
+  organizationChecked: PropTypes.bool.isRequired,
+  emotionChecked: PropTypes.bool.isRequired,
+  crumbsMethods: PropTypes.object.isRequired,
 };
 
 export default Success;
