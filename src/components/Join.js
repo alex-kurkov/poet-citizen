@@ -112,7 +112,7 @@ const Call = ({
           onSubmit={handleCallSubmit}>
           <Carousel
             showArrows={true}
-            pagination={true}
+            pagination={false}
             ref={carousel}
             onChange={(item, idx) => setCurrentStep(idx + 1)}
             itemsToShow={1}

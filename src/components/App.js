@@ -95,6 +95,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    history.push('/main');
     setLoaderVisibible(true);
     api.getCards()
       .then((serverCards) => setCards(serverCards))
@@ -270,6 +271,7 @@ const App = () => {
                 }
                 />
               <Call
+                setCrumbsStack={setCrumbsStack}
                 crumbsMethods={crumbsMethods}
                 poem={poem}
                 route="/call"
@@ -288,6 +290,7 @@ const App = () => {
 
             <Route path="/explore">
             <ExploreLead
+              crumbsStack={crumbsStack}
               background={exploreLeadBg}
               leadTexts={
                 {
