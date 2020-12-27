@@ -95,8 +95,8 @@ const InfoTooltip = ({
                 {hasRedirect
                   ? (
                   <ButtonWrapper>
-                    <SubmitBtn disabled={false} type="button">{mainBtnStatus.linkText}</SubmitBtn>
-                    <SwapAuthBtn type="button" >{initiativeBtnStatus.linkText}</SwapAuthBtn>
+                    <SubmitBtn disabled={false} type="button" onClick={mainBtnStatus.method}>{mainBtnStatus.linkText}</SubmitBtn>
+                    <SwapAuthBtn type="button" onClick={initiativeBtnStatus.method}>{initiativeBtnStatus.linkText}</SwapAuthBtn>
                   </ButtonWrapper>
                 )
 :

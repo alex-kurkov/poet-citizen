@@ -199,12 +199,19 @@ const App = () => {
       });
   };
 
-
-  const openTooltip = (message, messageSpan) => {
+/* --> работа с попапом подтверждения действия */
+  const openConfirmPopup = (message, messageSpan) => {
     setConfirmPopupMessage(message);
     setConfirmPopupSpan(messageSpan);
     setConfirmPopupOpen(true);
   };
+
+  const closeConfirmPopup = (link) => {
+    history.push(link);
+    setConfirmPopupOpen(false);
+  };
+/* <-- работа с попапом подтверждения действия */
+
 
   const handleCallSubmit = (e, operation = 'none') => {
     e.preventDefault();
@@ -220,11 +227,11 @@ const App = () => {
           closePopups();
           clearPoem();
           if (operation === 'complain') {
-            openTooltip('Ваша жалоба принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
+            openConfirmPopup('Ваша жалоба принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
           } else if (operation === 'initiative') {
-            openTooltip('Ваша инициатива принята!', 'Теперь, другие пользователи тоже могут Вас поддержать в разделе “Другие инициативы”');
+            openConfirmPopup('Ваша инициатива принята!', 'Теперь, другие пользователи тоже могут Вас поддержать в разделе “Другие инициативы”');
           } else if (operation === 'join') {
-            openTooltip('Ваша заявка принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
+            openConfirmPopup('Ваша заявка принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
           }
         })
         .catch ((error) => console.log(error))
@@ -441,10 +448,12 @@ return (
         confirmSpan={confirmPopupSpan}
         success={loggedIn}
         mainBtnStatus={{
+          method: () => closeConfirmPopup('/main'),
           link: '/main',
           linkText: 'На главную',
         }}
         initiativeBtnStatus={{
+          method: () => closeConfirmPopup('/explore'),
           link: '/explore',
           linkText: 'Другие инициативы',
         }}
