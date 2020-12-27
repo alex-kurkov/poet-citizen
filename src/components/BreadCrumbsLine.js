@@ -49,7 +49,7 @@ const BreadCrumbs = ({ crumbsStack }) => (
           onClick={() => {
             item.method()
           }} 
-          id={`${idx}-${item.id}`}>
+          key={`${idx}-${item.id}`}>
             {item.name}
           </Crumb>)
           })

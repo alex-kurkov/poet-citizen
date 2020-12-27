@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Poem from './Poem';
 import config from '../config';
 import { LeadMainText, LeadText } from './Texts';
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 
 const LeadBlock = styled.div`
   width: 100%;
@@ -88,6 +88,8 @@ const Slide = ({ crumbsMethods, currentSlide }) => {
 };
 
 Slide.propTypes = {
+  crumbsMethods: PropTypes.object,
+  currentSlide: PropTypes.string,
 };
 
 export default Slide;
