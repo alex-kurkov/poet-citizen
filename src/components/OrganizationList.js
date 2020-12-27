@@ -17,11 +17,13 @@ const OrganizationContainer = styled.ul`
 `;
 
 const OrganizationBox = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
-  user-select: none;
   padding: 16px;
   margin-right: 0;
   line-height: 18px;

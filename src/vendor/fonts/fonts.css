@@ -29,7 +29,7 @@
      font-family: 'Noto Serif';
      font-style: normal;
      font-weight: 400;
-     src: /* local('Noto Serif'), */
+     src: local('Noto Serif'),
           url('./NotoSerif-Regular.ttf') format('truetype'),
 }
 
@@ -37,6 +37,6 @@
      font-family: 'Noto Serif';
      font-style: normal;
      font-weight: 700;
-     src:/*  local('Noto Serif'), */
+     src: local('Noto Serif'),
           url('./NotoSerif-Bold.ttf') format('truetype'),
 }
