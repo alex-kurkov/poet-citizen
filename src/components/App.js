@@ -27,6 +27,7 @@ import callLeadBg from '../img/lead-call.jpg';
 import complainLeadBg from '../img/lead-complain.jpg';
 import exploreLeadBg from '../img/lead-explore.jpg';
 import joinLeadBg from '../img/lead-join.jpg';
+import ConfirmPopup from './Popups/ConfirmPopup';
 
 const Page = styled.div`
   background-color: #f2f2f2;
@@ -39,6 +40,9 @@ const App = () => {
   const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
   const [profilePopupVisible, setProfilePopupVisible] = useState(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [confirmPopupOpen, setConfirmPopupOpen] = useState(false);
+  const [confirmPopupMessage, setConfirmPopupMessage] = useState('');
+  const [confirmPopupSpan, setConfirmPopupSpan] = useState('');
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState('');
   const [currentUser, setCurrentUser] = useState({});
@@ -83,7 +87,7 @@ const App = () => {
     setRegisterPopupVisible(false);
     setLoginPopupVisible(false);
     setProfilePopupVisible(false);
-    /*     setInfoTooltipOpen(false); */
+  /*     setInfoTooltipOpen(false); */
   }
 
   const checkUserToken = (jwt) => {
@@ -157,7 +161,7 @@ const App = () => {
     register(data)
       .then((res) => {
         if (res.data.email) {
-          setTooltipMessage('Вы успешно зарегистрировались!');
+          setTooltipMessage('Регистрация прошла успешно!');
         }
       })
       .catch((e) => {
@@ -196,13 +200,13 @@ const App = () => {
   };
 
 
-  const openTooltip = (message) => {
-    setTooltipMessage(message);
-    setInfoTooltipOpen(true);
+  const openTooltip = (message, messageSpan) => {
+    setConfirmPopupMessage(message);
+    setConfirmPopupSpan(messageSpan);
+    setConfirmPopupOpen(true);
   };
 
   const handleCallSubmit = (e, operation = 'none') => {
-    debugger;
     e.preventDefault();
     if (!loggedIn) {
       setLoginPopupVisible(true)
@@ -216,11 +220,11 @@ const App = () => {
           closePopups();
           clearPoem();
           if (operation === 'complain') {
-            openTooltip('Ваша жалоба принята!');
+            openTooltip('Ваша жалоба принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
           } else if (operation === 'initiative') {
-            openTooltip('Ваша инициатива принята!');
+            openTooltip('Ваша инициатива принята!', 'Теперь, другие пользователи тоже могут Вас поддержать в разделе “Другие инициативы”');
           } else if (operation === 'join') {
-            openTooltip('Ваша заявка принята!');
+            openTooltip('Ваша заявка принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
           }
         })
         .catch ((error) => console.log(error))
@@ -428,6 +432,23 @@ return (
         handleAuthLinkClick={handleLogout}
         currentUser={currentUser}
       />
+      {confirmPopupOpen && <ConfirmPopup
+        isOpen={confirmPopupOpen}
+        onSuccess={() => setConfirmPopupOpen(false)}
+        onFailure={() => setConfirmPopupOpen(false)}
+        onClose={() => setConfirmPopupOpen(false)}
+        message={confirmPopupMessage}
+        confirmSpan={confirmPopupSpan}
+        success={loggedIn}
+        mainBtnStatus={{
+          link: '/main',
+          linkText: 'На главную',
+        }}
+        initiativeBtnStatus={{
+          link: '/explore',
+          linkText: 'Другие инициативы',
+        }}
+      />}
       {infoTooltipOpen && <InfoTooltip
         onSuccess={() => setInfoTooltipOpen(false)}
         onFailure={() => setInfoTooltipOpen(false)}

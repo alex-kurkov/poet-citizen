@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Overlay from './Overlay';
 import { CloseButton, FailureIcon, SuccessIcon } from '../Buttons/index';
 import Modal from './Modal';
+import { SubmitBtn, SwapAuthBtn, ButtonWrapper } from '../Forms/FormStyledElements';
 
 const Tooltip = styled.div`
   padding: 24px auto;
@@ -32,6 +33,15 @@ const TooltipTitle = styled.span`
   text-overflow: unset;
   white-space: break-spaces;
 `;
+
+const TooltipSpan = styled.span`
+text-align: center;
+font-family: Open Sans;
+font-weight: 400;
+font-size: 18px;
+line-height: 1.38;
+`;
+
 const TooltipBtn = styled.button`
   box-sizing: border-box;
   height: 44px;
@@ -54,8 +64,7 @@ const TooltipBtn = styled.button`
   &:hover {
     opacity: .65;
   }
-`
-
+`;
 
 const InfoTooltip = ({
   isOpen,
@@ -63,21 +72,38 @@ const InfoTooltip = ({
   onSuccess,
   success,
   message,
-  onClose
+  onClose,
+  hasRedirect = false,
+  confirmSpan = '',
+  initiativeBtnStatus = {},
+  mainBtnStatus={}
 }) => {
 
   return (
     <Overlay onClick={onClose} isOpen={isOpen}>
       <Modal isOpen={isOpen}>
         <CloseButton title="Закрыть" onClick={onClose} />
+
         {success
           ? (
-          <Tooltip>
-            <IconWrap>
-              <SuccessIcon fill="#00D27A"/>
-            </IconWrap>
-            <TooltipTitle>{message}</TooltipTitle>
-            <TooltipBtn onClick={() => onSuccess()}>OK</TooltipBtn>
+            <Tooltip>
+              <IconWrap>
+                <SuccessIcon fill="#00D27A" />
+              </IconWrap>
+              <TooltipTitle>{message}</TooltipTitle>
+                {hasRedirect && (<TooltipSpan>{confirmSpan}</TooltipSpan>)}
+                {hasRedirect
+                  ? (
+                  <ButtonWrapper>
+                    <SubmitBtn disabled={false} type="button">{mainBtnStatus.linkText}</SubmitBtn>
+                    <SwapAuthBtn type="button" >{initiativeBtnStatus.linkText}</SwapAuthBtn>
+                  </ButtonWrapper>
+                )
+:
+              (
+                  < TooltipBtn onClick={() => onSuccess()}>OK</TooltipBtn>
+                )
+                }
           </Tooltip>)
           : (
           <Tooltip>
@@ -88,7 +114,7 @@ const InfoTooltip = ({
             <TooltipBtn onClick={() => onFailure()}>ЕЩЕ РАЗ</TooltipBtn>
           </Tooltip>)
         }
-    </Modal>
+       </Modal>
   </Overlay>
   );
 };
