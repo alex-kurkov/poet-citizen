@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
 
 const ActiveContainer = styled.ul`
   list-style-type: none;
@@ -20,7 +21,7 @@ margin-bottom: 24px;
 `;
 
 const ActiveItem = styled.p`
-  font-family: Georgia;
+  font-family: Noto Serif, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -29,7 +30,7 @@ const ActiveItem = styled.p`
 `;
 
 const ActiveItemNumber = styled.p`
-  font-family: Georgia;
+  font-family: Noto Serif, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
@@ -51,5 +52,8 @@ const ActiveList = ({ array }) => (
     ))}
   </ActiveContainer>
 );
+ActiveList.propTypes = {
+  array: PropTypes.array,
+};
 
 export default ActiveList;

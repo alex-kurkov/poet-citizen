@@ -129,24 +129,20 @@ const IntroGoalDiv = styled(ParagraphOpenSans)`
   padding: 12px 80px;
   box-sizing: border-box;
 `;
-const IntroTitleDiv = styled.p`
+const IntroTitleDiv = styled(ParagraphOpenSans)`
   max-width: 648px;
-  font-family: Open Sans;
-  font-style: normal;
   font-weight: 600;
   font-size: 36px;
   line-height: 52px;
   margin-top: 108px;
   margin-bottom: 36px;
  `;
- const IntroParticipationText = styled(ParagraphOpenSans)`
- font-family: Georgia;
- font-style: normal;
- font-weight: normal;
- font-size: 20px;
- line-height: 24px;
- margin-top: 44px;
- margin-bottom: 0;
+ const IntroParticipationText = styled(ParagraphNoto)`
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 44px;
+  margin-bottom: 0;
 `;
 
 const FooterLink = styled(ParagraphOpenSans)`
@@ -196,7 +192,7 @@ const FooterText = styled(ParagraphOpenSans)`
 `;
 
 const OrganizationItem = styled.h3`
-  font-family: Open Sans, Lato, sans-serif;
+  font-family: Open Sans, sans-serif;
   font-weight: bold;
   color: #ff7a00;
   display: inline-block;

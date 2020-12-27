@@ -27,6 +27,10 @@ import callLeadBg from '../img/lead-call.jpg';
 import complainLeadBg from '../img/lead-complain.jpg';
 import exploreLeadBg from '../img/lead-explore.jpg';
 import joinLeadBg from '../img/lead-join.jpg';
+import mainleadone from '../img/mainleads/mainleadone.jpg';
+import mainleadjoin from '../img/mainleads/mainleadjoin.jpg';
+import mainleadexplore from '../img/mainleads/mainleadexplore.jpg';
+import mainleadcomplain from '../img/mainleads/mainleadcomplain.jpg';
 
 const Page = styled.div`
   background-color: #f2f2f2;
@@ -62,16 +66,17 @@ const App = () => {
     '/join': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/join', method: () => history.push('/join'), name: 'Вступить в организацию' }]),
     '/call': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/call', method: () => history.push('/call'), name: 'Предложить инициативу' }]),
     '/complain': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/complain', method: () => history.push('/complain'), name: 'Подать жалобу' }]),
-    '/organization': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0, 2), { id: '/organization', name: 'Выбор движения', method: () => props.current.goTo(0) }]);
+    '/organization': (reference) => {
+      setCrumbsStack([...crumbsStack.slice(0, 2), { id: '/organization', name: 'Выбор движения', method: () => reference.current.goTo(0) }]);
     },
-    '/emotion': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0, 3), { id: '/emotion', name: 'Отношение к проблеме', method: () => props.current.goTo(1) }]);
+    '/emotion': (reference) => {
+      setCrumbsStack([...crumbsStack.slice(0, 3), { id: '/emotion', name: 'Отношение к проблеме', method: () => reference.current.goTo(1) }]);
     },
-    '/result': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0, 4), { id: '/result', name: 'Сформированная инициатива', method: () => props.current.goTo(2) }]);
+    '/result': (reference) => {
+      setCrumbsStack([...crumbsStack.slice(0, 4), { id: '/result', name: 'Сформированная инициатива', method: () => reference.current.goTo(2) }]);
     },
   }
+  const bgArray = [mainleadone, mainleadjoin, mainleadexplore, mainleadcomplain];
 
   const clearPoem = () => {
     setUserPoemZero('');
@@ -262,7 +267,7 @@ return (
       <main>
         <Switch>
           <Route path="/main">
-            <Lead crumbsMethods={crumbsMethods} texts={config.leadTexts.routeMain} />
+            <Lead crumbsMethods={crumbsMethods} bgArray={bgArray} texts={config.leadTexts.routeMain} />
             <Info crumbsMethods={crumbsMethods} />
           </Route>
           <Route exact path='/authorize'>

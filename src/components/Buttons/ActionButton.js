@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { BegeSpan } from '../Texts';
+import PropTypes from 'prop-types';
 
 const ActionButton = styled.button`
   position: absolute;
@@ -36,4 +37,7 @@ const ActionBtn = ({ handleRedirect }) => (
   </ActionButton>
 );
 
+ActionBtn.propTypes = {
+  handleRedirect: PropTypes.func.isRequired,
+};
 export default ActionBtn;

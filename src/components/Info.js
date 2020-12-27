@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import IcQuote from './IcQuote';
 import config from '../config';
 import OrganizationList from './OrganizationList';
@@ -138,6 +138,8 @@ const Info = ({ crumbsMethods }) => {
   );
 };
 
-Info.propTypes = {};
+Info.propTypes = {
+  crumbsMethods: PropTypes.object.isRequired,
+};
 
 export default Info;

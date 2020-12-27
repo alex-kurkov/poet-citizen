@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import Carousel from 'react-elastic-carousel';
 import SelectionForm from './Forms/SelectionForm';
@@ -7,7 +8,6 @@ import { FormArrowBtn } from './Buttons/FormArrowBtn';
 import Success from './Success';
 import AppContext from '../contexts/AppContext';
 import getRandom from '../utils/getRandomIntFromRange';
-import PropTypes from 'prop-types';
 
 const CallSection = styled.section`
   width: 1440px;
