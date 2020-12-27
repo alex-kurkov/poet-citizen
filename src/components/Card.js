@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import {LikeButton, DisLikeButton} from './Buttons/index';
 import organizationBg from '../img/organization_bg.png';
-import { OrganizationTextOrange } from './Texts';
+import { OrangeSpan } from './Texts';
 import formatDate from '../utils/utils';
 import cardBg from '../img/organization_bg.png';
 
@@ -14,6 +14,8 @@ const CardElementDiv = styled.div`
   color: #000000;
   width: 360px;
   height: 676px;
+  border: 1px solid #212228;
+  border-radius: 2px;
 `;
 
 const CardElementContainerDiv = styled.div`
@@ -122,7 +124,9 @@ const CardElementLikeSum = styled.p`
   margin: 0 0 0 20px;
 `;
 
-const OrganizationItem = styled(OrganizationTextOrange)`
+const OrganizationItem = styled(OrangeSpan)`
+  font-family: Open Sans, sans-serif;
+  font-weight: bold;
   display: inline-block;
   font-size: 28px;
   line-height: 1.36;

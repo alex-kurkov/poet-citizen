@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import cardBg from '../../img/organization_bg.png';
+import {
+  OrganizationItem,
+  OrganizationInfo,
+} from '../Texts';
 /* import PropTypes from 'prop-types'; */
 
 const FormContainer = styled.ul`
@@ -149,32 +153,14 @@ const StyledLi = styled.li`
     }
   }
 `;
-const LabelTitle = styled.h3`
-  display: inline-block;
-  color: #FF7A00;
-  font-family: Open Sans;
-  font-size: 24px;
-  line-height: 1.5;
-  font-weight: 600;
-  margin: 0 0 12px 0;
-`;
-const LabelInfo = styled.span`
-  display: block;
-  color: #f2f2f2;
-  font-family: Noto Serif, serif;
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 400;
-
-`;
 
 const SelectionForm = ({ handleSelection, array, areaName }) => (
   <FormContainer>
     { array.map((item, i) => (
           <StyledLi key={i + item.id}>
             <RadioInputLabel bg={item.image || cardBg} htmlFor={item.id} labelText={item.name}>
-              <LabelTitle>{item.name}</LabelTitle>
-              <LabelInfo>{item.info}</LabelInfo>
+              <OrganizationItem>{item.name}</OrganizationItem>
+              <OrganizationInfo>{item.info}</OrganizationInfo>
               <RadioInput
                 required
                 onChange={handleSelection}

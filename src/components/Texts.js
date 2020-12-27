@@ -195,12 +195,23 @@ const FooterText = styled(ParagraphOpenSans)`
   margin-bottom: 0;
 `;
 
-const OrganizationTextOrange = styled.h3`
+const OrganizationItem = styled.h3`
   font-family: Open Sans, Lato, sans-serif;
   font-weight: bold;
   color: #ff7a00;
+  display: inline-block;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 8px 0;
 `;
-
+const OrganizationInfo = styled.span`
+  display: block;
+  color: #f2f2f2;
+  font-family: Noto Serif, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+`;
 
 export {
   LeadMainText,
@@ -221,6 +232,7 @@ export {
   FooterExtLink,
   OrangeSpan,
   BegeSpan,
-  OrganizationTextOrange,
+  OrganizationItem,
+  OrganizationInfo,
   SuccessText,
 };
