@@ -63,7 +63,7 @@ const BreadCrumbs = ({ crumbsStack }) => (
 );
 
 BreadCrumbs.propTypes = {
-  crumbsStack: PropTypes.node.isRequired,
+  crumbsStack: PropTypes.node,
 };
 
 export default BreadCrumbs;

@@ -228,7 +228,6 @@ const App = () => {
       const jwt = localStorage.getItem('jwt');
       api.postCard({ rhyme: poem, organization: userOrganizationId }, jwt)
         .then((newCard) => {
-          console.log(newCard);
           setCards([newCard, ...cards]);
           closePopups();
           clearPoem();
