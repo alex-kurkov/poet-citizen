@@ -9,7 +9,7 @@ const StyledModal = styled.div`
   background-color: #f2f2f2;
   border-radius: 2px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  padding: 40px 24px;
+  padding: 40px 24px 64px 24px;
   transition: visibility 0s, opacity .5s ease;
   z-index: 99;
 

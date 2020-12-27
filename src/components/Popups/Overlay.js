@@ -32,14 +32,14 @@ const StyledOverlay = styled.div`
 `;
 
 const Overlay = ({ isOpen, onClick, children }) => {
-  const overlayClick = (e) => {
+/*   const overlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onClick();
     }
-  };
+  }; */
 
   return (
-    <StyledOverlay onClick={(e)=> overlayClick(e)} isOpen={isOpen}>{children}</StyledOverlay>
+    <StyledOverlay /* onClick={(e)=> overlayClick(e)} */ isOpen={isOpen}>{children}</StyledOverlay>
   );
 };
 

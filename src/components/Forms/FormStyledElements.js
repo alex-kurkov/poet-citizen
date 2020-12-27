@@ -44,7 +44,7 @@ const ErrorIndicator = styled.div`
 const ErrorMessage = styled.span`
   position: absolute;
   left: 24px;
-  bottom: 24px;
+  bottom: 12px;
   width: calc(100% - 48px);
   height: fit-content;
   font-family: Open Sans, sans-serif;
