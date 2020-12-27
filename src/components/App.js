@@ -27,10 +27,12 @@ import callLeadBg from '../img/lead-call.jpg';
 import complainLeadBg from '../img/lead-complain.jpg';
 import exploreLeadBg from '../img/lead-explore.jpg';
 import joinLeadBg from '../img/lead-join.jpg';
+import ConfirmPopup from './Popups/ConfirmPopup';
 import mainleadone from '../img/mainleads/mainleadone.jpg';
 import mainleadjoin from '../img/mainleads/mainleadjoin.jpg';
 import mainleadexplore from '../img/mainleads/mainleadexplore.jpg';
 import mainleadcomplain from '../img/mainleads/mainleadcomplain.jpg';
+
 
 const Page = styled.div`
   background-color: #f2f2f2;
@@ -43,6 +45,9 @@ const App = () => {
   const [registerPopupVisible, setRegisterPopupVisible] = useState(false);
   const [profilePopupVisible, setProfilePopupVisible] = useState(false);
   const [loginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [confirmPopupOpen, setConfirmPopupOpen] = useState(false);
+  const [confirmPopupMessage, setConfirmPopupMessage] = useState('');
+  const [confirmPopupSpan, setConfirmPopupSpan] = useState('');
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState('');
   const [currentUser, setCurrentUser] = useState({});
@@ -88,7 +93,7 @@ const App = () => {
     setRegisterPopupVisible(false);
     setLoginPopupVisible(false);
     setProfilePopupVisible(false);
-    /*     setInfoTooltipOpen(false); */
+  /*     setInfoTooltipOpen(false); */
   }
 
   const checkUserToken = (jwt) => {
@@ -162,7 +167,7 @@ const App = () => {
     register(data)
       .then((res) => {
         if (res.data.email) {
-          setTooltipMessage('Вы успешно зарегистрировались!');
+          setTooltipMessage('Регистрация прошла успешно!');
         }
       })
       .catch((e) => {
@@ -200,14 +205,21 @@ const App = () => {
       });
   };
 
-
-  const openTooltip = (message) => {
-    setTooltipMessage(message);
-    setInfoTooltipOpen(true);
+/* --> работа с попапом подтверждения действия */
+  const openConfirmPopup = (message, messageSpan) => {
+    setConfirmPopupMessage(message);
+    setConfirmPopupSpan(messageSpan);
+    setConfirmPopupOpen(true);
   };
 
+  const closeConfirmPopup = (link) => {
+    history.push(link);
+    setConfirmPopupOpen(false);
+  };
+/* <-- работа с попапом подтверждения действия */
+
+
   const handleCallSubmit = (e, operation = 'none') => {
-    debugger;
     e.preventDefault();
     if (!loggedIn) {
       setLoginPopupVisible(true)
@@ -221,11 +233,11 @@ const App = () => {
           closePopups();
           clearPoem();
           if (operation === 'complain') {
-            openTooltip('Ваша жалоба принята!');
+            openConfirmPopup('Ваша жалоба принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
           } else if (operation === 'initiative') {
-            openTooltip('Ваша инициатива принята!');
+            openConfirmPopup('Ваша инициатива принята!', 'Теперь, другие пользователи тоже могут Вас поддержать в разделе “Другие инициативы”');
           } else if (operation === 'join') {
-            openTooltip('Ваша заявка принята!');
+            openConfirmPopup('Ваша заявка принята!', 'Обращение будет рассмотрено. В ближайшее время с Вами свяжется оператор по электронной почте. ');
           }
         })
         .catch ((error) => console.log(error))
@@ -433,6 +445,25 @@ return (
         handleAuthLinkClick={handleLogout}
         currentUser={currentUser}
       />
+      {confirmPopupOpen && <ConfirmPopup
+        isOpen={confirmPopupOpen}
+        onSuccess={() => setConfirmPopupOpen(false)}
+        onFailure={() => setConfirmPopupOpen(false)}
+        onClose={() => setConfirmPopupOpen(false)}
+        message={confirmPopupMessage}
+        confirmSpan={confirmPopupSpan}
+        success={loggedIn}
+        mainBtnStatus={{
+          method: () => closeConfirmPopup('/main'),
+          link: '/main',
+          linkText: 'На главную',
+        }}
+        initiativeBtnStatus={{
+          method: () => closeConfirmPopup('/explore'),
+          link: '/explore',
+          linkText: 'Другие инициативы',
+        }}
+      />}
       {infoTooltipOpen && <InfoTooltip
         onSuccess={() => setInfoTooltipOpen(false)}
         onFailure={() => setInfoTooltipOpen(false)}
