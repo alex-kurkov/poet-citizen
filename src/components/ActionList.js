@@ -53,8 +53,12 @@ const ActionBox = styled.button`
 
   &:hover {
     transition: transform 0.3s ease-out;
-    box-shadow: 0 0 25px;
   }
+
+  &:checked {
+   box-shadow: 0 0 12px rgba(33, 34, 40, 0.5);
+  }
+
 
   &:before {
     content: '';
@@ -67,7 +71,6 @@ const ActionBox = styled.button`
     z-index: 5;
     background: #f2f2f2;
     opacity: 1;
-    filter: blur(2px);
     border-radius: 2px;
   }
 
@@ -98,6 +101,24 @@ const ActionBox = styled.button`
     opacity: 0;
     transition: opacity 0.3s ease-out;
   }
+&:hover #blurkid {
+    backdrop-filter: blur(0);
+    opacity: 0;
+    
+  }
+`;
+
+const ActionBoxBlur = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+
+  
 `;
 
 const StyledLi = styled.li`
@@ -135,18 +156,18 @@ const ActionCircle = styled.div`
 
   &:before {
     content: '';
-    width: 68px;
+    width: 72px;
     height: 0;
     border-bottom: 1.5px solid #f2f2f2;
     position: absolute;
-    left: 38px;
+    left: 27px;
     top: 38px;
   }
   &:after {
     content: '';
     position: absolute;
     top: 34px;
-    left: 93px;
+    left: 87px;
     width: 10px;
     height: 10px;
     border-top: 1.5px solid #f2f2f2;
@@ -159,24 +180,26 @@ const ActionList = ({ array }) => {
   const history = useHistory();
 
   return (
-  <ActionContainer>
+    <ActionContainer>
 
-    { array.map((item, i) => (
-      <StyledLi key={i + item.id}>
+      { array.map((item, i) => (
+        <StyledLi key={i + item.id}>
           <ActionBox
-          onClick={() => {
-            history.push(item.link);
-          }}
-          type='button'
-          bg={item.image || cardBg}
-          labelText={item.title.join(' ')}>
-          <ActionItem>{item.title.join(' ')}</ActionItem>
-          <ActionCircle></ActionCircle>
+            onClick={() => {
+              history.push(item.link);
+            }}
+            type='button'
+            bg={item.image || cardBg}
+            labelText={item.title.join(' ')}>
+            <ActionBoxBlur id="blurkid"></ActionBoxBlur>
+            <ActionItem>{item.title.join(' ')}</ActionItem>
+            <ActionCircle></ActionCircle>
+
           </ActionBox>
         </StyledLi>
-    ))
-    }
-  </ActionContainer>
+      ))
+      }
+    </ActionContainer>
   );
 };
 
