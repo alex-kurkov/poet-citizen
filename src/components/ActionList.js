@@ -18,7 +18,7 @@ const ActionContainer = styled.ul`
 
 const ActionItem = styled.p`
   display: block;
-  color: #F2F2F2;
+  color: #f2f2f2;
   box-sizing: border-box;
   max-width: 30%;
   height: min-content;
@@ -28,6 +28,7 @@ const ActionItem = styled.p`
   font-size: 36px;
   line-height: 1.36;
   margin: 0 20px;
+  opacity: 0;
 `;
 
 const ActionBox = styled.button`
@@ -45,8 +46,8 @@ const ActionBox = styled.button`
   border: none;
   border-radius: 2px;
   ${({ bg }) => `
-  background: url(${bg});
-  `}
+	  background: url(${bg});
+	  `}
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,9 +57,8 @@ const ActionBox = styled.button`
   }
 
   &:checked {
-   box-shadow: 0 0 12px rgba(33, 34, 40, 0.5);
+    box-shadow: 0 0 12px rgba(33, 34, 40, 0.5);
   }
-
 
   &:before {
     content: '';
@@ -70,7 +70,7 @@ const ActionBox = styled.button`
     bottom: 5%;
     z-index: 5;
     background: #f2f2f2;
-    opacity: .82;
+    opacity: 0.82;
     border-radius: 2px;
   }
 
@@ -101,10 +101,20 @@ const ActionBox = styled.button`
     opacity: 0;
     transition: opacity 0.3s ease-out;
   }
-&:hover #blurkid {
+  &:hover #blurkid {
     backdrop-filter: blur(0);
     opacity: 0;
-    
+  }
+
+  &:hover #circlekid {
+    font-size: 36px;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+
+  &:hover #itemtextkid {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
   }
 `;
 
@@ -117,8 +127,6 @@ const ActionBoxBlur = styled.div`
   height: 100%;
   width: 100%;
   z-index: 2;
-
-  
 `;
 
 const StyledLi = styled.li`
@@ -140,8 +148,7 @@ const StyledLi = styled.li`
       transform-origin: bottom left;
     }
   }
-  `;
-
+`;
 
 const ActionCircle = styled.div`
   width: 76px;
@@ -153,6 +160,7 @@ const ActionCircle = styled.div`
   position: absolute;
   right: 52px;
   bottom: 36px;
+  opacity: 0;
 
   &:before {
     content: '';
@@ -181,8 +189,7 @@ const ActionList = ({ array, crumbsMethods }) => {
 
   return (
     <ActionContainer>
-
-      { array.map((item, i) => (
+      {array.map((item, i) => (
         <StyledLi key={i + item.id}>
           <ActionBox
             onClick={() => {
@@ -191,15 +198,14 @@ const ActionList = ({ array, crumbsMethods }) => {
             }}
             type='button'
             bg={item.image || cardBg}
-            labelText={item.title.join(' ')}>
-            <ActionBoxBlur id="blurkid"></ActionBoxBlur>
-            <ActionItem>{item.title.join(' ')}</ActionItem>
-            <ActionCircle></ActionCircle>
-
+            labelText={item.title.join(' ')}
+          >
+            <ActionBoxBlur id='blurkid'></ActionBoxBlur>
+            <ActionItem id='itemtextkid'>{item.title.join(' ')}</ActionItem>
+            <ActionCircle id='circlekid'></ActionCircle>
           </ActionBox>
         </StyledLi>
-      ))
-      }
+      ))}
     </ActionContainer>
   );
 };
