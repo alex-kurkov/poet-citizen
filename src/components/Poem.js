@@ -14,16 +14,7 @@ const PoemBlock = styled.div`
   padding: 52px 32px;
   background-color: rgba(242, 242, 242, .25);
   box-sizing: border-box;
-  &:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    background-color: rgba(242, 242, 242, .25);
-    filter: blur(4px);
-    width: 100%;
-    height: 100%;
-  }
+  backdrop-filter: blur(5px);
 `;
 const IcQuotesWrap = styled.div`
   width: 50px;

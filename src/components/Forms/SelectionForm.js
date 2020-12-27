@@ -39,8 +39,12 @@ const RadioInput = styled.input`
 `;
 
 const RadioInputLabel = styled.label`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
   box-sizing: border-box;
+  border-radius: 2px;
   cursor: pointer;
   position: relative;
   margin-right: 0;
@@ -48,7 +52,7 @@ const RadioInputLabel = styled.label`
   user-select: none;
   width: 100%;
   height: 100%;
-  padding: 36px 16px;
+  padding: 16px 16px;
   ${({bg}) => `
   background: url(${bg});
   `}
@@ -87,7 +91,7 @@ const RadioInputLabel = styled.label`
     display: inline-block;
     position: absolute;
     left: 24px;
-    bottom: 20px;
+    bottom: 24px;
     z-index: 10;
     opacity: 1;
   }
@@ -157,9 +161,9 @@ const LabelTitle = styled.h3`
 const LabelInfo = styled.span`
   display: block;
   color: #f2f2f2;
-  font-family: Open Sans;
+  font-family: Noto Serif, serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.2;
   font-weight: 400;
 
 `;

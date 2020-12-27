@@ -22,7 +22,7 @@ const OrganizationBox = styled.div`
   position: relative;
   cursor: pointer;
   user-select: none;
-  padding: 36px 28px 32px;
+  padding: 16px;
   margin-right: 0;
   line-height: 18px;
   width: 100%;
@@ -127,16 +127,16 @@ const OrganizationItem = styled(OrganizationTextOrange)`
   display: inline-block;
   font-size: 36px;
   line-height: 0.9;
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
 `;
 
 const OrganizationInfo = styled.span`
   display: block;
   color: #fff;
-  font-family: Open Sans, Lato, sans-serif;
+  font-family: Noto Serif, serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1,38;
+  line-height: 1.2;
 `;
 
 const OrganizationList = ({ array }) => (

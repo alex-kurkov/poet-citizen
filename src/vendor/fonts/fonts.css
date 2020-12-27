@@ -29,16 +29,14 @@
      font-family: 'Noto Serif';
      font-style: normal;
      font-weight: 400;
-     src: local('Noto Serif'),
-          url('./NotoSerif.woff') format('woff'),
-          url('./noto-serif-v9-cyrillic-regular.ttf') format('truetype'),
+     src: /* local('Noto Serif'), */
+          url('./NotoSerif-Regular.ttf') format('truetype'),
 }
 
 @font-face {
      font-family: 'Noto Serif';
      font-style: normal;
      font-weight: 700;
-     src: local('Noto Serif'),
-          url('./NotoSerif-Bold.woff') format('woff'),
-          url('./noto-serif-v9-cyrillic-700.ttf') format('truetype'),
+     src:/*  local('Noto Serif'), */
+          url('./NotoSerif-Bold.ttf') format('truetype'),
 }
