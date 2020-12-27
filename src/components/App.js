@@ -54,22 +54,22 @@ const App = () => {
   const [leadNav, setLeadNav] = useState('');
   const [cards, setCards] = useState([]);
   const [isLoaderVisible, setLoaderVisibible] = useState(false);
-  const [crumbsStack, setCrumbsStack] = useState([{id: '/main', method: ()=>{}, name: 'Гражданин-поэт'}]);
+  const [crumbsStack, setCrumbsStack] = useState([{ id: '/main', method: () => { }, name: 'Гражданин-поэт' }]);
 
   const crumbsMethods = {
-    '/main': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}]),
-    '/explore': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/explore', method: ()=> history.push('/explore'), name: 'Другие инициативы'}]),
-    '/join': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/join', method: ()=> history.push('/join'), name: 'Вступить в организацию'}]),
-    '/call': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/call', method: ()=> history.push('/call'), name: 'Предложить инициативу'}]),
-    '/complain': () => setCrumbsStack([{id: '/main', method: ()=> history.push('/main'), name: 'Гражданин-поэт'}, {id: '/complain', method: ()=> history.push('/complain'), name: 'Подать жалобу'}]),
+    '/main': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }]),
+    '/explore': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/explore', method: () => history.push('/explore'), name: 'Другие инициативы' }]),
+    '/join': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/join', method: () => history.push('/join'), name: 'Вступить в организацию' }]),
+    '/call': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/call', method: () => history.push('/call'), name: 'Предложить инициативу' }]),
+    '/complain': () => setCrumbsStack([{ id: '/main', method: () => history.push('/main'), name: 'Гражданин-поэт' }, { id: '/complain', method: () => history.push('/complain'), name: 'Подать жалобу' }]),
     '/organization': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0,2), {id: '/organization', name:'Выбор движения', method: () => props.current.goTo(0)}]);
+      setCrumbsStack([...crumbsStack.slice(0, 2), { id: '/organization', name: 'Выбор движения', method: () => props.current.goTo(0) }]);
     },
     '/emotion': (props) => {
-      setCrumbsStack([...crumbsStack.slice(0,3), {id: '/emotion', name:'Отношение к проблеме', method: () => props.current.goTo(1)}]);
+      setCrumbsStack([...crumbsStack.slice(0, 3), { id: '/emotion', name: 'Отношение к проблеме', method: () => props.current.goTo(1) }]);
     },
-    '/result':  (props) => {
-      setCrumbsStack([...crumbsStack.slice(0,4), {id: '/result', name:'Сформированная инициатива', method: () => props.current.goTo(2)}]);
+    '/result': (props) => {
+      setCrumbsStack([...crumbsStack.slice(0, 4), { id: '/result', name: 'Сформированная инициатива', method: () => props.current.goTo(2) }]);
     },
   }
 
@@ -83,7 +83,7 @@ const App = () => {
     setRegisterPopupVisible(false);
     setLoginPopupVisible(false);
     setProfilePopupVisible(false);
-/*     setInfoTooltipOpen(false); */
+    /*     setInfoTooltipOpen(false); */
   }
 
   const checkUserToken = (jwt) => {
@@ -171,8 +171,8 @@ const App = () => {
       });
   };
   const handleAuthLinkClick = () => {
-      setRegisterPopupVisible(!registerPopupVisible);
-      setLoginPopupVisible(!loginPopupVisible);
+    setRegisterPopupVisible(!registerPopupVisible);
+    setLoginPopupVisible(!loginPopupVisible);
   }
   const handleLogout = () => {
     localStorage.removeItem('jwt');
@@ -195,100 +195,114 @@ const App = () => {
       });
   };
 
-  const handleCallSubmit = (e) => {
+
+  const openTooltip = (message) => {
+    setTooltipMessage(message);
+    setInfoTooltipOpen(true);
+  };
+
+  const handleCallSubmit = (e, operation = 'none') => {
+    debugger;
     e.preventDefault();
     if (!loggedIn) {
       setLoginPopupVisible(true)
     } else {
       setLoaderVisibible(true);
       const jwt = localStorage.getItem('jwt');
-      api.postCard({ rhyme: poem, organization: userOrganizationId}, jwt)
+      api.postCard({ rhyme: poem, organization: userOrganizationId }, jwt)
         .then((newCard) => {
           console.log(newCard);
           setCards([newCard, ...cards]);
           closePopups();
           clearPoem();
+          if (operation === 'complain') {
+            openTooltip('Ваша жалоба принята!');
+          } else if (operation === 'initiative') {
+            openTooltip('Ваша инициатива принята!');
+          } else if (operation === 'join') {
+            openTooltip('Ваша заявка принята!');
+          }
         })
-        .catch((error) => console.log(error))
+        .catch ((error) => console.log(error))
         .finally(() => {
-          setLoaderVisibible(false);
-          history.push('/explore');
-        });
+  setLoaderVisibible(false);
+  history.push('/explore');
+});
     }
   }
-  const handleCardLike = (card) => {
-    if (!loggedIn) return setLoginPopupVisible(true);
-    const jwt = localStorage.getItem('jwt');
-    const isLiked = card.likes.some((item) => item._id === currentUser._id);
-    api.changeLikeStatus(card._id, !isLiked, jwt)
-      .then((data) => {
-        const newCard = data.card;
-        const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-        setCards(newCards);
-      })
-      .catch((error) => console.log(error));
-  };
-  const handleCardDislike = (card) => {
-    if (!loggedIn) return setLoginPopupVisible(true);
-    const jwt = localStorage.getItem('jwt');
-    const isDisliked = card.dislikes.some((item) => item._id === currentUser._id);
-    api.changeDislikeStatus(card._id, !isDisliked, jwt)
-      .then((data) => {
-        const newCard = data.card;
-        const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-        setCards(newCards);
-      })
-      .catch((error) => console.log(error));
-  };
+const handleCardLike = (card) => {
+  if (!loggedIn) return setLoginPopupVisible(true);
+  const jwt = localStorage.getItem('jwt');
+  const isLiked = card.likes.some((item) => item._id === currentUser._id);
+  api.changeLikeStatus(card._id, !isLiked, jwt)
+    .then((data) => {
+      const newCard = data.card;
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    })
+    .catch((error) => console.log(error));
+};
+const handleCardDislike = (card) => {
+  if (!loggedIn) return setLoginPopupVisible(true);
+  const jwt = localStorage.getItem('jwt');
+  const isDisliked = card.dislikes.some((item) => item._id === currentUser._id);
+  api.changeDislikeStatus(card._id, !isDisliked, jwt)
+    .then((data) => {
+      const newCard = data.card;
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    })
+    .catch((error) => console.log(error));
+};
 
-  return (
-    <Page>
+return (
+  <Page>
     <AppContext.Provider value={config}>
-        <Header crumbsMethods={crumbsMethods} loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
-        <main>
-          <Switch>
-            <Route path="/main">
-              <Lead crumbsMethods={crumbsMethods} texts={config.leadTexts.routeMain}/>
-              <Info crumbsMethods={crumbsMethods} />
-            </Route>
-            <Route exact path='/authorize'>
-              <Authorize authenticate={onProfileBtnClick}/>
-            </Route>
-            <Route path="/call">
-              <InitLead
-                crumbsStack={crumbsStack}
-                background={callLeadBg}
-                poem={poem}
-                leadPoemBlockVisibility={leadPoemBlockVisibility}
-                leadTexts={
-                  {
-                    leadTitle,
-                    leadHelperText,
-                    leadInfoText,
-                    leadNav,
-                    
-                  }
-                }
-                />
-              <Call
-                setCrumbsStack={setCrumbsStack}
-                crumbsMethods={crumbsMethods}
-                poem={poem}
-                route="/call"
-                handleCallSubmit={handleCallSubmit}
-                setUserOrganizationId={setUserOrganizationId}
-                setUserPoemZero={setUserPoemZero}
-                setUserPoemOne={setUserPoemOne}
-                setUserPoemTwo={setUserPoemTwo}
-                setLeadTitle={setLeadTitle}
-                setLeadHelperText={setLeadHelperText}
-                setLeadInfoText={setLeadInfoText}
-                setLeadNav={setLeadNav}
-                setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
-              />
-            </Route>
+      <Header crumbsMethods={crumbsMethods} loggedIn={loggedIn} onProfileBtnClick={onProfileBtnClick} />
+      <main>
+        <Switch>
+          <Route path="/main">
+            <Lead crumbsMethods={crumbsMethods} texts={config.leadTexts.routeMain} />
+            <Info crumbsMethods={crumbsMethods} />
+          </Route>
+          <Route exact path='/authorize'>
+            <Authorize authenticate={onProfileBtnClick} />
+          </Route>
+          <Route path="/call">
+            <InitLead
+              crumbsStack={crumbsStack}
+              background={callLeadBg}
+              poem={poem}
+              leadPoemBlockVisibility={leadPoemBlockVisibility}
+              leadTexts={
+                {
+                  leadTitle,
+                  leadHelperText,
+                  leadInfoText,
+                  leadNav,
 
-            <Route path="/explore">
+                }
+              }
+            />
+            <Call
+              setCrumbsStack={setCrumbsStack}
+              crumbsMethods={crumbsMethods}
+              poem={poem}
+              route="/call"
+              handleCallSubmit={(evt) => handleCallSubmit(evt, 'initiative')}
+              setUserOrganizationId={setUserOrganizationId}
+              setUserPoemZero={setUserPoemZero}
+              setUserPoemOne={setUserPoemOne}
+              setUserPoemTwo={setUserPoemTwo}
+              setLeadTitle={setLeadTitle}
+              setLeadHelperText={setLeadHelperText}
+              setLeadInfoText={setLeadInfoText}
+              setLeadNav={setLeadNav}
+              setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+            />
+          </Route>
+
+          <Route path="/explore">
             <ExploreLead
               crumbsMethods={crumbsMethods}
               crumbsStack={crumbsStack}
@@ -301,49 +315,49 @@ const App = () => {
                   leadNav: config.leadTexts.routeExplore.nav,
                 }
               }
-              />
-              <OtherInitiative
-                crumbsMethods={crumbsMethods}
-                currentUser={currentUser}
-                cards={cards}
-                onCardLike={handleCardLike}
-                onCardDislike={handleCardDislike}
-                />
-            </Route>
+            />
+            <OtherInitiative
+              crumbsMethods={crumbsMethods}
+              currentUser={currentUser}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDislike={handleCardDislike}
+            />
+          </Route>
 
-            <Route path="/complain">
-              <InitLead
-                crumbsStack={crumbsStack}
-                background={complainLeadBg}
-                poem={poem}
-                leadPoemBlockVisibility={leadPoemBlockVisibility}
-                leadTexts={
-                  {
-                    leadTitle,
-                    leadHelperText,
-                    leadInfoText,
-                    leadNav,
-                  }
+          <Route path="/complain">
+            <InitLead
+              crumbsStack={crumbsStack}
+              background={complainLeadBg}
+              poem={poem}
+              leadPoemBlockVisibility={leadPoemBlockVisibility}
+              leadTexts={
+                {
+                  leadTitle,
+                  leadHelperText,
+                  leadInfoText,
+                  leadNav,
                 }
-                />
-              <Complain
-                crumbsMethods={crumbsMethods}
-                poem={poem}
-                route="/complain"
-                handleCallSubmit={handleCallSubmit}
-                setUserOrganizationId={setUserOrganizationId}
-                setUserPoemZero={setUserPoemZero}
-                setUserPoemOne={setUserPoemOne}
-                setUserPoemTwo={setUserPoemTwo}
-                setLeadTitle={setLeadTitle}
-                setLeadHelperText={setLeadHelperText}
-                setLeadInfoText={setLeadInfoText}
-                setLeadNav={setLeadNav}
-                setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
-                />
-            </Route>
+              }
+            />
+            <Complain
+              crumbsMethods={crumbsMethods}
+              poem={poem}
+              route="/complain"
+              handleCallSubmit={(evt) => handleCallSubmit(evt, 'complain')}
+              setUserOrganizationId={setUserOrganizationId}
+              setUserPoemZero={setUserPoemZero}
+              setUserPoemOne={setUserPoemOne}
+              setUserPoemTwo={setUserPoemTwo}
+              setLeadTitle={setLeadTitle}
+              setLeadHelperText={setLeadHelperText}
+              setLeadInfoText={setLeadInfoText}
+              setLeadNav={setLeadNav}
+              setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+            />
+          </Route>
 
-            <Route path="/join">
+          <Route path="/join">
             <InitLead
               crumbsStack={crumbsStack}
               background={joinLeadBg}
@@ -357,23 +371,23 @@ const App = () => {
                   leadNav,
                 }
               }
-                  />
-                <Join
-                  crumbsMethods={crumbsMethods}
-                  poem={poem}
-                  route="/join"
-                  handleCallSubmit={handleCallSubmit}
-                  setUserOrganizationId={setUserOrganizationId}
-                  setUserPoemZero={setUserPoemZero}
-                  setUserPoemOne={setUserPoemOne}
-                  setUserPoemTwo={setUserPoemTwo}
-                  setLeadTitle={setLeadTitle}
-                  setLeadHelperText={setLeadHelperText}
-                  setLeadInfoText={setLeadInfoText}
-                  setLeadNav={setLeadNav}
-                  setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
-                  />
-            </Route>
+            />
+            <Join
+              crumbsMethods={crumbsMethods}
+              poem={poem}
+              route="/join"
+              handleCallSubmit={(evt) => handleCallSubmit(evt, 'join')}
+              setUserOrganizationId={setUserOrganizationId}
+              setUserPoemZero={setUserPoemZero}
+              setUserPoemOne={setUserPoemOne}
+              setUserPoemTwo={setUserPoemTwo}
+              setLeadTitle={setLeadTitle}
+              setLeadHelperText={setLeadHelperText}
+              setLeadInfoText={setLeadInfoText}
+              setLeadNav={setLeadNav}
+              setLeadPoemBlockVisibility={setLeadPoemBlockVisibility}
+            />
+          </Route>
 
           <Route path="/">
             <Redirect to="/main" />
@@ -382,7 +396,7 @@ const App = () => {
       </main>
 
       <Footer />
-      <RegisterPopup 
+      <RegisterPopup
         handleRegister={handleRegister}
         isOpen={registerPopupVisible}
         onClose={closePopups}
@@ -392,8 +406,8 @@ const App = () => {
           linkText: 'Войти',
         }}
         handleAuthLinkClick={handleAuthLinkClick}
-        />
-      <LoginPopup 
+      />
+      <LoginPopup
         handleLogin={handleLogin}
         isOpen={loginPopupVisible}
         onClose={closePopups}
@@ -402,8 +416,8 @@ const App = () => {
           linkText: 'Зарегистрироваться',
         }}
         handleAuthLinkClick={handleAuthLinkClick}
-        />
-      <EditProfilePopup 
+      />
+      <EditProfilePopup
         handleUserUpdate={handleUserUpdate}
         isOpen={profilePopupVisible}
         onClose={closePopups}
@@ -420,10 +434,10 @@ const App = () => {
         onClose={() => setInfoTooltipOpen(false)}
         isOpen={infoTooltipOpen}
         message={tooltipMessage}
-        success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
+        success={tooltipMessage === 'Регистрация прошла успешно!' ? true : loggedIn} />}
       {isLoaderVisible && (<Loader />)}
     </AppContext.Provider>
-    </Page>
-  );
+  </Page>
+);
 };
 export default App;
