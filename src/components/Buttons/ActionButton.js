@@ -21,9 +21,7 @@ const ActionButton = styled.button`
   transition: transform ease-in-out .3s;
 
   &:hover {
-    width: 372px;
-    height: 372px;
-    font-size: 28px;
+    transform: scale(1.05);
   }
   &:focus {
     outline: none;
@@ -31,7 +29,7 @@ const ActionButton = styled.button`
 `;
 
 
-const ActionBtn = ({ handleRedirect, text, textSpan }) => (
+const ActionBtn = ({ handleRedirect }) => (
   <ActionButton type='button' onClick={handleRedirect}>
     {'Предложите\nвигилантам\nсделать '}
     <BegeSpan>{'доброе\nдело'}</BegeSpan>
