@@ -16,7 +16,10 @@ const EditProfilePopup = ({ currentUser, handleUserUpdate, isOpen, onClose, hand
     name: '',
     surname: '',
   });
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    name: '',
+    surname: '',
+  });
   const [anyInputInvalid, setAnyInputInvalid] = useState(true);
   const [showError, setShowError] = useState({});
 
