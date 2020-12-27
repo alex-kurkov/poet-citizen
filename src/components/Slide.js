@@ -64,7 +64,7 @@ const LeadButton = styled.button`
   }
 `;
 
-const Slide = ({ currentSlide }) => {
+const Slide = ({ crumbsMethods, currentSlide }) => {
   const history = useHistory();
   const { sliders } = config;
   const slide = sliders[currentSlide];
@@ -76,7 +76,10 @@ const Slide = ({ currentSlide }) => {
           <LeadInfoDiv>
             <LeadMainText color="#F2F2F2">{title}</LeadMainText>
             <LeadText>{info}</LeadText>
-            <LeadButton onClick={() => history.push(route)}>
+            <LeadButton onClick={() => {
+              crumbsMethods[route]();
+              history.push(route);
+              }}>
               {btnText}
             </LeadButton>
           </LeadInfoDiv>

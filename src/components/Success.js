@@ -128,6 +128,7 @@ const Success = ({
   actionBtnText = '', 
   organizationChecked,
   emotionChecked,
+  crumbsMethods
 }) => {
 
   const history = useHistory();
@@ -149,7 +150,10 @@ const Success = ({
         enabled={(organizationChecked && emotionChecked)} />
         <ActionBtn
           type="button"
-          onClick={() => history.push(actionBtnRoute)}>
+          onClick={() => {
+            crumbsMethods[actionBtnRoute]();
+            history.push(actionBtnRoute)
+            }}>
         {actionBtnText}
         </ActionBtn>
     </SuccessBlock>

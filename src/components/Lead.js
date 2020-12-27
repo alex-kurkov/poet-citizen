@@ -24,7 +24,7 @@ const LeadWrap = styled.div`
   padding: 60px 24px;
 `;
 
-const Lead = () => {
+const Lead = ({ crumbsMethods }) => {
   return (
     <LeadSection>
       <LeadWrap>
@@ -37,10 +37,10 @@ const Lead = () => {
           renderArrow={FormArrowBtnLead}
           disableArrowsOnEnd={false}
         >
-        <Slide currentSlide="1" />
-        <Slide currentSlide="2" />
-        <Slide currentSlide="3" />
-        <Slide currentSlide="4" />
+        <Slide crumbsMethods={crumbsMethods} currentSlide="1" />
+        <Slide crumbsMethods={crumbsMethods} currentSlide="2" />
+        <Slide crumbsMethods={crumbsMethods} currentSlide="3" />
+        <Slide crumbsMethods={crumbsMethods} currentSlide="4" />
   
       </Carousel>
       </LeadWrap>

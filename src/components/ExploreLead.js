@@ -61,7 +61,7 @@ const ActionBtn = styled.button`
   }
 `;
 
-const InitLead = ({ crumbsStack, leadTexts, background }) => {
+const InitLead = ({ crumbsMethods, crumbsStack, leadTexts, background }) => {
   const {
     leadTitle,
     leadInfoText,
@@ -78,7 +78,10 @@ const InitLead = ({ crumbsStack, leadTexts, background }) => {
           <LeadText>{leadInfoText}</LeadText>
           <ActionBtn
             type="button"
-            onClick={() => history.push('/call')}>
+            onClick={() => {
+              crumbsMethods['/call']();
+              history.push('/call');
+              }}>
               {'Предложи\nсвою инициативу\n'}
               <OrangeSpan>Сделай мир лучше</OrangeSpan>
           </ActionBtn>

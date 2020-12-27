@@ -248,7 +248,7 @@ const App = () => {
         <main>
           <Switch>
             <Route path="/main">
-              <Lead texts={config.leadTexts.routeMain}/>
+              <Lead crumbsMethods={crumbsMethods} texts={config.leadTexts.routeMain}/>
               <Info crumbsMethods={crumbsMethods} />
             </Route>
             <Route exact path='/authorize'>
@@ -290,6 +290,7 @@ const App = () => {
 
             <Route path="/explore">
             <ExploreLead
+              crumbsMethods={crumbsMethods}
               crumbsStack={crumbsStack}
               background={exploreLeadBg}
               leadTexts={

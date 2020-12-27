@@ -131,6 +131,7 @@ const Call = ({
                 areaName="emotion"/>
 
               <Success
+                crumbsMethods={crumbsMethods}
                 organizationChecked={organizationChecked}
                 emotionChecked={emotionChecked}
                 poem={poem}
