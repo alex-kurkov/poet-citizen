@@ -16,6 +16,21 @@ const ActionContainer = styled.ul`
   padding: 0;
 `;
 
+const ActionItem = styled.p`
+  display: block;
+  color: #f2f2f2;
+  box-sizing: border-box;
+  max-width: 30%;
+  height: min-content;
+  font-family: Open Sans, Lato, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 1.36;
+  margin: 0 20px;
+  opacity: 0;
+`;
+
 const ActionBox = styled.button`
   display: block;
   box-sizing: border-box;
@@ -31,15 +46,14 @@ const ActionBox = styled.button`
   border: none;
   border-radius: 2px;
   ${({ bg }) => `
-  background: url(${bg});
-  `}
+	  background: url(${bg});
+	  `}
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   &:hover {
     transition: transform 0.3s ease-out;
-    opacity: 1;
   }
 
   &:checked {
@@ -56,8 +70,8 @@ const ActionBox = styled.button`
     bottom: 5%;
     z-index: 5;
     background: #f2f2f2;
-    border-radius: 2px;
     opacity: 0.82;
+    border-radius: 2px;
   }
 
   &:after {
@@ -79,7 +93,7 @@ const ActionBox = styled.button`
   }
 
   &:hover:after {
-    color: #f2f2f2;
+    opacity: 0;
     transition: opacity 0.3s ease-out;
   }
 
@@ -87,10 +101,52 @@ const ActionBox = styled.button`
     opacity: 0;
     transition: opacity 0.3s ease-out;
   }
+  &:hover #blurkid {
+    backdrop-filter: blur(0);
+    opacity: 0;
+  }
 
   &:hover #circlekid {
+    font-size: 36px;
     opacity: 1;
     transition: opacity 0.3s ease-out;
+  }
+
+  &:hover #itemtextkid {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+`;
+
+const ActionBoxBlur = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+`;
+
+const StyledLi = styled.li`
+  width: 96%;
+  height: 96%;
+  position: relative;
+  &:hover:nth-child(1) {
+    ${ActionBox} {
+      transform-origin: bottom right;
+    }
+  }
+  &:hover:nth-child(2) {
+    ${ActionBox} {
+      transform-origin: bottom center;
+    }
+  }
+  &:hover:nth-child(3) {
+    ${ActionBox} {
+      transform-origin: bottom left;
+    }
   }
 `;
 
@@ -126,10 +182,6 @@ const ActionCircle = styled.div`
     border-right: 1.5px solid #f2f2f2;
     transform: rotate(45deg);
   }
-  &:hover: {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-  }
 `;
 
 const ActionList = ({ array, crumbsMethods }) => {
@@ -138,7 +190,7 @@ const ActionList = ({ array, crumbsMethods }) => {
   return (
     <ActionContainer>
       {array.map((item, i) => (
-        <li key={i + item.id}>
+        <StyledLi key={i + item.id}>
           <ActionBox
             onClick={() => {
               crumbsMethods[item.link]();
@@ -148,9 +200,11 @@ const ActionList = ({ array, crumbsMethods }) => {
             bg={item.image || cardBg}
             labelText={item.title.join(' ')}
           >
+            <ActionBoxBlur id='blurkid'></ActionBoxBlur>
+            <ActionItem id='itemtextkid'>{item.title.join(' ')}</ActionItem>
             <ActionCircle id='circlekid'></ActionCircle>
           </ActionBox>
-        </li>
+        </StyledLi>
       ))}
     </ActionContainer>
   );
