@@ -43,7 +43,9 @@
   - проект может быть собран и запущен локально по адресу http://localhost:3000/ путем клонирования данного репозитория и последовательного запуска команд в терминале (должны быть установлены программы Git, NodeJS и менеджер пакетов npm):
 
 ```bash
-git clone https://github.com/alex-kurkov/poet-citizen.git && cd poet-citizen
+git clone https://github.com/alex-kurkov/poet-citizen.git 
+
+cd poet-citizen
 
 npm install
 
