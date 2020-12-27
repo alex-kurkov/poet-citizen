@@ -60,7 +60,7 @@ const StyledForm = styled.form`
 const StyledFieldset = styled.fieldset`
   color: #000;
   border: none;
-  margin: 0 0 48px 0;
+  margin: 0;
   text-align: left;
 `;
 const StyledLegend = styled.legend`

@@ -434,7 +434,7 @@ return (
         onClose={() => setInfoTooltipOpen(false)}
         isOpen={infoTooltipOpen}
         message={tooltipMessage}
-        success={tooltipMessage === 'Вы успешно зарегистрировались!' ? true : loggedIn} />}
+        success={tooltipMessage === 'Регистрация прошла успешно!' ? true : loggedIn} />}
       {isLoaderVisible && (<Loader />)}
     </AppContext.Provider>
   </Page>
