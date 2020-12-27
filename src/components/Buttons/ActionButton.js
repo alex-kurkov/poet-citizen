@@ -4,7 +4,7 @@ import { BegeSpan } from '../Texts';
 
 const ActionButton = styled.button`
   position: absolute;
-  top: 50%;
+  bottom: -208px;
   left: 100%;
   grid-area: action;
   align-self: end;

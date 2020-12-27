@@ -7,7 +7,11 @@ import {
   piggy,
   smp,
   stopboor,
-} from './utils/images'
+} from './utils/images';
+import mainleadone from './img/mainleads/mainleadone.jpg';
+import mainleadjoin from './img/mainleads/mainleadjoin.jpg';
+import mainleadexplore from './img/mainleads/mainleadexplore.jpg';
+import mainleadcomplain from './img/mainleads/mainleadcomplain.jpg';
 
 export default {
   colors: {
@@ -307,4 +311,7 @@ export default {
     },
   },
   baseUrl: 'https://api.poet-citizen.students.nomoreparties.xyz',
+  bgArray: [
+    mainleadone, mainleadjoin, mainleadexplore, mainleadcomplain
+  ],
 };

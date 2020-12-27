@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components/macro';
-import leadBG from '../img/mainlead.jpg';
 import Carousel from 'react-elastic-carousel';
-import {FormArrowBtnLead} from './Buttons/FormArrowBtn';
-import Slide from './Slide'
+import { FormArrowBtnLead } from './Buttons/FormArrowBtn';
+import Slide from './Slide';
+import AppContext from '../contexts/AppContext';
 /* import PropTypes from 'prop-types'; */
 
 const LeadSection = styled.section`
   background: #212228;
   height: 636px;
   width: 100%;
-  background: url(${leadBG});
+  background: url(${(props) => props.leadBg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,11 +25,21 @@ const LeadWrap = styled.div`
 `;
 
 const Lead = ({ crumbsMethods }) => {
+  const config = useContext(AppContext);
+  const { bgArray } = config;
+
+  const [leadBg, setLeadBg] = useState(bgArray[0]);
+  const handleSlideChange = (item, idx) => {
+    setLeadBg(bgArray[idx]);
+    console.log(bgArray[idx]);
+  }
+  
   return (
-    <LeadSection>
+    <LeadSection leadBg={leadBg}>
       <LeadWrap>
       <Carousel
           easing="ease-in-out"
+          onChange={handleSlideChange}
           showArrows={true}
           pagination={true}
           itemsToShow={1}

@@ -24,7 +24,7 @@ const InfoBlock = styled.section`
   margin: 0 auto;
   background-color: #f2f2f2;
   color: #212228;
-  padding: 100px 100px 290px 100px;
+  padding: 100px 100px 300px 100px;
 `;
 
 
