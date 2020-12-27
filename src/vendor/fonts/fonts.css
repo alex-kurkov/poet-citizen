@@ -30,31 +30,15 @@
      font-style: normal;
      font-weight: 400;
      src: local('Noto Serif'),
-          url('./NotoSerif-Regular.woff') format('woff'),
+          url('./NotoSerif.woff') format('woff'),
           url('./noto-serif-v9-cyrillic-regular.ttf') format('truetype'),
 }
 
 @font-face {
      font-family: 'Noto Serif';
-     font-style: bold;
-     font-weight: 600;
+     font-style: normal;
+     font-weight: 700;
      src: local('Noto Serif'),
           url('./NotoSerif-Bold.woff') format('woff'),
           url('./noto-serif-v9-cyrillic-700.ttf') format('truetype'),
-}
-
-@font-face {
-     font-family: 'Noto Serif';
-     font-style: italic;
-     font-weight: 400;
-     src: local('Noto Serif'),
-          url('./NotoSerif-Italic.woff') format('woff'),
-}
-
-@font-face {
-     font-family: 'Noto Serif';
-     font-style: italic;
-     font-weight: 600;
-     src: local('Noto Serif'),
-          url('./NotoSerif-BoldItalic.woff') format('woff'),
 }
