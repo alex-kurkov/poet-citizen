@@ -1,0 +1,23 @@
+button.rec-dot{
+  background-color: #43D3B2;
+  border: 2px #43D3B2 solid;
+  box-shadow: none;
+  margin-left: 12px;
+}
+
+button.rec-dot_active {
+  background: none;
+  transform: scale(1.4);
+}
+
+button.rec-dot:focus {
+  background: transparent;
+  box-shadow: none;
+  border: 2px #43D3B2 solid;
+  transform: scale(1.3);
+}
+
+button.rec-dot:hover {
+  transform: scale(1.3);
+  box-shadow: none;
+}

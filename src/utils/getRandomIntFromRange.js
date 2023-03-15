@@ -1,0 +1,1 @@
+export default (from = 0, to = 2) => (Math.ceil(Math.random() * to) + from) - 1;

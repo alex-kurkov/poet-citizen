@@ -1,0 +1,17 @@
+env:
+  browser: true
+  commonjs: true
+extends:
+  - 'plugin:react/recommended'
+parserOptions:
+  sourceType:
+    module
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 10
+plugins:
+  - react
+rules:   
+  no-underscore-dangle: 0
+  no-console: 0
+  linebreak-style: 0

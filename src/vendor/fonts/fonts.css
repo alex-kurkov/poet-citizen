@@ -1,0 +1,42 @@
+@font-face {
+     font-family: 'Open Sans';
+     font-style: normal;
+     font-weight: 400;
+     src: local('Open Sans'),
+          url('./OpenSans-Regular.woff') format('woff'),
+          url('./open-sans-v18-latin_cyrillic-regular.ttf') format('truetype'),
+}
+
+@font-face {
+     font-family: 'Open Sans';
+     font-style: normal;
+     font-weight: 600;
+     src: local('Open Sans'),
+          url('./OpenSans-SemiBold.woff') format('woff'),
+          url('./open-sans-v18-latin_cyrillic-600.ttf') format('truetype'),
+}
+
+@font-face {
+     font-family: 'Open Sans';
+     font-style: normal;
+     font-weight: 700;
+     src: local('Open Sans'),
+          url('./OpenSans-Bold.woff') format('woff'),
+          url('./open-sans-v18-latin_cyrillic-700.ttf') format('truetype'),
+}
+
+@font-face {
+     font-family: 'Noto Serif';
+     font-style: normal;
+     font-weight: 400;
+     src: local('Noto Serif'),
+          url('./NotoSerif-Regular.ttf') format('truetype'),
+}
+
+@font-face {
+     font-family: 'Noto Serif';
+     font-style: normal;
+     font-weight: 700;
+     src: local('Noto Serif'),
+          url('./NotoSerif-Bold.ttf') format('truetype'),
+}
